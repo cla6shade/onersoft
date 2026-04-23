@@ -8,7 +8,9 @@
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "radix-ui": "^1.4.3"
@@ -32,7 +34,12 @@
     "jsdom": "^29.0.2",
     "@testing-library/react": "^16.3.2",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1"
+    "@testing-library/user-event": "^14.6.1",
+    "storybook": "^10.3.5",
+    "@storybook/react-vite": "^10.3.5",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "eslint-plugin-storybook": "^10.3.5"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
