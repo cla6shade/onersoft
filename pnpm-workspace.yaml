@@ -1,0 +1,20 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# 공유 버전 관리용 catalog (pnpm 10+). 패키지에서 "react": "catalog:" 처럼 참조.
+catalog:
+  typescript: ^5.9.3
+  "@types/node": ^22.10.5
+
+# 예: Next.js / React 버전 묶음 (필요 시 주석 해제)
+# catalogs:
+#   next16:
+#     next: ^16.2.4
+#     react: ^19.0.0
+#     react-dom: ^19.0.0
+#     "@types/react": ^19.0.0
+#     "@types/react-dom": ^19.0.0
+
+# 네이티브 빌드 스크립트를 실행할 패키지만 명시적 허용 (pnpm 10 기본: 차단)
+onlyBuiltDependencies: []
