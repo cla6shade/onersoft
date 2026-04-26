@@ -1,0 +1,63 @@
+/* Demo-only layout helpers shared across Storybook stories.
+ * Not part of the package public surface. */
+
+.fieldColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  width: 20rem;
+}
+
+.fieldColumnWide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  width: 24rem;
+}
+
+.fieldRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+}
+
+.fieldRowLg {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+}
+
+.constrainSm {
+  width: 20rem;
+}
+
+.constrainMd {
+  width: 28rem;
+}
+
+.demoGrid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ds-space-3);
+}
+
+.demoFlexWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2);
+}
+
+.demoStack {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+}
+
+.kbdRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  color: var(--ds-color-fg-muted);
+  font-family: var(--ds-font-sans);
+  font-size: var(--ds-text-sm);
+}
