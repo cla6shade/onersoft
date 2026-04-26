@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from 'react'
+import { getThemeInitScript } from './themeScript'
 
 export type Theme = 'system' | 'light' | 'dark'
 export type ResolvedTheme = 'light' | 'dark'
@@ -99,7 +100,14 @@ export function ThemeProvider({
     [theme, resolvedTheme, setTheme],
   )
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  const initScript = useMemo(() => getThemeInitScript(storageKey), [storageKey])
+
+  return (
+    <ThemeContext.Provider value={value}>
+      <script dangerouslySetInnerHTML={{ __html: initScript }} />
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
 export function useTheme(): ThemeContextValue {
