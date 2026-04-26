@@ -1,0 +1,107 @@
+.viewport {
+  position: fixed;
+  bottom: var(--ds-space-5);
+  right: var(--ds-space-5);
+  z-index: var(--ds-z-tooltip);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+  width: min(24rem, calc(100vw - var(--ds-space-6)));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+}
+
+.root {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: var(--ds-space-2) var(--ds-space-3);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  background-color: var(--ds-color-bg-elevated);
+  color: var(--ds-color-fg-default);
+  font-family: var(--ds-font-sans);
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-snug);
+  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-md);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+.root[data-state='open'] {
+  animation: slideIn var(--ds-duration-medium) var(--ds-ease-enter);
+}
+
+.root[data-state='closed'] {
+  animation: fadeOut var(--ds-duration-fast) var(--ds-ease-exit);
+}
+
+.root[data-swipe='move'] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+
+.root[data-swipe='cancel'] {
+  transform: translateX(0);
+  transition: transform var(--ds-duration-fast) var(--ds-ease-standard);
+}
+
+.root[data-swipe='end'] {
+  animation: swipeOut var(--ds-duration-fast) var(--ds-ease-exit);
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--ds-weight-semibold);
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-snug);
+}
+
+.description {
+  margin: var(--ds-space-1) 0 0;
+  color: var(--ds-color-fg-muted);
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-normal);
+}
+
+.close {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  background: transparent;
+  color: var(--ds-color-fg-muted);
+  border: 0;
+  border-radius: var(--ds-radius-xs);
+  font: inherit;
+  font-size: var(--ds-text-md);
+  cursor: pointer;
+  transition: color var(--ds-duration-fast) var(--ds-ease-standard);
+}
+
+.close:hover {
+  color: var(--ds-color-fg-default);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--ds-color-accent);
+  outline-offset: 2px;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(calc(100% + var(--ds-space-5))); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes swipeOut {
+  from { transform: translateX(var(--radix-toast-swipe-end-x)); }
+  to { transform: translateX(calc(100% + var(--ds-space-5))); }
+}
