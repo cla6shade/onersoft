@@ -1,0 +1,48 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-1);
+  font-family: var(--ds-font-sans);
+  font-weight: var(--ds-weight-medium);
+  letter-spacing: var(--ds-tracking-normal);
+  line-height: 1;
+  border-radius: var(--ds-radius-sm);
+  white-space: nowrap;
+  vertical-align: middle;
+  font-feature-settings: "tnum" 1;
+}
+
+.sm {
+  padding: var(--ds-space-px) var(--ds-space-2);
+  font-size: var(--ds-text-xs);
+}
+
+.md {
+  padding: var(--ds-space-1) var(--ds-space-2);
+  font-size: var(--ds-text-xs);
+}
+
+.neutral {
+  background-color: var(--ds-color-bg-sunken);
+  color: var(--ds-color-fg-muted);
+}
+
+.accent {
+  background-color: var(--ds-color-accent-soft);
+  color: var(--ds-color-accent);
+}
+
+.success {
+  background-color: color-mix(in oklab, var(--ds-color-success) 14%, transparent);
+  color: var(--ds-color-success);
+}
+
+.warning {
+  background-color: color-mix(in oklab, var(--ds-color-warning) 14%, transparent);
+  color: var(--ds-color-warning);
+}
+
+.danger {
+  background-color: color-mix(in oklab, var(--ds-color-danger) 14%, transparent);
+  color: var(--ds-color-danger);
+}
