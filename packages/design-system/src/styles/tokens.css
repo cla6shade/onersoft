@@ -60,6 +60,19 @@
   --ds-border-width-thin: 1px;
   --ds-border-width-medium: 1.5px;
 
+  /* Container max-widths. `prose` enforces the 65–75ch body line-length
+   * principle from the design brief; the rest are page/region defaults. */
+  --ds-container-prose: 65ch;
+  --ds-container-narrow: 40rem;
+  --ds-container-default: 64rem;
+  --ds-container-wide: 80rem;
+
+  /* Focus ring primitives. Components compose these via --ds-shadow-focus,
+   * but they are exposed individually so consumers can build custom rings
+   * (e.g. inset, single-layer) without re-deriving offset/width. */
+  --ds-ring-width: 2px;
+  --ds-ring-offset: 2px;
+
   /* Motion — monotonic ease-out only; no overshoot. */
   --ds-duration-instant: 80ms;
   --ds-duration-fast: 120ms;
@@ -122,6 +135,15 @@
   --ds-color-danger-fg: oklch(0.97 0.006 230);
   --ds-color-success: oklch(0.66 0.14 150);
   --ds-color-warning: oklch(0.78 0.15 75);
+  /* Info aligns with brand hue (~230°) at lower chroma than success/danger
+   * to keep the calm tone — no saturation spikes for status colors. */
+  --ds-color-info: oklch(0.70 0.10 230);
+  --ds-color-info-fg: oklch(0.97 0.006 230);
+
+  /* Per-theme ring colors. Offset color matches the surface so the ring
+   * reads as floating above the control rather than touching it. */
+  --ds-ring-color: var(--ds-color-accent);
+  --ds-ring-offset-color: var(--ds-color-bg-surface);
 
   /* Interaction state derivations (dark: mix toward white to lift) */
   --ds-color-accent-hover: color-mix(in oklab, var(--ds-color-accent) 88%, white);
@@ -142,7 +164,9 @@
   --ds-shadow-sm: 0 2px 6px oklch(0 0 0 / 0.3);
   --ds-shadow-md: 0 8px 18px oklch(0 0 0 / 0.35);
   --ds-shadow-lg: 0 20px 40px oklch(0 0 0 / 0.45);
-  --ds-shadow-focus: 0 0 0 2px var(--ds-color-bg-surface), 0 0 0 4px var(--ds-color-accent);
+  --ds-shadow-focus:
+    0 0 0 var(--ds-ring-offset) var(--ds-ring-offset-color),
+    0 0 0 calc(var(--ds-ring-offset) + var(--ds-ring-width)) var(--ds-ring-color);
 }
 
 /* -----------------------------------------------------------------------
@@ -178,6 +202,11 @@
   --ds-color-danger-fg: oklch(0.98 0.004 230);
   --ds-color-success: oklch(0.58 0.14 150);
   --ds-color-warning: oklch(0.72 0.15 70);
+  --ds-color-info: oklch(0.55 0.12 232);
+  --ds-color-info-fg: oklch(0.98 0.004 230);
+
+  --ds-ring-color: var(--ds-color-accent);
+  --ds-ring-offset-color: var(--ds-color-bg-surface);
 
   --ds-color-accent-hover: color-mix(in oklab, var(--ds-color-accent) 88%, black);
   --ds-color-accent-pressed: color-mix(in oklab, var(--ds-color-accent) 80%, black);
@@ -196,7 +225,9 @@
   --ds-shadow-sm: 0 2px 6px oklch(0.17 0.015 235 / 0.08);
   --ds-shadow-md: 0 8px 18px oklch(0.17 0.015 235 / 0.10);
   --ds-shadow-lg: 0 20px 40px oklch(0.17 0.015 235 / 0.14);
-  --ds-shadow-focus: 0 0 0 2px var(--ds-color-bg-surface), 0 0 0 4px var(--ds-color-accent);
+  --ds-shadow-focus:
+    0 0 0 var(--ds-ring-offset) var(--ds-ring-offset-color),
+    0 0 0 calc(var(--ds-ring-offset) + var(--ds-ring-width)) var(--ds-ring-color);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -205,5 +236,20 @@
     --ds-duration-fast: 0ms;
     --ds-duration-medium: 0ms;
     --ds-duration-slow: 0ms;
+  }
+}
+
+/* Lift borders and muted text only — accent and surface colors are left
+ * untouched so brand identity remains intact under high-contrast modes. */
+@media (prefers-contrast: more) {
+  :root {
+    --ds-color-border-default: color-mix(in oklab, oklch(0.97 0.006 230) 24%, transparent);
+    --ds-color-border-strong: color-mix(in oklab, oklch(0.97 0.006 230) 40%, transparent);
+    --ds-color-fg-muted: oklch(0.78 0.018 230);
+  }
+  :root[data-theme='light'] {
+    --ds-color-border-default: color-mix(in oklab, oklch(0.17 0.015 235) 24%, transparent);
+    --ds-color-border-strong: color-mix(in oklab, oklch(0.17 0.015 235) 40%, transparent);
+    --ds-color-fg-muted: oklch(0.34 0.02 235);
   }
 }
