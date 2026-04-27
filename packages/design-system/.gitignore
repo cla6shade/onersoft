@@ -25,3 +25,8 @@ dist-ssr
 
 *storybook.log
 storybook-static
+
+# Vitest browser-mode (Playwright) artifacts
+.vitest-attachments
+**/__screenshots__
+coverage
