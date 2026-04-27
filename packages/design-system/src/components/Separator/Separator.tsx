@@ -7,5 +7,5 @@ export function Separator({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSeparator.Root>) {
-  return <RadixSeparator.Root className={clsx(styles.root, className)} {...props} />
+  return <RadixSeparator.Root data-slot="separator" className={clsx(styles.root, className)} {...props} />
 }

@@ -15,12 +15,14 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
     return (
       <RadixProgress.Root
         ref={ref}
+        data-slot="progress"
         className={clsx(styles.root, className)}
         value={value ?? null}
         max={max}
         {...props}
       >
         <RadixProgress.Indicator
+          data-slot="progress-indicator"
           className={clsx(styles.indicator, pct == null && styles.indeterminate)}
           style={pct == null ? undefined : { transform: `translateX(-${100 - pct}%)` }}
         />

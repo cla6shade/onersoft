@@ -1,3 +1,4 @@
+@layer ds.components {
 .root {
   display: flex;
   flex-direction: column;
@@ -8,7 +9,7 @@
 .list {
   display: inline-flex;
   align-items: stretch;
-  gap: var(--ds-space-5);
+  gap: var(--ds-space-6);
   padding: 0;
   border-bottom: var(--ds-border-width-thin) solid var(--ds-color-border-default);
 }
@@ -29,7 +30,7 @@
   font-size: var(--ds-text-sm);
   font-weight: var(--ds-weight-medium);
   letter-spacing: var(--ds-tracking-normal);
-  line-height: 1;
+  line-height: var(--ds-leading-control);
   cursor: pointer;
   transition:
     color var(--ds-duration-fast) var(--ds-ease-standard),
@@ -46,7 +47,10 @@
 }
 
 .trigger:focus-visible {
-  outline: 2px solid var(--ds-color-accent);
+  /* Tabs sit on a bottom border + indicator; offset-4 outline keeps the
+   * ring clear of both. Cannot use --ds-shadow-focus here without visual
+   * collision with the indicator. */
+  outline: var(--ds-ring-width) solid var(--ds-ring-color);
   outline-offset: 4px;
   border-radius: var(--ds-radius-xs);
 }
@@ -62,7 +66,11 @@
 }
 
 .content:focus-visible {
-  outline: 2px solid var(--ds-color-accent);
+  /* Tabs sit on a bottom border + indicator; offset-4 outline keeps the
+   * ring clear of both. Cannot use --ds-shadow-focus here without visual
+   * collision with the indicator. */
+  outline: var(--ds-ring-width) solid var(--ds-ring-color);
   outline-offset: 4px;
   border-radius: var(--ds-radius-sm);
+}
 }

@@ -1,3 +1,4 @@
+@layer ds.components {
 .demoCard {
   width: 20rem;
   color: var(--ds-color-fg-default);
@@ -27,4 +28,5 @@
 
 .demoVerticalSeparator {
   height: 1rem;
+}
 }

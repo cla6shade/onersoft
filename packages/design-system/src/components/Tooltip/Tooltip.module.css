@@ -1,7 +1,8 @@
+@layer ds.components {
 .content {
   z-index: var(--ds-z-tooltip);
   padding: var(--ds-space-1) var(--ds-space-3);
-  background-color: var(--ds-color-bg-elevated);
+  background-color: var(--ds-color-bg-overlay);
   color: var(--ds-color-fg-default);
   font-family: var(--ds-font-sans);
   font-size: var(--ds-text-xs);
@@ -36,4 +37,5 @@
 @keyframes slideRightFade {
   from { opacity: 0; transform: translateX(-2px); }
   to { opacity: 1; transform: translateX(0); }
+}
 }

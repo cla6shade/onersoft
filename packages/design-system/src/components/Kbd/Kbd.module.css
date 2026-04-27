@@ -1,3 +1,4 @@
+@layer ds.components {
 .kbd {
   display: inline-flex;
   align-items: center;
@@ -26,4 +27,5 @@
   height: 1.5rem;
   padding: 0 var(--ds-space-2);
   font-size: var(--ds-text-xs);
+}
 }

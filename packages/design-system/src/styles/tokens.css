@@ -1,3 +1,18 @@
+/* Layer order — earlier layers lose to later ones, and ALL layered rules
+ * lose to unlayered rules. Hosts that want to override our components can
+ * use plain selectors (no layer needed) and they'll always win, no matter
+ * how specific our internal rules are. Hosts wanting to extend without
+ * winning everything can use `@layer ds.utilities` themselves.
+ *
+ * Order:
+ *   tokens     — CSS custom properties on :root
+ *   base       — element-level resets (currently unused, reserved)
+ *   components — every .module.css in components/
+ *   utilities  — host-extensible last-wins layer
+ */
+@layer ds.tokens, ds.base, ds.components, ds.utilities;
+
+@layer ds.tokens {
 :root {
   /* ---------------------------------------------------------------------
    * Theme-agnostic tokens
@@ -12,10 +27,12 @@
   --ds-font-mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
   --ds-font-display: var(--ds-font-sans);
 
+  /* Type scale — 7 steps with ≥1.125 ratio between each.
+   * `base` aliases `md` so existing consumers keep working; both resolve to 16px. */
   --ds-text-xs: 0.75rem;
   --ds-text-sm: 0.875rem;
-  --ds-text-base: 0.9375rem;
   --ds-text-md: 1rem;
+  --ds-text-base: var(--ds-text-md);
   --ds-text-lg: 1.125rem;
   --ds-text-xl: 1.375rem;
   --ds-text-2xl: 1.75rem;
@@ -25,6 +42,10 @@
   --ds-leading-snug: 1.35;
   --ds-leading-normal: 1.55;
   --ds-leading-relaxed: 1.7;
+  /* Single-line interactive controls (Button, Input, Select trigger, Kbd…)
+   * align text to the control's fixed height. Always use this for controls
+   * — never hardcode `line-height: 1`. */
+  --ds-leading-control: 1;
 
   --ds-weight-regular: 400;
   --ds-weight-medium: 500;
@@ -35,18 +56,20 @@
   --ds-tracking-normal: 0;
   --ds-tracking-wide: 0.04em;
 
-  /* Spacing (4pt) */
+  /* Spacing — 4pt scale. Indices map directly to rem*4 multipliers
+   * (1=4px, 2=8px, …) up to 6=24px, then jumps for layout-scale gaps. */
   --ds-space-0: 0;
   --ds-space-px: 0.125rem;
   --ds-space-1: 0.25rem;
   --ds-space-2: 0.5rem;
   --ds-space-3: 0.75rem;
   --ds-space-4: 1rem;
-  --ds-space-5: 1.5rem;
-  --ds-space-6: 2rem;
-  --ds-space-7: 3rem;
-  --ds-space-8: 4rem;
-  --ds-space-9: 6rem;
+  --ds-space-5: 1.25rem;
+  --ds-space-6: 1.5rem;
+  --ds-space-7: 2rem;
+  --ds-space-8: 3rem;
+  --ds-space-9: 4rem;
+  --ds-space-10: 6rem;
 
   /* Radii */
   --ds-radius-xs: 0.25rem;
@@ -108,37 +131,58 @@
    * ------------------------------------------------------------------ */
   color-scheme: dark;
 
-  /* Raw brand tokens (dark) */
-  --color-brand-primary: oklch(0.72 0.06 232);
-  --color-brand-primary-muted: oklch(0.66 0.05 232);
-  --color-surface-base: oklch(0.19 0.015 240);
-  --color-text-muted: oklch(0.64 0.018 230);
+  /* ---------- Brand knobs ---------------------------------------------
+   * Override these two at :root in the host app to retheme the entire
+   * system. Hue propagates to brand color, neutrals (subtly tinted),
+   * borders, focus rings, and info status color. Chroma controls how
+   * vivid the brand reads — keep it low for calm, raise toward 0.12 for
+   * a bolder identity.
+   * ------------------------------------------------------------------ */
+  --ds-brand-hue: 232;
+  --ds-brand-chroma: 0.06;
 
-  /* Semantic color aliases */
+  /* Raw brand tokens (dark). Lightness values are theme-specific (the
+   * brand reads brighter on dark backgrounds), so they live here, not in
+   * the knob layer above. */
+  --color-brand-primary: oklch(0.72 var(--ds-brand-chroma) var(--ds-brand-hue));
+  --color-brand-primary-muted: oklch(0.66 calc(var(--ds-brand-chroma) - 0.01) var(--ds-brand-hue));
+  --color-surface-base: oklch(0.19 0.015 var(--ds-brand-hue));
+  --color-text-muted: oklch(0.64 0.018 var(--ds-brand-hue));
+
+  /* Semantic color aliases. Three rising surface tiers:
+   *   sunken    — recessed wells (input fills, code blocks)
+   *   surface   — page background
+   *   elevated  — primary container above the page (Dialog, Card)
+   *   overlay   — transient layers above an elevated container
+   *               (Popover, DropdownMenu, Tooltip, Toast, Select content)
+   * The `overlay → elevated` step prevents a popover from blending into a
+   * Dialog when both render at the same time. */
   --ds-color-bg-surface: var(--color-surface-base);
-  --ds-color-bg-elevated: color-mix(in oklab, var(--color-surface-base) 88%, white);
+  --ds-color-bg-elevated: color-mix(in oklab, var(--color-surface-base) 90%, white);
+  --ds-color-bg-overlay: color-mix(in oklab, var(--color-surface-base) 78%, white);
   --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 94%, black);
 
-  --ds-color-fg-default: oklch(0.97 0.006 230);
+  --ds-color-fg-default: oklch(0.97 0.006 var(--ds-brand-hue));
   --ds-color-fg-muted: var(--color-text-muted);
   --ds-color-fg-subtle: color-mix(in oklab, var(--color-text-muted) 70%, var(--color-surface-base));
 
   --ds-color-accent: var(--color-brand-primary);
   --ds-color-accent-muted: var(--color-brand-primary-muted);
-  --ds-color-accent-fg: oklch(0.17 0.015 240);
+  --ds-color-accent-fg: oklch(0.17 0.015 var(--ds-brand-hue));
 
-  --ds-color-border-default: color-mix(in oklab, oklch(0.97 0.006 230) 10%, transparent);
-  --ds-color-border-strong: color-mix(in oklab, oklch(0.97 0.006 230) 18%, transparent);
+  --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 10%, transparent);
+  --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 18%, transparent);
   --ds-color-border-accent: color-mix(in oklab, var(--ds-color-accent) 60%, transparent);
 
+  /* Status colors keep their semantic hues (red/green/amber) regardless
+   * of brand. Only --ds-color-info follows the brand to maintain the
+   * "calm" tone — info ≈ accent at lower chroma. */
   --ds-color-danger: oklch(0.61 0.19 20);
-  --ds-color-danger-fg: oklch(0.97 0.006 230);
+  --ds-color-danger-fg: oklch(0.97 0.006 var(--ds-brand-hue));
   --ds-color-success: oklch(0.66 0.14 150);
   --ds-color-warning: oklch(0.78 0.15 75);
-  /* Info aligns with brand hue (~230°) at lower chroma than success/danger
-   * to keep the calm tone — no saturation spikes for status colors. */
-  --ds-color-info: oklch(0.70 0.10 230);
-  --ds-color-info-fg: oklch(0.97 0.006 230);
+  --ds-color-info: oklch(0.70 0.10 var(--ds-brand-hue));
+  --ds-color-info-fg: oklch(0.97 0.006 var(--ds-brand-hue));
 
   /* Per-theme ring colors. Offset color matches the surface so the ring
    * reads as floating above the control rather than touching it. */
@@ -167,6 +211,13 @@
   --ds-shadow-focus:
     0 0 0 var(--ds-ring-offset) var(--ds-ring-offset-color),
     0 0 0 calc(var(--ds-ring-offset) + var(--ds-ring-width)) var(--ds-ring-color);
+  /* Field focus — for filled controls (Input, Textarea, Select trigger,
+   * Slider thumb). No offset gap; the ring hugs the border using a soft
+   * accent halo so it reads as "active field" rather than "floating chip".
+   * Theme-aware automatically because accent-soft / danger are themed. */
+  --ds-shadow-focus-field: 0 0 0 3px var(--ds-color-accent-soft);
+  --ds-shadow-focus-field-invalid:
+    0 0 0 3px color-mix(in oklab, var(--ds-color-danger) 22%, transparent);
 }
 
 /* -----------------------------------------------------------------------
@@ -177,33 +228,39 @@
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --color-brand-primary: oklch(0.50 0.07 232);
-  --color-brand-primary-muted: oklch(0.44 0.06 232);
-  --color-surface-base: oklch(0.97 0.006 230);
-  --color-text-muted: oklch(0.48 0.02 235);
+  /* Brand reads darker on light backgrounds — slightly higher chroma to
+   * compensate for white-glare desaturation. Hue is inherited from the
+   * single knob in :root. */
+  --ds-brand-chroma: 0.07;
+
+  --color-brand-primary: oklch(0.50 var(--ds-brand-chroma) var(--ds-brand-hue));
+  --color-brand-primary-muted: oklch(0.44 calc(var(--ds-brand-chroma) - 0.01) var(--ds-brand-hue));
+  --color-surface-base: oklch(0.97 0.006 var(--ds-brand-hue));
+  --color-text-muted: oklch(0.48 0.02 var(--ds-brand-hue));
 
   --ds-color-bg-surface: var(--color-surface-base);
-  --ds-color-bg-elevated: oklch(0.99 0.004 230);
-  --ds-color-bg-sunken: oklch(0.94 0.008 230);
+  --ds-color-bg-elevated: oklch(0.99 0.004 var(--ds-brand-hue));
+  --ds-color-bg-overlay: oklch(0.995 0.003 var(--ds-brand-hue));
+  --ds-color-bg-sunken: oklch(0.94 0.008 var(--ds-brand-hue));
 
-  --ds-color-fg-default: oklch(0.17 0.015 235);
+  --ds-color-fg-default: oklch(0.17 0.015 var(--ds-brand-hue));
   --ds-color-fg-muted: var(--color-text-muted);
   --ds-color-fg-subtle: color-mix(in oklab, var(--color-text-muted) 60%, white);
 
   --ds-color-accent: var(--color-brand-primary);
   --ds-color-accent-muted: var(--color-brand-primary-muted);
-  --ds-color-accent-fg: oklch(0.98 0.004 230);
+  --ds-color-accent-fg: oklch(0.98 0.004 var(--ds-brand-hue));
 
-  --ds-color-border-default: color-mix(in oklab, oklch(0.17 0.015 235) 10%, transparent);
-  --ds-color-border-strong: color-mix(in oklab, oklch(0.17 0.015 235) 18%, transparent);
+  --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 10%, transparent);
+  --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 18%, transparent);
   --ds-color-border-accent: color-mix(in oklab, var(--ds-color-accent) 60%, transparent);
 
   --ds-color-danger: oklch(0.55 0.2 20);
-  --ds-color-danger-fg: oklch(0.98 0.004 230);
+  --ds-color-danger-fg: oklch(0.98 0.004 var(--ds-brand-hue));
   --ds-color-success: oklch(0.58 0.14 150);
   --ds-color-warning: oklch(0.72 0.15 70);
-  --ds-color-info: oklch(0.55 0.12 232);
-  --ds-color-info-fg: oklch(0.98 0.004 230);
+  --ds-color-info: oklch(0.55 0.12 var(--ds-brand-hue));
+  --ds-color-info-fg: oklch(0.98 0.004 var(--ds-brand-hue));
 
   --ds-ring-color: var(--ds-color-accent);
   --ds-ring-offset-color: var(--ds-color-bg-surface);
@@ -221,10 +278,10 @@
   --ds-color-overlay: color-mix(in oklab, black 40%, transparent);
   --ds-color-overlay-scrim: color-mix(in oklab, black 20%, transparent);
 
-  --ds-shadow-xs: 0 1px 2px oklch(0.17 0.015 235 / 0.06);
-  --ds-shadow-sm: 0 2px 6px oklch(0.17 0.015 235 / 0.08);
-  --ds-shadow-md: 0 8px 18px oklch(0.17 0.015 235 / 0.10);
-  --ds-shadow-lg: 0 20px 40px oklch(0.17 0.015 235 / 0.14);
+  --ds-shadow-xs: 0 1px 2px oklch(0.17 0.015 var(--ds-brand-hue) / 0.06);
+  --ds-shadow-sm: 0 2px 6px oklch(0.17 0.015 var(--ds-brand-hue) / 0.08);
+  --ds-shadow-md: 0 8px 18px oklch(0.17 0.015 var(--ds-brand-hue) / 0.10);
+  --ds-shadow-lg: 0 20px 40px oklch(0.17 0.015 var(--ds-brand-hue) / 0.14);
   --ds-shadow-focus:
     0 0 0 var(--ds-ring-offset) var(--ds-ring-offset-color),
     0 0 0 calc(var(--ds-ring-offset) + var(--ds-ring-width)) var(--ds-ring-color);
@@ -243,13 +300,14 @@
  * untouched so brand identity remains intact under high-contrast modes. */
 @media (prefers-contrast: more) {
   :root {
-    --ds-color-border-default: color-mix(in oklab, oklch(0.97 0.006 230) 24%, transparent);
-    --ds-color-border-strong: color-mix(in oklab, oklch(0.97 0.006 230) 40%, transparent);
-    --ds-color-fg-muted: oklch(0.78 0.018 230);
+    --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 24%, transparent);
+    --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 40%, transparent);
+    --ds-color-fg-muted: oklch(0.78 0.018 var(--ds-brand-hue));
   }
   :root[data-theme='light'] {
-    --ds-color-border-default: color-mix(in oklab, oklch(0.17 0.015 235) 24%, transparent);
-    --ds-color-border-strong: color-mix(in oklab, oklch(0.17 0.015 235) 40%, transparent);
-    --ds-color-fg-muted: oklch(0.34 0.02 235);
+    --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 24%, transparent);
+    --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 40%, transparent);
+    --ds-color-fg-muted: oklch(0.34 0.02 var(--ds-brand-hue));
   }
 }
+} /* @layer ds.tokens */

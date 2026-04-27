@@ -36,7 +36,9 @@ export default defineConfig({
       ],
       output: {
         assetFileNames: (assetInfo) =>
-          assetInfo.name?.endsWith('.css') ? 'style.css' : 'assets/[name][extname]',
+          assetInfo.names.some((name) => name.endsWith('.css'))
+            ? 'style.css'
+            : 'assets/[name][extname]',
       },
     },
   },

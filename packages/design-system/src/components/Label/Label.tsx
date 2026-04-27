@@ -7,5 +7,5 @@ export function Label({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixLabel.Root>) {
-  return <RadixLabel.Root className={clsx(styles.label, className)} {...props} />
+  return <RadixLabel.Root data-slot="label" className={clsx(styles.label, className)} {...props} />
 }

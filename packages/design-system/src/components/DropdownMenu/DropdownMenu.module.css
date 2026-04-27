@@ -1,8 +1,9 @@
+@layer ds.components {
 .content {
   z-index: var(--ds-z-dropdown);
   min-width: 12rem;
   padding: var(--ds-space-1);
-  background-color: var(--ds-color-bg-elevated);
+  background-color: var(--ds-color-bg-overlay);
   color: var(--ds-color-fg-default);
   border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
   border-radius: var(--ds-radius-md);
@@ -41,7 +42,7 @@
 }
 
 .checkItem {
-  padding-left: var(--ds-space-6);
+  padding-left: var(--ds-space-7);
 }
 
 .indicator {
@@ -85,4 +86,5 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-2px); }
   to { opacity: 1; transform: translateY(0); }
+}
 }

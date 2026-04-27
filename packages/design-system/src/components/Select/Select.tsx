@@ -5,10 +5,19 @@ import styles from './Select.module.css'
 
 export const Root = RadixSelect.Root
 export const Group = RadixSelect.Group
-export const Value = RadixSelect.Value
 export const Portal = RadixSelect.Portal
-export const Icon = RadixSelect.Icon
-export const ItemText = RadixSelect.ItemText
+
+export function Value({ ...props }: ComponentPropsWithoutRef<typeof RadixSelect.Value>) {
+  return <RadixSelect.Value data-slot="select-value" {...props} />
+}
+
+export function Icon({ ...props }: ComponentPropsWithoutRef<typeof RadixSelect.Icon>) {
+  return <RadixSelect.Icon data-slot="select-icon" {...props} />
+}
+
+export function ItemText({ ...props }: ComponentPropsWithoutRef<typeof RadixSelect.ItemText>) {
+  return <RadixSelect.ItemText data-slot="select-item-text" {...props} />
+}
 
 export function Trigger({
   className,
@@ -16,9 +25,9 @@ export function Trigger({
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSelect.Trigger>) {
   return (
-    <RadixSelect.Trigger className={clsx(styles.trigger, className)} {...props}>
+    <RadixSelect.Trigger data-slot="select-trigger" className={clsx(styles.trigger, className)} {...props}>
       {children}
-      <RadixSelect.Icon className={styles.caret} aria-hidden>
+      <RadixSelect.Icon data-slot="select-icon" className={styles.caret} aria-hidden>
         <svg viewBox="0 0 16 16" width="12" height="12" focusable="false">
           <path
             d="M4 6l4 4 4-4"
@@ -42,6 +51,7 @@ export function Content({
 }: ComponentPropsWithoutRef<typeof RadixSelect.Content>) {
   return (
     <RadixSelect.Content
+      data-slot="select-content"
       position={position}
       sideOffset={sideOffset}
       className={clsx(styles.content, className)}
@@ -54,7 +64,7 @@ export function Viewport({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSelect.Viewport>) {
-  return <RadixSelect.Viewport className={clsx(styles.viewport, className)} {...props} />
+  return <RadixSelect.Viewport data-slot="select-viewport" className={clsx(styles.viewport, className)} {...props} />
 }
 
 export function Item({
@@ -63,9 +73,9 @@ export function Item({
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSelect.Item>) {
   return (
-    <RadixSelect.Item className={clsx(styles.item, className)} {...props}>
-      <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
-      <RadixSelect.ItemIndicator className={styles.indicator}>
+    <RadixSelect.Item data-slot="select-item" className={clsx(styles.item, className)} {...props}>
+      <RadixSelect.ItemText data-slot="select-item-text">{children}</RadixSelect.ItemText>
+      <RadixSelect.ItemIndicator data-slot="select-indicator" className={styles.indicator}>
         <svg viewBox="0 0 16 16" width="12" height="12" focusable="false">
           <path
             d="M3.5 8.5 6.75 12 13 5"
@@ -85,14 +95,14 @@ export function Label({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSelect.Label>) {
-  return <RadixSelect.Label className={clsx(styles.label, className)} {...props} />
+  return <RadixSelect.Label data-slot="select-label" className={clsx(styles.label, className)} {...props} />
 }
 
 export function Separator({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSelect.Separator>) {
-  return <RadixSelect.Separator className={clsx(styles.separator, className)} {...props} />
+  return <RadixSelect.Separator data-slot="select-separator" className={clsx(styles.separator, className)} {...props} />
 }
 
 export function ScrollUpButton({
@@ -100,7 +110,7 @@ export function ScrollUpButton({
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSelect.ScrollUpButton>) {
   return (
-    <RadixSelect.ScrollUpButton className={clsx(styles.scrollButton, className)} {...props} />
+    <RadixSelect.ScrollUpButton data-slot="select-scroll-up-button" className={clsx(styles.scrollButton, className)} {...props} />
   )
 }
 
@@ -109,6 +119,6 @@ export function ScrollDownButton({
   ...props
 }: ComponentPropsWithoutRef<typeof RadixSelect.ScrollDownButton>) {
   return (
-    <RadixSelect.ScrollDownButton className={clsx(styles.scrollButton, className)} {...props} />
+    <RadixSelect.ScrollDownButton data-slot="select-scroll-down-button" className={clsx(styles.scrollButton, className)} {...props} />
   )
 }

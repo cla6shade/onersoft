@@ -1,3 +1,4 @@
+@layer ds.components {
 .root {
   display: flex;
   flex-direction: column;
@@ -30,7 +31,10 @@
   font-weight: var(--ds-weight-medium);
   text-align: left;
   cursor: pointer;
-  transition: color var(--ds-duration-fast) var(--ds-ease-standard);
+  border-radius: var(--ds-radius-xs);
+  transition:
+    color var(--ds-duration-fast) var(--ds-ease-standard),
+    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
 }
 
 .trigger:hover {
@@ -38,9 +42,8 @@
 }
 
 .trigger:focus-visible {
-  outline: 2px solid var(--ds-color-accent);
-  outline-offset: 4px;
-  border-radius: var(--ds-radius-xs);
+  outline: none;
+  box-shadow: var(--ds-shadow-focus);
 }
 
 .label {
@@ -85,4 +88,5 @@
 @keyframes collapse {
   from { height: var(--radix-accordion-content-height); opacity: 1; }
   to { height: 0; opacity: 0; }
+}
 }

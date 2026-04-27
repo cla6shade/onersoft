@@ -7,26 +7,26 @@ export function Root({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixTabs.Root>) {
-  return <RadixTabs.Root className={clsx(styles.root, className)} {...props} />
+  return <RadixTabs.Root data-slot="tabs" className={clsx(styles.root, className)} {...props} />
 }
 
 export function List({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixTabs.List>) {
-  return <RadixTabs.List className={clsx(styles.list, className)} {...props} />
+  return <RadixTabs.List data-slot="tabs-list" className={clsx(styles.list, className)} {...props} />
 }
 
 export function Trigger({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixTabs.Trigger>) {
-  return <RadixTabs.Trigger className={clsx(styles.trigger, className)} {...props} />
+  return <RadixTabs.Trigger data-slot="tabs-trigger" className={clsx(styles.trigger, className)} {...props} />
 }
 
 export function Content({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixTabs.Content>) {
-  return <RadixTabs.Content className={clsx(styles.content, className)} {...props} />
+  return <RadixTabs.Content data-slot="tabs-content" className={clsx(styles.content, className)} {...props} />
 }

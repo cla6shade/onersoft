@@ -9,6 +9,7 @@ export function Root({
 }: ComponentPropsWithoutRef<typeof RadixAccordion.Root>) {
   return (
     <RadixAccordion.Root
+      data-slot="accordion-root"
       className={clsx(styles.root, className)}
       {...(props as ComponentPropsWithoutRef<typeof RadixAccordion.Root>)}
     />
@@ -19,14 +20,14 @@ export function Item({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixAccordion.Item>) {
-  return <RadixAccordion.Item className={clsx(styles.item, className)} {...props} />
+  return <RadixAccordion.Item data-slot="accordion-item" className={clsx(styles.item, className)} {...props} />
 }
 
 export function Header({
   className,
   ...props
 }: ComponentPropsWithoutRef<typeof RadixAccordion.Header>) {
-  return <RadixAccordion.Header className={clsx(styles.header, className)} {...props} />
+  return <RadixAccordion.Header data-slot="accordion-header" className={clsx(styles.header, className)} {...props} />
 }
 
 export function Trigger({
@@ -35,7 +36,7 @@ export function Trigger({
   ...props
 }: ComponentPropsWithoutRef<typeof RadixAccordion.Trigger>) {
   return (
-    <RadixAccordion.Trigger className={clsx(styles.trigger, className)} {...props}>
+    <RadixAccordion.Trigger data-slot="accordion-trigger" className={clsx(styles.trigger, className)} {...props}>
       <span className={styles.label}>{children}</span>
       <svg className={styles.chevron} viewBox="0 0 16 16" width="14" height="14" aria-hidden>
         <path
@@ -57,7 +58,7 @@ export function Content({
   ...props
 }: ComponentPropsWithoutRef<typeof RadixAccordion.Content>) {
   return (
-    <RadixAccordion.Content className={clsx(styles.content, className)} {...props}>
+    <RadixAccordion.Content data-slot="accordion-content" className={clsx(styles.content, className)} {...props}>
       <div className={styles.contentInner}>{children}</div>
     </RadixAccordion.Content>
   )

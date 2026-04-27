@@ -1,3 +1,4 @@
+@layer ds.components {
 .root {
   display: inline-flex;
   align-items: center;
@@ -10,11 +11,13 @@
   font-weight: var(--ds-weight-medium);
   border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
   border-radius: var(--ds-radius-md);
+  line-height: var(--ds-leading-control);
   cursor: pointer;
   transition:
     color var(--ds-duration-fast) var(--ds-ease-standard),
     background-color var(--ds-duration-fast) var(--ds-ease-standard),
-    border-color var(--ds-duration-fast) var(--ds-ease-standard);
+    border-color var(--ds-duration-fast) var(--ds-ease-standard),
+    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
 }
 
 .root:hover:not(:disabled) {
@@ -33,8 +36,8 @@
 }
 
 .root:focus-visible {
-  outline: 2px solid var(--ds-color-accent);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: var(--ds-shadow-focus);
 }
 
 .root:disabled {
@@ -55,4 +58,5 @@
 .lg {
   height: var(--ds-control-height-lg);
   font-size: var(--ds-text-md);
+}
 }

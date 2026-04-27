@@ -7,8 +7,8 @@ export const Switch = forwardRef<
   HTMLButtonElement,
   ComponentPropsWithoutRef<typeof RadixSwitch.Root>
 >(({ className, ...props }, ref) => (
-  <RadixSwitch.Root ref={ref} className={clsx(styles.root, className)} {...props}>
-    <RadixSwitch.Thumb className={styles.thumb} />
+  <RadixSwitch.Root ref={ref} data-slot="switch" className={clsx(styles.root, className)} {...props}>
+    <RadixSwitch.Thumb data-slot="switch-thumb" className={styles.thumb} />
   </RadixSwitch.Root>
 ))
 

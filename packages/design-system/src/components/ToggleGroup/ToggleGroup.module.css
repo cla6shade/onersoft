@@ -1,3 +1,4 @@
+@layer ds.components {
 .root {
   display: inline-flex;
   background-color: var(--ds-color-bg-sunken);
@@ -8,6 +9,9 @@
 }
 
 .item {
+  /* Composed via custom prop so :focus-visible can stack the focus ring on
+   * top of the data-state='on' lift shadow without re-declaring it. */
+  --toggle-item-shadow: none;
   appearance: none;
   display: inline-flex;
   align-items: center;
@@ -19,13 +23,15 @@
   font-family: var(--ds-font-sans);
   font-size: var(--ds-text-sm);
   font-weight: var(--ds-weight-medium);
-  line-height: 1;
+  line-height: var(--ds-leading-control);
   border: 0;
   border-radius: var(--ds-radius-sm);
+  box-shadow: var(--toggle-item-shadow);
   cursor: pointer;
   transition:
     color var(--ds-duration-fast) var(--ds-ease-standard),
-    background-color var(--ds-duration-fast) var(--ds-ease-standard);
+    background-color var(--ds-duration-fast) var(--ds-ease-standard),
+    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
 }
 
 .item:hover:not(:disabled) {
@@ -35,15 +41,16 @@
 .item[data-state='on'] {
   background-color: var(--ds-color-bg-elevated);
   color: var(--ds-color-fg-default);
-  box-shadow: var(--ds-shadow-xs);
+  --toggle-item-shadow: var(--ds-shadow-xs);
 }
 
 .item:focus-visible {
-  outline: 2px solid var(--ds-color-accent);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: var(--toggle-item-shadow), var(--ds-shadow-focus);
 }
 
 .item:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
 }

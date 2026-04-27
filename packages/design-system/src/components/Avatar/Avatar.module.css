@@ -1,3 +1,4 @@
+@layer ds.components {
 .root {
   display: inline-flex;
   align-items: center;
@@ -31,4 +32,5 @@
   letter-spacing: var(--ds-tracking-wide);
   text-transform: uppercase;
   background-color: var(--ds-color-accent-soft);
+}
 }

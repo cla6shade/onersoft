@@ -11,6 +11,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, invalid = false, resize = 'vertical', style, ...props }, ref) => (
     <textarea
       ref={ref}
+      data-slot="textarea"
       data-invalid={invalid || undefined}
       className={clsx(styles.textarea, className)}
       style={{ resize, ...style }}

@@ -1,3 +1,4 @@
+@layer ds.components {
 .textarea {
   display: block;
   width: 100%;
@@ -26,7 +27,7 @@
 
 .textarea:focus-visible {
   border-color: var(--ds-color-accent);
-  box-shadow: 0 0 0 3px var(--ds-color-accent-soft);
+  box-shadow: var(--ds-shadow-focus-field);
 }
 
 .textarea[data-invalid] {
@@ -34,10 +35,11 @@
 }
 
 .textarea[data-invalid]:focus-visible {
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ds-color-danger) 20%, transparent);
+  box-shadow: var(--ds-shadow-focus-field-invalid);
 }
 
 .textarea:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
 }

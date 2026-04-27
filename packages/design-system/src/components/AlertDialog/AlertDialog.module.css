@@ -1,3 +1,4 @@
+@layer ds.components {
 .overlay {
   position: fixed;
   inset: 0;
@@ -13,7 +14,7 @@
   z-index: var(--ds-z-modal);
   transform: translate(-50%, -50%);
   width: min(90vw, 28rem);
-  padding: var(--ds-space-5);
+  padding: var(--ds-space-6);
   background-color: var(--ds-color-bg-elevated);
   color: var(--ds-color-fg-default);
   border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
@@ -45,7 +46,7 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--ds-space-2);
-  margin-top: var(--ds-space-5);
+  margin-top: var(--ds-space-6);
 }
 
 @keyframes fadeIn {
@@ -56,4 +57,5 @@
 @keyframes slideIn {
   from { opacity: 0; transform: translate(-50%, -48%) scale(0.98); }
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
 }
