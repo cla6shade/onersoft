@@ -17,6 +17,20 @@ describe('Button', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
   })
 
+  it('does not fire onClick when disabled', async () => {
+    const user = userEvent.setup()
+    const onClick = vi.fn()
+    render(
+      <Button disabled onClick={onClick}>
+        Go
+      </Button>,
+    )
+    const button = screen.getByRole('button', { name: 'Go' })
+    expect(button).toBeDisabled()
+    await user.click(button)
+    expect(onClick).not.toHaveBeenCalled()
+  })
+
   it('renders as anchor via asChild', () => {
     render(
       <Button asChild>
