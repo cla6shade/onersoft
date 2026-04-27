@@ -1,0 +1,101 @@
+@layer ds.components {
+.root {
+  /* Establish a query container so descendants (Header, Body) adapt to
+   * the card's actual width, not the viewport's. Useful when a Card
+   * lives inside a sidebar vs. a full-bleed region. */
+  container-type: inline-size;
+  container-name: ds-card;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ds-color-bg-elevated);
+  color: var(--ds-color-fg-default);
+  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-lg);
+  font-family: var(--ds-font-sans);
+  overflow: hidden;
+}
+
+.interactive {
+  cursor: pointer;
+  transition:
+    border-color var(--ds-duration-fast) var(--ds-ease-standard),
+    background-color var(--ds-duration-fast) var(--ds-ease-standard),
+    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
+}
+
+.interactive:hover {
+  border-color: var(--ds-color-border-strong);
+  background-color: var(--ds-color-elevated-hover);
+}
+
+.interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--ds-shadow-focus);
+}
+
+.header,
+.body,
+.footer {
+  padding: var(--ds-space-5);
+}
+
+.header + .body,
+.body + .footer,
+.header + .footer {
+  padding-top: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-1);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ds-text-lg);
+  font-weight: var(--ds-weight-semibold);
+  letter-spacing: var(--ds-tracking-tight);
+  line-height: var(--ds-leading-snug);
+}
+
+.description {
+  margin: 0;
+  color: var(--ds-color-fg-muted);
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-normal);
+}
+
+.body {
+  color: var(--ds-color-fg-default);
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-normal);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ds-space-2);
+  margin-top: auto;
+}
+
+/* Restore breathing room when footer follows body or header without
+ * relying on a horizontal rule, which reads as templated/admin-UI. */
+.body + .footer,
+.header + .footer {
+  padding-top: var(--ds-space-2);
+}
+
+/* Below ~22rem the card is too narrow for the default padding to read
+ * comfortably — tighten it. Container query, not viewport. */
+@container ds-card (max-width: 22rem) {
+  .header,
+  .body,
+  .footer {
+    padding: var(--ds-space-4);
+  }
+  .title {
+    font-size: var(--ds-text-md);
+  }
+}
+}

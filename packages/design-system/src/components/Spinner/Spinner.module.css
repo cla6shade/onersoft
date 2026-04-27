@@ -1,0 +1,50 @@
+@layer ds.components {
+/* Two-phase animation (the Material pattern):
+ *   - .spinner rotates the whole SVG linearly
+ *   - .head morphs the visible arc length and offset on a separate cycle
+ * The two animations are intentionally NOT in lockstep, so the head
+ * appears to grow, sweep ahead, then catch up — much more "alive" than
+ * a single linear rotation. */
+.spinner {
+  display: inline-block;
+  flex-shrink: 0;
+  color: currentColor;
+  animation: spin 1.6s linear infinite;
+}
+
+.sm { width: 0.875rem; height: 0.875rem; }
+.md { width: 1rem; height: 1rem; }
+.lg { width: 1.5rem; height: 1.5rem; }
+
+.track {
+  opacity: 0.2;
+}
+
+.head {
+  transform-origin: center;
+  /* Circumference of r=9 is ~56.55. Dasharray uses [arc, gap] pairs so
+   * we can grow the arc from a dot to ~75% of the circle, then shrink. */
+  stroke-dasharray: 56.55;
+  stroke-dashoffset: 56.55;
+  animation: dash 1.4s var(--ds-ease-standard) infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+  0%   { stroke-dashoffset: 56.55; transform: rotate(0deg); }
+  50%  { stroke-dashoffset: 14;    transform: rotate(135deg); }
+  100% { stroke-dashoffset: 56.55; transform: rotate(450deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 3.2s;
+  }
+  .head {
+    animation-duration: 2.8s;
+  }
+}
+}

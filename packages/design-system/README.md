@@ -130,6 +130,62 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ---
 
+## 스타일 hook (`data-slot`)
+
+DS 컴포넌트는 CSS Modules로 격리되어 있어 클래스명이 해싱됩니다. 호스트가 외부 CSS에서 안정적으로 타겟팅할 수 있도록 모든 가시 part에 **`data-slot` 속성**을 부여합니다. 토큰 override만으로 부족한 케이스(특정 인스턴스만 미세 조정, 합성 컴포넌트의 한 part만 변경 등)에 사용하세요.
+
+### 명명 규칙
+
+`data-slot="<component-kebab>-<part-kebab>"`. 단일 part 컴포넌트는 컴포넌트명만 사용합니다.
+
+| 컴포넌트 | slot 예 |
+| --- | --- |
+| 단일 part | `button`, `input`, `textarea`, `badge`, `kbd`, `label`, `spinner`, `skeleton`, `separator` |
+| Dialog / AlertDialog | `dialog-overlay`, `dialog-content`, `dialog-title`, `dialog-description`, `dialog-trigger`, `dialog-close`, `dialog-footer` (AlertDialog는 `alert-dialog-*`) |
+| Select | `select-trigger`, `select-content`, `select-viewport`, `select-item`, `select-item-text`, `select-indicator`, `select-icon`, `select-label`, `select-separator`, `select-scroll-up-button`, `select-scroll-down-button` |
+| DropdownMenu | `dropdown-menu-trigger`, `dropdown-menu-content`, `dropdown-menu-item`, `dropdown-menu-checkbox-item`, `dropdown-menu-radio-item`, `dropdown-menu-item-indicator`, `dropdown-menu-label`, `dropdown-menu-separator`, `dropdown-menu-shortcut`, `dropdown-menu-sub-trigger`, `dropdown-menu-sub-content` |
+| Toast | `toast-viewport`, `toast`, `toast-title`, `toast-description`, `toast-action`, `toast-close` |
+| Tabs | `tabs-list`, `tabs-trigger`, `tabs-content` |
+| Accordion | `accordion-item`, `accordion-trigger`, `accordion-content`, `accordion-header` |
+| Card | `card`, `card-header`, `card-title`, `card-description`, `card-body`, `card-footer` |
+| Field | `field`, `field-label`, `field-control`, `field-description`, `field-error` |
+
+전체 목록은 각 컴포넌트의 `*.tsx` 소스를 참고하세요. 모든 가시 part에 일관되게 부여되어 있습니다 (Portal·Provider 등 DOM을 렌더하지 않는 part는 제외).
+
+### 사용 예
+
+```css
+/* 호스트 글로벌 CSS — 해싱 영향 받지 않음 */
+[data-slot='dialog-overlay'] {
+  backdrop-filter: blur(8px);
+}
+
+[data-slot='select-indicator'] {
+  color: var(--my-brand-accent);
+}
+
+/* Radix가 부여하는 data-state 등과 조합 */
+[data-slot='dropdown-menu-item'][data-highlighted] {
+  background: var(--my-hover-bg);
+}
+
+[data-slot='dialog-content'][data-state='open'] {
+  /* 열림 상태 한정 스타일 */
+}
+```
+
+### 가이드
+
+- **호스트는 슬롯 이름을 안정적인 API로 간주**할 수 있습니다. DS는 part가 사라지지 않는 한 슬롯명을 유지합니다.
+- **인스턴스 한정**으로 적용하려면 호스트가 자신의 wrapper에 클래스를 두고 그 후손 슬롯을 타겟하세요:
+  ```css
+  .my-confirm-dialog [data-slot='dialog-content'] { max-width: 24rem; }
+  ```
+- **`!important`는 거의 필요 없습니다.** `data-slot` 선택자는 CSS Modules 클래스와 specificity가 동등하므로 cascade 순서만 맞추면 됩니다 (라이브러리 CSS 다음에 호스트 CSS가 로드되도록).
+- **`asChild`를 사용한 경우** Radix Slot이 `data-slot`을 consumer 자식 요소에 머지합니다. 즉 `<Button asChild><a /></Button>`는 `<a data-slot="button" />`이 됩니다.
+
+---
+
 ## 토큰 인벤토리
 
 전체 값은 [`src/styles/tokens.css`](./src/styles/tokens.css) 참조.

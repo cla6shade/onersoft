@@ -1,0 +1,21 @@
+@layer ds.components {
+.root {
+  display: grid;
+  gap: var(--ds-space-2);
+  font-family: var(--ds-font-sans);
+}
+
+.description {
+  margin: 0;
+  color: var(--ds-color-fg-muted);
+  font-size: var(--ds-text-xs);
+  line-height: var(--ds-leading-normal);
+}
+
+.error {
+  margin: 0;
+  color: var(--ds-color-danger);
+  font-size: var(--ds-text-xs);
+  line-height: var(--ds-leading-normal);
+}
+}
