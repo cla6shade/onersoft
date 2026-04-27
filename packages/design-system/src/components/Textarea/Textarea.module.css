@@ -4,7 +4,7 @@
   width: 100%;
   min-height: 6rem;
   padding: var(--ds-space-3);
-  background-color: var(--ds-color-bg-sunken);
+  background-color: var(--ds-color-bg-surface);
   color: var(--ds-color-fg-default);
   font-family: var(--ds-font-sans);
   font-size: var(--ds-text-base);

@@ -2,7 +2,7 @@
 .input {
   display: inline-flex;
   width: 100%;
-  background-color: var(--ds-color-bg-sunken);
+  background-color: var(--ds-color-bg-surface);
   color: var(--ds-color-fg-default);
   font-family: var(--ds-font-sans);
   font-weight: var(--ds-weight-regular);

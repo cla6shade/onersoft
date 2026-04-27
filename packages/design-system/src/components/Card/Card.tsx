@@ -31,6 +31,22 @@ const Header = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 )
 Header.displayName = 'Card.Header'
 
+/* Small uppercase label sitting above Title. The eyebrow → title →
+ * description rhythm is what gives the card its editorial character;
+ * without it, headers fall back to a generic title + supporting-line
+ * template. */
+const Eyebrow = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
+  ({ className, ...props }, ref) => (
+    <span
+      ref={ref}
+      data-slot="card-eyebrow"
+      className={clsx(styles.eyebrow, className)}
+      {...props}
+    />
+  ),
+)
+Eyebrow.displayName = 'Card.Eyebrow'
+
 const Title = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => (
     <h3 ref={ref} data-slot="card-title" className={clsx(styles.title, className)} {...props} />
@@ -61,6 +77,7 @@ Footer.displayName = 'Card.Footer'
 
 export const Card = Object.assign(Root, {
   Header,
+  Eyebrow,
   Title,
   Description,
   Body,

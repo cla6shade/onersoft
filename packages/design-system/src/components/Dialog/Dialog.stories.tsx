@@ -20,7 +20,7 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => (
-    <Dialog.Root>
+    <Dialog.Root defaultOpen>
       <Dialog.Trigger asChild>
         <Button>Open dialog</Button>
       </Dialog.Trigger>

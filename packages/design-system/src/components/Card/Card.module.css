@@ -10,22 +10,21 @@
   background-color: var(--ds-color-bg-elevated);
   color: var(--ds-color-fg-default);
   border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
-  border-radius: var(--ds-radius-lg);
+  border-radius: var(--ds-radius-md);
   font-family: var(--ds-font-sans);
   overflow: hidden;
+  transition:
+    border-color var(--ds-duration-medium) var(--ds-ease-standard),
+    transform var(--ds-duration-medium) var(--ds-ease-standard);
 }
 
 .interactive {
   cursor: pointer;
-  transition:
-    border-color var(--ds-duration-fast) var(--ds-ease-standard),
-    background-color var(--ds-duration-fast) var(--ds-ease-standard),
-    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
 }
 
 .interactive:hover {
   border-color: var(--ds-color-border-strong);
-  background-color: var(--ds-color-elevated-hover);
+  transform: translateY(-1px);
 }
 
 .interactive:focus-visible {
@@ -33,27 +32,56 @@
   box-shadow: var(--ds-shadow-focus);
 }
 
-.header,
-.body,
-.footer {
-  padding: var(--ds-space-5);
-}
-
-.header + .body,
-.body + .footer,
-.header + .footer {
-  padding-top: 0;
-}
-
+/* Section padding is asymmetric on purpose — header gets a touch more
+ * top breathing room, body sits closer, footer hangs slightly. The
+ * uniform-padding-everywhere look reads as templated. */
 .header {
   display: flex;
   flex-direction: column;
   gap: var(--ds-space-1);
+  padding: var(--ds-space-5) var(--ds-space-5) var(--ds-space-4);
+}
+
+.body {
+  padding: var(--ds-space-5);
+  color: var(--ds-color-fg-default);
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-relaxed);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ds-space-2);
+  margin-top: auto;
+  padding: var(--ds-space-4) var(--ds-space-5) var(--ds-space-5);
+}
+
+/* Hairline rules between sections — the defining structural gesture of
+ * this card. Renders only when both sides are present, so a single-
+ * section card stays unbroken. The rule + asymmetric padding does the
+ * work that a colored stripe or background tint usually does in
+ * templated card designs. */
+.header + .body,
+.header + .footer,
+.body + .footer {
+  border-top: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+  padding-top: var(--ds-space-4);
+}
+
+.eyebrow {
+  margin: 0 0 var(--ds-space-1);
+  color: var(--ds-color-fg-muted);
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-weight-medium);
+  letter-spacing: var(--ds-tracking-wide);
+  text-transform: uppercase;
+  font-feature-settings: "tnum" 1;
 }
 
 .title {
   margin: 0;
-  font-size: var(--ds-text-lg);
+  font-size: var(--ds-text-md);
   font-weight: var(--ds-weight-semibold);
   letter-spacing: var(--ds-tracking-tight);
   line-height: var(--ds-leading-snug);
@@ -63,39 +91,35 @@
   margin: 0;
   color: var(--ds-color-fg-muted);
   font-size: var(--ds-text-sm);
-  line-height: var(--ds-leading-normal);
+  line-height: var(--ds-leading-relaxed);
 }
 
-.body {
-  color: var(--ds-color-fg-default);
-  font-size: var(--ds-text-sm);
-  line-height: var(--ds-leading-normal);
-}
-
-.footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--ds-space-2);
-  margin-top: auto;
-}
-
-/* Restore breathing room when footer follows body or header without
- * relying on a horizontal rule, which reads as templated/admin-UI. */
-.body + .footer,
-.header + .footer {
-  padding-top: var(--ds-space-2);
-}
-
-/* Below ~22rem the card is too narrow for the default padding to read
- * comfortably — tighten it. Container query, not viewport. */
 @container ds-card (max-width: 22rem) {
-  .header,
-  .body,
-  .footer {
+  .header {
+    padding: var(--ds-space-4) var(--ds-space-4) var(--ds-space-3);
+  }
+  .body {
     padding: var(--ds-space-4);
   }
+  .footer {
+    padding: var(--ds-space-3) var(--ds-space-4) var(--ds-space-4);
+  }
+  .header + .body,
+  .header + .footer,
+  .body + .footer {
+    padding-top: var(--ds-space-3);
+  }
   .title {
-    font-size: var(--ds-text-md);
+    font-size: var(--ds-text-sm);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+  .interactive:hover {
+    transform: none;
   }
 }
 }

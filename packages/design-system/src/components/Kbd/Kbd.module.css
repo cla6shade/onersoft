@@ -3,8 +3,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--ds-color-bg-sunken);
-  color: var(--ds-color-fg-default);
+  background-color: var(--ds-color-kbd-bg);
+  color: var(--ds-color-kbd-fg);
   font-family: var(--ds-font-mono);
   font-weight: var(--ds-weight-medium);
   line-height: 1;

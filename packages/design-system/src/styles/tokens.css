@@ -158,8 +158,11 @@
    * The `overlay → elevated` step prevents a popover from blending into a
    * Dialog when both render at the same time. */
   --ds-color-bg-surface: var(--color-surface-base);
-  --ds-color-bg-elevated: color-mix(in oklab, var(--color-surface-base) 90%, white);
-  --ds-color-bg-overlay: color-mix(in oklab, var(--color-surface-base) 78%, white);
+  /* Elevated lifts ~12% toward white in dark mode — enough to read as a
+   * separate plane (Cards, Dialogs, Avatars) against the page surface
+   * without crossing into the brighter Overlay band. */
+  --ds-color-bg-elevated: color-mix(in oklab, var(--color-surface-base) 82%, white);
+  --ds-color-bg-overlay: color-mix(in oklab, var(--color-surface-base) 70%, white);
   --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 94%, black);
 
   --ds-color-fg-default: oklch(0.97 0.006 var(--ds-brand-hue));
@@ -183,6 +186,22 @@
   --ds-color-warning: oklch(0.78 0.15 75);
   --ds-color-info: oklch(0.70 0.10 var(--ds-brand-hue));
   --ds-color-info-fg: oklch(0.97 0.006 var(--ds-brand-hue));
+
+  /* Text-on-soft variants — used when a status color is rendered as
+   * foreground text on its 14% soft background (e.g. Badge). The base
+   * status tokens are tuned for solid surfaces and fail WCAG AA when
+   * placed on the matching soft tint, so badges use these darker/lighter
+   * aliases for legible contrast. */
+  --ds-color-danger-text: oklch(0.74 0.18 20);
+  --ds-color-success-text: oklch(0.78 0.13 150);
+  --ds-color-warning-text: oklch(0.86 0.14 75);
+
+  /* Kbd uses a dedicated fg/bg pair tuned to clear WCAG AA at small
+   * sizes. The general surface tokens (bg-sunken / fg-default) target a
+   * different visual goal — gentle recession — and don't always satisfy
+   * 4.5:1 once mixed against the brand hue. */
+  --ds-color-kbd-bg: oklch(0.28 0.015 var(--ds-brand-hue));
+  --ds-color-kbd-fg: oklch(0.97 0.006 var(--ds-brand-hue));
 
   /* Per-theme ring colors. Offset color matches the surface so the ring
    * reads as floating above the control rather than touching it. */
@@ -261,6 +280,13 @@
   --ds-color-warning: oklch(0.72 0.15 70);
   --ds-color-info: oklch(0.55 0.12 var(--ds-brand-hue));
   --ds-color-info-fg: oklch(0.98 0.004 var(--ds-brand-hue));
+
+  --ds-color-danger-text: oklch(0.45 0.20 20);
+  --ds-color-success-text: oklch(0.42 0.13 150);
+  --ds-color-warning-text: oklch(0.46 0.12 70);
+
+  --ds-color-kbd-bg: oklch(0.92 0.008 var(--ds-brand-hue));
+  --ds-color-kbd-fg: oklch(0.17 0.015 var(--ds-brand-hue));
 
   --ds-ring-color: var(--ds-color-accent);
   --ds-ring-offset-color: var(--ds-color-bg-surface);

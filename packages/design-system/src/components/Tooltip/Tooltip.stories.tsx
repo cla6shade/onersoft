@@ -20,13 +20,16 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => (
-    <Tooltip.Provider delayDuration={200}>
-      <Tooltip.Root>
+    <Tooltip.Provider delayDuration={0}>
+      <Tooltip.Root defaultOpen>
         <Tooltip.Trigger asChild>
           <Button variant="secondary">Hover me</Button>
         </Tooltip.Trigger>
         <Tooltip.Portal>
-          <Tooltip.Content side="top">Keyboard shortcut: ⌘K</Tooltip.Content>
+          <Tooltip.Content side="top">
+            Keyboard shortcut: ⌘K
+            <Tooltip.Arrow />
+          </Tooltip.Content>
         </Tooltip.Portal>
       </Tooltip.Root>
     </Tooltip.Provider>

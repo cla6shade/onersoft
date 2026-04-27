@@ -19,8 +19,8 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => (
-    <Menubar.Root>
-      <Menubar.Menu>
+    <Menubar.Root defaultValue="view">
+      <Menubar.Menu value="file">
         <Menubar.Trigger>File</Menubar.Trigger>
         <Menubar.Portal>
           <Menubar.Content>
@@ -59,7 +59,7 @@ export const Default: Story = {
         </Menubar.Portal>
       </Menubar.Menu>
 
-      <Menubar.Menu>
+      <Menubar.Menu value="view">
         <Menubar.Trigger>View</Menubar.Trigger>
         <Menubar.Portal>
           <Menubar.Content>

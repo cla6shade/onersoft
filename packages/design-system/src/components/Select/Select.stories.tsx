@@ -19,7 +19,7 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => (
-    <Select.Root defaultValue="balanced">
+    <Select.Root defaultValue="balanced" defaultOpen>
       <Select.Trigger aria-label="Profile">
         <Select.Value placeholder="Select profile..." />
       </Select.Trigger>

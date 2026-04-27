@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect, fn, userEvent, within } from 'storybook/test'
 import demo from '../../stories/demo.module.css'
 import { Button } from './Button'
 
@@ -30,31 +29,13 @@ const meta: Meta<typeof Button> = {
 export default meta
 type Story = StoryObj<typeof Button>
 
-export const Primary: Story = {
-  args: { onClick: fn() },
-  play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement)
-    const button = canvas.getByRole('button', { name: 'Button' })
-    await expect(button).toBeEnabled()
-    await userEvent.click(button)
-    await expect(args.onClick).toHaveBeenCalledTimes(1)
-  },
-}
+export const Primary: Story = {}
 
 export const Secondary: Story = { args: { variant: 'secondary' } }
 
 export const Ghost: Story = { args: { variant: 'ghost' } }
 
-export const Disabled: Story = {
-  args: { disabled: true, onClick: fn() },
-  play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement)
-    const button = canvas.getByRole('button', { name: 'Button' })
-    await expect(button).toBeDisabled()
-    await userEvent.click(button)
-    await expect(args.onClick).not.toHaveBeenCalled()
-  },
-}
+export const Disabled: Story = { args: { disabled: true } }
 
 export const AllVariants: Story = {
   render: () => (

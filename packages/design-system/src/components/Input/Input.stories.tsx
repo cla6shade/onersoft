@@ -41,7 +41,8 @@ export const Invalid: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className={demo.fieldColumn}>
-      <Input defaultValue="Read only" disabled />
+      <Label htmlFor="disabled">Username</Label>
+      <Input id="disabled" defaultValue="Read only" disabled />
     </div>
   ),
 }

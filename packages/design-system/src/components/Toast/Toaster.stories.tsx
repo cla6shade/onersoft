@@ -28,7 +28,12 @@ export const AllIntents: Story = {
         </Button>
         <Button
           variant="ghost"
-          onClick={() => toast.success('저장됨', { description: '변경 사항이 적용되었습니다.' })}
+          onClick={() =>
+            toast.success('저장됨', {
+              description: '변경 사항이 적용되었습니다.',
+              action: { label: '실행 취소', onClick: () => {} },
+            })
+          }
         >
           Success
         </Button>

@@ -24,7 +24,7 @@ export const Default: Story = {
     const [showGrid, setShowGrid] = useState(true)
     const [density, setDensity] = useState('comfortable')
     return (
-      <DropdownMenu.Root>
+      <DropdownMenu.Root defaultOpen>
         <DropdownMenu.Trigger asChild>
           <Button variant="secondary">Options</Button>
         </DropdownMenu.Trigger>

@@ -23,7 +23,7 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => (
-    <Popover.Root>
+    <Popover.Root defaultOpen>
       <Popover.Trigger asChild>
         <Button variant="secondary">Open popover</Button>
       </Popover.Trigger>
@@ -32,9 +32,45 @@ export const Default: Story = {
           <div className={demo.fieldColumn}>
             <Label htmlFor="display-name">Display name</Label>
             <Input id="display-name" size="sm" defaultValue="Pedro Duarte" />
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Popover.Close asChild>
+                <Button size="sm" variant="ghost">
+                  Close
+                </Button>
+              </Popover.Close>
+            </div>
           </div>
+          <Popover.Arrow />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
+  ),
+}
+
+export const Anchored: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Use `Popover.Anchor` to attach the floating surface to a different element than the trigger — useful when the trigger sits far from the contextual region.',
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-space-12)' }}>
+      <Popover.Root defaultOpen>
+        <Popover.Anchor asChild>
+          <span aria-label="anchor target" style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--ds-color-accent)' }} />
+        </Popover.Anchor>
+        <Popover.Trigger asChild>
+          <Button size="sm" variant="ghost">
+            Trigger (far away)
+          </Button>
+        </Popover.Trigger>
+        <Popover.Portal>
+          <Popover.Content side="bottom">Anchored to the dot.</Popover.Content>
+        </Popover.Portal>
+      </Popover.Root>
+    </div>
   ),
 }

@@ -20,7 +20,7 @@ type Story = StoryObj
 
 export const Destructive: Story = {
   render: () => (
-    <AlertDialog.Root>
+    <AlertDialog.Root defaultOpen>
       <AlertDialog.Trigger asChild>
         <Button variant="secondary">Delete project</Button>
       </AlertDialog.Trigger>
