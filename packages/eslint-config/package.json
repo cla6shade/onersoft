@@ -11,7 +11,8 @@
   "files": [
     "base.js",
     "react.js",
-    "next.js"
+    "next.js",
+    "legacy-rule-overrides.js"
   ],
   "dependencies": {
     "eslint-config-airbnb-extended": "^3.1.0",

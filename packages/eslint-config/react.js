@@ -1,5 +1,6 @@
 import { configs as airbnb, plugins } from 'eslint-config-airbnb-extended';
 import prettier from 'eslint-config-prettier';
+import { baseRules, reactRules, devFileRules } from './legacy-rule-overrides.js';
 
 export default [
   plugins.stylistic,
@@ -12,4 +13,10 @@ export default [
   ...airbnb.base.all,
   ...airbnb.react.all,
   prettier,
+  baseRules,
+  reactRules,
+  {
+    ...devFileRules,
+    rules: { ...devFileRules.rules, 'react-hooks/rules-of-hooks': 'off' },
+  },
 ];
