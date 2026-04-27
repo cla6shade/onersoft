@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom/vitest'
 import { afterEach, vi } from 'vitest'
 import { cleanup } from '@testing-library/react'
-import { setProjectAnnotations } from '@storybook/react-vite'
-import previewAnnotations from './.storybook/preview'
+import './src/styles/tokens.css'
 
 if (!window.matchMedia) {
   Object.defineProperty(window, 'matchMedia', {
@@ -23,12 +22,12 @@ if (!window.matchMedia) {
 if (!window.ResizeObserver) {
   window.ResizeObserver = class {
     observe() {}
+
     unobserve() {}
+
     disconnect() {}
   }
 }
-
-setProjectAnnotations([previewAnnotations])
 
 afterEach(() => {
   cleanup()

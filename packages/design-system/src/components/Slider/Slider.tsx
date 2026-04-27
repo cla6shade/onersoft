@@ -8,6 +8,8 @@ export const Slider = forwardRef<
   ComponentPropsWithoutRef<typeof RadixSlider.Root>
 >(({ className, value, defaultValue, ...props }, ref) => {
   const thumbs = value ?? defaultValue ?? [0]
+  const { 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, ...rootProps } = props
+  const thumbLabel = ariaLabel ?? (ariaLabelledBy ? undefined : 'Value')
   return (
     <RadixSlider.Root
       ref={ref}
@@ -15,13 +17,19 @@ export const Slider = forwardRef<
       className={clsx(styles.root, className)}
       value={value}
       defaultValue={defaultValue}
-      {...props}
+      {...rootProps}
     >
       <RadixSlider.Track data-slot="slider-track" className={styles.track}>
         <RadixSlider.Range data-slot="slider-range" className={styles.range} />
       </RadixSlider.Track>
       {thumbs.map((_, i) => (
-        <RadixSlider.Thumb key={i} data-slot="slider-thumb" className={styles.thumb} />
+        <RadixSlider.Thumb
+          key={i}
+          data-slot="slider-thumb"
+          className={styles.thumb}
+          aria-label={thumbLabel}
+          aria-labelledby={ariaLabelledBy}
+        />
       ))}
     </RadixSlider.Root>
   )

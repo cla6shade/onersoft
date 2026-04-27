@@ -12,6 +12,8 @@ export interface ProgressProps
 export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
   ({ className, value, max = 100, ...props }, ref) => {
     const pct = value == null ? null : Math.min(100, Math.max(0, (value / max) * 100))
+    const hasLabel =
+      props['aria-label'] != null || props['aria-labelledby'] != null
     return (
       <RadixProgress.Root
         ref={ref}
@@ -20,6 +22,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
         value={value ?? null}
         max={max}
         {...props}
+        aria-label={hasLabel ? props['aria-label'] : 'Progress'}
       >
         <RadixProgress.Indicator
           data-slot="progress-indicator"
