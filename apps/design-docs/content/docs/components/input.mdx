@@ -1,0 +1,50 @@
+---
+title: Input
+description: A single-line text field with size and invalid states.
+---
+
+import { Input, Label } from '@/components/preview'
+
+<Preview align="start">
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: '100%', maxWidth: 320 }}>
+    <Label htmlFor="email">Email</Label>
+    <Input id="email" type="email" placeholder="you@onersoft.com" />
+  </div>
+</Preview>
+
+## Sizes
+
+<Preview align="start">
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%', maxWidth: 320 }}>
+    <Input size="sm" placeholder="Small" />
+    <Input size="md" placeholder="Medium" />
+    <Input size="lg" placeholder="Large" />
+  </div>
+</Preview>
+
+## States
+
+<Preview align="start">
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%', maxWidth: 320 }}>
+    <Input invalid defaultValue="not-a-token" />
+    <Input defaultValue="Read only" disabled />
+  </div>
+</Preview>
+
+## Usage
+
+```tsx
+import { Input, Label } from '@onersoft/design-system'
+
+<Label htmlFor="email">Email</Label>
+<Input id="email" type="email" placeholder="you@example.com" />
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `invalid` | `boolean` | `false` |
+
+Plus all native `<input>` attributes (`type`, `placeholder`, `disabled`, `value`, `onChange`, …).

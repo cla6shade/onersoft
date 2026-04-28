@@ -1,0 +1,37 @@
+---
+title: Toggle
+description: A single, two-state button. For grouped toggles, see ToggleGroup.
+---
+
+import { Toggle } from '@/components/preview'
+
+<Preview>
+  <Toggle aria-label="Toggle bold">Bold</Toggle>
+  <Toggle defaultPressed aria-label="Toggle italic">Italic</Toggle>
+  <Toggle disabled aria-label="Toggle strikethrough">Strikethrough</Toggle>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Toggle size="sm" aria-label="Small">Sm</Toggle>
+  <Toggle size="md" aria-label="Medium">Md</Toggle>
+  <Toggle size="lg" aria-label="Large">Lg</Toggle>
+</Preview>
+
+## Usage
+
+```tsx
+import { Toggle } from '@onersoft/design-system'
+
+<Toggle pressed={bold} onPressedChange={setBold} aria-label="Toggle bold">B</Toggle>
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `pressed` / `defaultPressed` | `boolean` | — |
+| `onPressedChange` | `(pressed) => void` | — |
+| `disabled` | `boolean` | `false` |

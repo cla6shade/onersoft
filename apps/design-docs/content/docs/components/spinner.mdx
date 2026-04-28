@@ -1,0 +1,38 @@
+---
+title: Spinner
+description: A small loading indicator that inherits the surrounding text color.
+---
+
+import { Spinner, Button } from '@/components/preview'
+
+<Preview>
+  <Spinner size="sm" />
+  <Spinner size="md" />
+  <Spinner size="lg" />
+</Preview>
+
+## Inside a Button
+
+<Preview>
+  <Button disabled>
+    <Spinner size="sm" label="" /> 저장 중…
+  </Button>
+</Preview>
+
+## Usage
+
+```tsx
+import { Spinner } from '@onersoft/design-system'
+
+<Spinner />
+<Spinner size="lg" />
+```
+
+`Spinner` exposes its loading state via `aria-label` (defaults to `'Loading'`). Pass `label=""` when the parent already announces the loading state.
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `label` | `string` | `'Loading'` |

@@ -1,0 +1,40 @@
+---
+title: Card
+description: A surface for grouping related information. Composable header, body, and footer slots.
+---
+
+import { CardDefault, CardInteractive } from '@/previews/card'
+
+<Preview align="start"><CardDefault /></Preview>
+
+## Interactive
+
+Pair `interactive` with `asChild` to make the entire card a single hit target.
+
+<Preview align="start"><CardInteractive /></Preview>
+
+## Usage
+
+```tsx
+import { Card } from '@onersoft/design-system'
+
+<Card>
+  <Card.Header>
+    <Card.Title>Title</Card.Title>
+    <Card.Description>Optional supporting line.</Card.Description>
+  </Card.Header>
+  <Card.Body>...</Card.Body>
+  <Card.Footer>...</Card.Footer>
+</Card>
+```
+
+## Anatomy
+
+`Card` is the root surface. `Card.Header`, `Card.Eyebrow`, `Card.Title`, `Card.Description`, `Card.Body`, `Card.Footer` compose its rhythm. Eyebrow → Title → Description is the editorial pattern that gives the header its character; the rest are open.
+
+## Props (Root)
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `interactive` | `boolean` | `false` |
+| `asChild` | `boolean` | `false` |

@@ -1,0 +1,29 @@
+---
+title: Avatar
+description: A user image with a graceful fallback for missing or slow-loading sources.
+---
+
+import { AvatarDemo } from '@/previews/avatar'
+
+<Preview><AvatarDemo /></Preview>
+
+`delayMs` prevents the fallback from flashing while the image is loading.
+
+## Usage
+
+```tsx
+import { Avatar } from '@onersoft/design-system'
+
+<Avatar.Root>
+  <Avatar.Image src={user.avatar} alt={user.name} />
+  <Avatar.Fallback delayMs={300}>{initials}</Avatar.Fallback>
+</Avatar.Root>
+```
+
+## Props
+
+| Part | Notable Props |
+| ---- | ------------- |
+| `Root` | passthrough Radix `Avatar.Root` |
+| `Image` | `src`, `alt`, plus passthrough |
+| `Fallback` | `delayMs?: number` — wait before showing fallback |

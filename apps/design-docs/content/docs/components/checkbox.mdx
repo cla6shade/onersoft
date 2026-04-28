@@ -1,0 +1,54 @@
+---
+title: Checkbox
+description: A two-state (or tri-state) selection control.
+---
+
+import { Checkbox, Label } from '@/components/preview'
+
+<Preview>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <Checkbox id="terms" defaultChecked />
+    <Label htmlFor="terms">Accept terms of service</Label>
+  </div>
+</Preview>
+
+## Indeterminate
+
+<Preview>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <Checkbox id="partial" defaultChecked="indeterminate" />
+    <Label htmlFor="partial">Some items selected</Label>
+  </div>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <Checkbox id="locked" disabled />
+    <Label htmlFor="locked">Locked option</Label>
+  </div>
+</Preview>
+
+## Usage
+
+```tsx
+import { Checkbox, Label } from '@onersoft/design-system'
+
+<div>
+  <Checkbox id="newsletter" defaultChecked />
+  <Label htmlFor="newsletter">Subscribe</Label>
+</div>
+```
+
+## Props
+
+`Checkbox` mirrors Radix [`Checkbox.Root`](https://www.radix-ui.com/primitives/docs/components/checkbox).
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `defaultChecked` | `boolean \| 'indeterminate'` | — |
+| `checked` | `boolean \| 'indeterminate'` | — |
+| `onCheckedChange` | `(checked) => void` | — |
+| `disabled` | `boolean` | `false` |
+| `required` | `boolean` | `false` |

@@ -1,0 +1,27 @@
+---
+title: Tabs
+description: Switch between mutually exclusive views without leaving the page.
+---
+
+import { TabsDefault } from '@/previews/tabs'
+
+<Preview align="start"><TabsDefault /></Preview>
+
+## Usage
+
+```tsx
+import { Tabs } from '@onersoft/design-system'
+
+<Tabs.Root defaultValue="overview">
+  <Tabs.List aria-label="Sections">
+    <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+    <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="overview">…</Tabs.Content>
+  <Tabs.Content value="settings">…</Tabs.Content>
+</Tabs.Root>
+```
+
+## Parts
+
+`Root`, `List`, `Trigger`, `Content`. Mirrors Radix [`Tabs`](https://www.radix-ui.com/primitives/docs/components/tabs). `Root` accepts `defaultValue`, `value`, `onValueChange`, `orientation`.

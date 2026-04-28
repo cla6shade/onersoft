@@ -1,0 +1,32 @@
+---
+title: Select
+description: A typeahead-friendly dropdown with grouping, scrolling, and keyboard navigation.
+---
+
+import { SelectDefault } from '@/previews/select'
+
+<Preview><SelectDefault /></Preview>
+
+## Usage
+
+```tsx
+import { Select } from '@onersoft/design-system'
+
+<Select.Root defaultValue="balanced">
+  <Select.Trigger>
+    <Select.Value placeholder="Pick one" />
+  </Select.Trigger>
+  <Select.Portal>
+    <Select.Content>
+      <Select.Viewport>
+        <Select.Item value="efficient">Efficient</Select.Item>
+        <Select.Item value="balanced">Balanced</Select.Item>
+      </Select.Viewport>
+    </Select.Content>
+  </Select.Portal>
+</Select.Root>
+```
+
+## Parts
+
+`Root`, `Trigger`, `Value`, `Icon`, `Portal`, `Content`, `Viewport`, `Group`, `Label`, `Item`, `ItemText`, `Separator`, `ScrollUpButton`, `ScrollDownButton`. Mirrors Radix [`Select`](https://www.radix-ui.com/primitives/docs/components/select).

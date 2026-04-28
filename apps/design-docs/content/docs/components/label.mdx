@@ -1,0 +1,30 @@
+---
+title: Label
+description: An accessible label that wires up to any form control.
+---
+
+import { Label, Checkbox, Input } from '@/components/preview'
+
+<Preview align="start">
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%', maxWidth: 320 }}>
+    <Label htmlFor="display-name">Display name</Label>
+    <Input id="display-name" defaultValue="Pedro Duarte" />
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 8 }}>
+      <Checkbox id="newsletter" />
+      <Label htmlFor="newsletter">Subscribe to the newsletter</Label>
+    </div>
+  </div>
+</Preview>
+
+## Usage
+
+```tsx
+import { Label, Input } from '@onersoft/design-system'
+
+<Label htmlFor="email">Email</Label>
+<Input id="email" type="email" />
+```
+
+## Notes
+
+`Label` wraps Radix [`Label.Root`](https://www.radix-ui.com/primitives/docs/components/label) and inherits its props. It connects to controls via `htmlFor` (matching the control's `id`) or implicit nesting.

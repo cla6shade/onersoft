@@ -1,0 +1,31 @@
+---
+title: EmptyState
+description: A placeholder for screens with no data yet — calm, instructive, never apologetic.
+---
+
+import { EmptyStateDefault, EmptyStateSearch } from '@/previews/empty-state'
+
+<Preview><EmptyStateDefault /></Preview>
+
+## Search-style
+
+<Preview><EmptyStateSearch /></Preview>
+
+## Usage
+
+```tsx
+import { EmptyState, Button } from '@onersoft/design-system'
+
+<EmptyState>
+  <EmptyState.Media>{icon}</EmptyState.Media>
+  <EmptyState.Title>Heading</EmptyState.Title>
+  <EmptyState.Description>One sentence telling them what's next.</EmptyState.Description>
+  <EmptyState.Actions>
+    <Button>Primary</Button>
+  </EmptyState.Actions>
+</EmptyState>
+```
+
+## Parts
+
+`EmptyState`, `EmptyState.Media`, `EmptyState.Title`, `EmptyState.Description`, `EmptyState.Actions`. `Media` is `aria-hidden` — describe the state with the title, not the visual.

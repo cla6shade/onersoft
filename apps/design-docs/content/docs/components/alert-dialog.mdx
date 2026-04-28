@@ -1,0 +1,37 @@
+---
+title: AlertDialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+---
+
+import { AlertDialogDefault } from '@/previews/alert-dialog'
+
+<Preview><AlertDialogDefault /></Preview>
+
+Use `AlertDialog` when the action is destructive or otherwise hard to reverse. For routine confirmations or non-destructive flows, [`Dialog`](/docs/components/dialog) is the right choice — it doesn't trap the user the same way.
+
+## Usage
+
+```tsx
+import { AlertDialog, Button } from '@onersoft/design-system'
+
+<AlertDialog.Root>
+  <AlertDialog.Trigger asChild>
+    <Button variant="secondary">Open</Button>
+  </AlertDialog.Trigger>
+  <AlertDialog.Portal>
+    <AlertDialog.Overlay />
+    <AlertDialog.Content>
+      <AlertDialog.Title>Title</AlertDialog.Title>
+      <AlertDialog.Description>Body</AlertDialog.Description>
+      <AlertDialog.Footer>
+        <AlertDialog.Cancel asChild><Button variant="ghost">Cancel</Button></AlertDialog.Cancel>
+        <AlertDialog.Action asChild><Button>Confirm</Button></AlertDialog.Action>
+      </AlertDialog.Footer>
+    </AlertDialog.Content>
+  </AlertDialog.Portal>
+</AlertDialog.Root>
+```
+
+## Anatomy
+
+`Root → Trigger → Portal → Overlay + Content (Title, Description, Footer { Cancel, Action })`. All parts mirror Radix [`AlertDialog`](https://www.radix-ui.com/primitives/docs/components/alert-dialog) APIs. `Footer` is the only addition — a flex row that aligns Cancel and Action.
