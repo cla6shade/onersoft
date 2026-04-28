@@ -1,0 +1,44 @@
+---
+title: Skeleton
+description: A placeholder shape that hints at the content while it loads.
+---
+
+import { Skeleton } from '@/components/preview'
+
+<Preview align="start">
+  <div style={{ display: 'flex', gap: 12, alignItems: 'center', width: '100%', maxWidth: 420 }}>
+    <Skeleton variant="circle" width={40} />
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <Skeleton variant="text" width="55%" />
+      <Skeleton variant="text" width="35%" />
+    </div>
+  </div>
+</Preview>
+
+## Variants
+
+<Preview align="start">
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%', maxWidth: 320 }}>
+    <Skeleton variant="block" height={120} />
+    <Skeleton variant="text" width="80%" />
+    <Skeleton variant="circle" width={48} />
+  </div>
+</Preview>
+
+## Usage
+
+```tsx
+import { Skeleton } from '@onersoft/design-system'
+
+<Skeleton height={120} />
+<Skeleton variant="text" width="60%" />
+<Skeleton variant="circle" width={40} />
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `'block' \| 'text' \| 'circle'` | `'block'` |
+| `width` | `number \| string` | — |
+| `height` | `number \| string` | — |

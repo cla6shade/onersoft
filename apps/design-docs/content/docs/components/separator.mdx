@@ -1,0 +1,38 @@
+---
+title: Separator
+description: A thin divider between sections or items.
+---
+
+import { Separator } from '@/components/preview'
+
+<Preview align="start">
+  <div style={{ width: '100%' }}>
+    <p>지난 활동</p>
+    <Separator style={{ margin: '12px 0' }} />
+    <p>이번 주 활동</p>
+  </div>
+</Preview>
+
+## Vertical
+
+<Preview>
+  <span>왼쪽</span>
+  <Separator orientation="vertical" style={{ height: 24, margin: '0 12px' }} />
+  <span>오른쪽</span>
+</Preview>
+
+## Usage
+
+```tsx
+import { Separator } from '@onersoft/design-system'
+
+<Separator />
+<Separator orientation="vertical" />
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `decorative` | `boolean` | `true` |

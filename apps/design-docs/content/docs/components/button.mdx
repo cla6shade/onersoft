@@ -1,0 +1,55 @@
+---
+title: Button
+description: Trigger an action or navigation. Three variants, three sizes, polymorphic via `asChild`.
+---
+
+import { Button } from '@/components/preview'
+
+<Preview>
+  <Button>Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="ghost">Ghost</Button>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <Button disabled>Primary</Button>
+  <Button variant="secondary" disabled>Secondary</Button>
+  <Button variant="ghost" disabled>Ghost</Button>
+</Preview>
+
+## As link
+
+`asChild` lets the Button render any element while keeping its visual treatment — useful for routing.
+
+<Preview>
+  <Button asChild>
+    <a href="#">Open dashboard</a>
+  </Button>
+</Preview>
+
+## Usage
+
+```tsx
+import { Button } from '@onersoft/design-system'
+
+<Button onClick={save}>Save changes</Button>
+<Button variant="ghost" asChild><a href="/help">Help</a></Button>
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `'primary' \| 'secondary' \| 'ghost'` | `'primary'` |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `asChild` | `boolean` | `false` |

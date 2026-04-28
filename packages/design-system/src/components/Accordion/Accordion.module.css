@@ -1,0 +1,92 @@
+@layer ds.components {
+.root {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ds-font-sans);
+  color: var(--ds-color-fg-default);
+  border-top: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+}
+
+.item {
+  border-bottom: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+}
+
+.header {
+  display: flex;
+  margin: 0;
+}
+
+.trigger {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-4) 0;
+  background: transparent;
+  border: 0;
+  color: var(--ds-color-fg-default);
+  font-family: inherit;
+  font-size: var(--ds-text-md);
+  font-weight: var(--ds-weight-medium);
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--ds-radius-xs);
+  transition:
+    color var(--ds-duration-fast) var(--ds-ease-standard),
+    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
+}
+
+.trigger:hover {
+  color: var(--ds-color-accent);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--ds-shadow-focus);
+}
+
+.label {
+  flex: 1;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--ds-color-fg-muted);
+  transition: transform var(--ds-duration-medium) var(--ds-ease-standard);
+}
+
+.trigger[data-state='open'] .chevron {
+  transform: rotate(180deg);
+  color: var(--ds-color-fg-default);
+}
+
+.content {
+  overflow: hidden;
+  color: var(--ds-color-fg-muted);
+  font-size: var(--ds-text-sm);
+  line-height: var(--ds-leading-relaxed);
+}
+
+.content[data-state='open'] {
+  animation: expand var(--ds-duration-medium) var(--ds-ease-enter);
+}
+
+.content[data-state='closed'] {
+  animation: collapse var(--ds-duration-fast) var(--ds-ease-exit);
+}
+
+.contentInner {
+  padding-bottom: var(--ds-space-4);
+}
+
+@keyframes expand {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes collapse {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+}

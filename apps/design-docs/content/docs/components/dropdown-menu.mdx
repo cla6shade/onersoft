@@ -1,0 +1,38 @@
+---
+title: DropdownMenu
+description: A trigger that reveals a list of actions, toggles, or radio options.
+---
+
+import { DropdownMenuDefault } from '@/previews/dropdown-menu'
+
+<Preview><DropdownMenuDefault /></Preview>
+
+## Usage
+
+```tsx
+import { DropdownMenu, Button } from '@onersoft/design-system'
+
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger asChild>
+    <Button variant="secondary">Open</Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content align="start">
+      <DropdownMenu.Label>View</DropdownMenu.Label>
+      <DropdownMenu.CheckboxItem checked={grid} onCheckedChange={setGrid}>
+        Show grid
+        <DropdownMenu.Shortcut>⌘G</DropdownMenu.Shortcut>
+      </DropdownMenu.CheckboxItem>
+      <DropdownMenu.Separator />
+      <DropdownMenu.RadioGroup value={sort} onValueChange={setSort}>
+        <DropdownMenu.RadioItem value="recent">Recent</DropdownMenu.RadioItem>
+        <DropdownMenu.RadioItem value="alpha">Alphabetical</DropdownMenu.RadioItem>
+      </DropdownMenu.RadioGroup>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu.Root>
+```
+
+## Parts
+
+`Root`, `Trigger`, `Portal`, `Content`, `Item`, `CheckboxItem`, `RadioGroup`, `RadioItem`, `Label`, `Separator`, `Shortcut`, `Group`, `Sub`, `SubTrigger`, `SubContent`. All mirror Radix [`DropdownMenu`](https://www.radix-ui.com/primitives/docs/components/dropdown-menu) with the additional `Shortcut` slot.

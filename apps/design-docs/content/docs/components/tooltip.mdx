@@ -1,0 +1,31 @@
+---
+title: Tooltip
+description: A short, hover/focus-only label for a control. Reach for `Popover` if it needs interactive content.
+---
+
+import { TooltipDefault } from '@/previews/tooltip'
+
+<Preview><TooltipDefault /></Preview>
+
+## Usage
+
+```tsx
+import { Tooltip, Button } from '@onersoft/design-system'
+
+<Tooltip.Provider>
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="ghost">?</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Portal>
+      <Tooltip.Content>Helper text</Tooltip.Content>
+    </Tooltip.Portal>
+  </Tooltip.Root>
+</Tooltip.Provider>
+```
+
+Mount `Tooltip.Provider` once high in the tree (it controls global delay), then wrap each tooltip site in `Tooltip.Root`.
+
+## Parts
+
+`Provider`, `Root`, `Trigger`, `Portal`, `Content`, `Arrow`. Mirrors Radix [`Tooltip`](https://www.radix-ui.com/primitives/docs/components/tooltip). `Content` accepts `side`, `align`, `sideOffset`.

@@ -1,0 +1,37 @@
+---
+title: Badge
+description: A compact label for status, category, or count.
+---
+
+import { Badge } from '@/components/preview'
+
+<Preview>
+  <Badge>Neutral</Badge>
+  <Badge variant="accent">Accent</Badge>
+  <Badge variant="success">Active</Badge>
+  <Badge variant="warning">Beta</Badge>
+  <Badge variant="danger">Deprecated</Badge>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Badge size="sm">Small</Badge>
+  <Badge size="md">Medium</Badge>
+</Preview>
+
+## Usage
+
+```tsx
+import { Badge } from '@onersoft/design-system'
+
+<Badge variant="success">Active</Badge>
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `variant` | `'neutral' \| 'accent' \| 'success' \| 'warning' \| 'danger'` | `'neutral'` |
+| `size` | `'sm' \| 'md'` | `'md'` |
+| `asChild` | `boolean` | `false` |

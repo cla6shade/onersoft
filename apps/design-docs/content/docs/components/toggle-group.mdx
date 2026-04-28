@@ -1,0 +1,27 @@
+---
+title: ToggleGroup
+description: A set of related toggles, single- or multi-select.
+---
+
+import { ToggleGroupSingle, ToggleGroupMultiple } from '@/previews/toggle-group'
+
+<Preview><ToggleGroupSingle /></Preview>
+
+## Multiple
+
+<Preview><ToggleGroupMultiple /></Preview>
+
+## Usage
+
+```tsx
+import { ToggleGroup } from '@onersoft/design-system'
+
+<ToggleGroup.Root type="single" value={view} onValueChange={setView} aria-label="View mode">
+  <ToggleGroup.Item value="grid">Grid</ToggleGroup.Item>
+  <ToggleGroup.Item value="list">List</ToggleGroup.Item>
+</ToggleGroup.Root>
+```
+
+## Parts
+
+`Root`, `Item`. Mirrors Radix [`ToggleGroup`](https://www.radix-ui.com/primitives/docs/components/toggle-group). `Root` requires `type` (`'single'` or `'multiple'`) and `aria-label`.

@@ -1,0 +1,32 @@
+import type { ComponentPropsWithoutRef } from 'react'
+import { Tabs as RadixTabs } from 'radix-ui'
+import clsx from 'clsx'
+import styles from './Tabs.module.css'
+
+export function Root({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof RadixTabs.Root>) {
+  return <RadixTabs.Root data-slot="tabs" className={clsx(styles.root, className)} {...props} />
+}
+
+export function List({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof RadixTabs.List>) {
+  return <RadixTabs.List data-slot="tabs-list" className={clsx(styles.list, className)} {...props} />
+}
+
+export function Trigger({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof RadixTabs.Trigger>) {
+  return <RadixTabs.Trigger data-slot="tabs-trigger" className={clsx(styles.trigger, className)} {...props} />
+}
+
+export function Content({
+  className,
+  ...props
+}: ComponentPropsWithoutRef<typeof RadixTabs.Content>) {
+  return <RadixTabs.Content data-slot="tabs-content" className={clsx(styles.content, className)} {...props} />
+}

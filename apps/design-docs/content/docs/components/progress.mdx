@@ -1,0 +1,32 @@
+---
+title: Progress
+description: A determinate or indeterminate progress indicator.
+---
+
+import { Progress } from '@/components/preview'
+
+<Preview align="start">
+  <div style={{ width: '100%', maxWidth: 360, display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <Progress value={62} aria-label="Determinate" />
+    <Progress value={null} aria-label="Indeterminate" />
+  </div>
+</Preview>
+
+Pass `value={null}` for an indeterminate animation when total work isn't yet known.
+
+## Usage
+
+```tsx
+import { Progress } from '@onersoft/design-system'
+
+<Progress value={percent} aria-label="Upload progress" />
+<Progress value={null} aria-label="Loading" />
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` | `number \| null` | — |
+| `max` | `number` | `100` |
+| `aria-label` | `string` | `'Progress'` |

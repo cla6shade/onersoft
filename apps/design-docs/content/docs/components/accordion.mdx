@@ -1,0 +1,39 @@
+---
+title: Accordion
+description: A vertically stacked set of disclosure panels. One-at-a-time or many-at-a-time.
+---
+
+import { AccordionSingle, AccordionMultiple } from '@/previews/accordion'
+
+<Preview align="start"><AccordionSingle /></Preview>
+
+## Multiple
+
+<Preview align="start"><AccordionMultiple /></Preview>
+
+## Usage
+
+```tsx
+import { Accordion } from '@onersoft/design-system'
+
+<Accordion.Root type="single" collapsible>
+  <Accordion.Item value="item-1">
+    <Accordion.Header>
+      <Accordion.Trigger>Heading</Accordion.Trigger>
+    </Accordion.Header>
+    <Accordion.Content>Body</Accordion.Content>
+  </Accordion.Item>
+</Accordion.Root>
+```
+
+## Props
+
+`Accordion.Root` mirrors Radix [`Accordion.Root`](https://www.radix-ui.com/primitives/docs/components/accordion#root). Most-used:
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `type` | `'single' \| 'multiple'` | — |
+| `collapsible` | `boolean` | `false` |
+| `defaultValue` | `string \| string[]` | — |
+| `value` | `string \| string[]` | — |
+| `onValueChange` | `(value) => void` | — |

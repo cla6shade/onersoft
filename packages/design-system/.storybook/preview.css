@@ -1,0 +1,14 @@
+html,
+body,
+#storybook-root {
+  background-color: var(--ds-color-bg-surface);
+  color: var(--ds-color-fg-default);
+  font-family: var(--ds-font-sans);
+  transition:
+    background-color var(--ds-duration-medium) var(--ds-ease-standard),
+    color var(--ds-duration-medium) var(--ds-ease-standard);
+}
+
+.sb-show-main.sb-main-padded {
+  padding: var(--ds-space-5);
+}

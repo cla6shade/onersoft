@@ -1,0 +1,42 @@
+---
+title: Switch
+description: A binary on/off toggle for settings that take effect immediately.
+---
+
+import { Switch, Label } from '@/components/preview'
+
+<Preview>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <Switch id="airplane" defaultChecked />
+    <Label htmlFor="airplane">Airplane mode</Label>
+  </div>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <Switch id="locked" disabled />
+    <Label htmlFor="locked">Locked option</Label>
+  </div>
+</Preview>
+
+## Usage
+
+```tsx
+import { Switch, Label } from '@onersoft/design-system'
+
+<Switch id="notifications" defaultChecked onCheckedChange={setOn} />
+<Label htmlFor="notifications">Notifications</Label>
+```
+
+## Props
+
+`Switch` mirrors Radix [`Switch.Root`](https://www.radix-ui.com/primitives/docs/components/switch).
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `checked` | `boolean` | — |
+| `defaultChecked` | `boolean` | — |
+| `onCheckedChange` | `(checked) => void` | — |
+| `disabled` | `boolean` | `false` |

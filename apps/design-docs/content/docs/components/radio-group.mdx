@@ -1,0 +1,25 @@
+---
+title: RadioGroup
+description: A set of mutually-exclusive choices.
+---
+
+import { RadioGroupDefault } from '@/previews/radio-group'
+
+<Preview align="start"><RadioGroupDefault /></Preview>
+
+## Usage
+
+```tsx
+import { RadioGroup, Label } from '@onersoft/design-system'
+
+<RadioGroup.Root defaultValue="balanced" aria-label="Profile">
+  <RadioGroup.Item id="efficient" value="efficient" />
+  <Label htmlFor="efficient">Efficient</Label>
+  <RadioGroup.Item id="balanced" value="balanced" />
+  <Label htmlFor="balanced">Balanced</Label>
+</RadioGroup.Root>
+```
+
+## Parts
+
+`Root`, `Item`. Mirrors Radix [`RadioGroup`](https://www.radix-ui.com/primitives/docs/components/radio-group). `Root` accepts `value`, `defaultValue`, `onValueChange`, `disabled`, `required`.

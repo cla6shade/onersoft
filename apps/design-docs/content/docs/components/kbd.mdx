@@ -1,0 +1,34 @@
+---
+title: Kbd
+description: A compact representation of a keyboard key or chord.
+---
+
+import { Kbd } from '@/components/preview'
+
+<Preview>
+  <span>
+    Press <Kbd>⌘</Kbd> + <Kbd>K</Kbd> to open the command palette.
+  </span>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Kbd size="sm">⌘</Kbd>
+  <Kbd size="md">⌘</Kbd>
+</Preview>
+
+## Usage
+
+```tsx
+import { Kbd } from '@onersoft/design-system'
+
+<>Press <Kbd>⌘</Kbd> + <Kbd>K</Kbd></>
+```
+
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `size` | `'sm' \| 'md'` | `'md'` |
+| `asChild` | `boolean` | `false` |

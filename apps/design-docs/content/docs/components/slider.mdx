@@ -1,0 +1,44 @@
+---
+title: Slider
+description: A draggable input for picking a value or a range within a bounded interval.
+---
+
+import { Slider } from '@/components/preview'
+
+<Preview align="start">
+  <div style={{ width: '100%', maxWidth: 360 }}>
+    <Slider defaultValue={[40]} min={0} max={100} step={1} aria-label="Volume" />
+  </div>
+</Preview>
+
+## Range
+
+<Preview align="start">
+  <div style={{ width: '100%', maxWidth: 360 }}>
+    <Slider defaultValue={[20, 80]} min={0} max={100} step={1} aria-label="Price range" />
+  </div>
+</Preview>
+
+## Usage
+
+```tsx
+import { Slider } from '@onersoft/design-system'
+
+<Slider defaultValue={[50]} min={0} max={100} step={1} aria-label="Volume" />
+<Slider defaultValue={[10, 40]} min={0} max={100} aria-label="Range" />
+```
+
+## Props
+
+Mirrors Radix [`Slider`](https://www.radix-ui.com/primitives/docs/components/slider).
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `value` / `defaultValue` | `number[]` | — |
+| `min` / `max` | `number` | `0` / `100` |
+| `step` | `number` | `1` |
+| `disabled` | `boolean` | `false` |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `aria-label` / `aria-labelledby` | `string` | — |
+
+When neither `aria-label` nor `aria-labelledby` is provided, thumbs fall back to `'Value'`.

@@ -1,0 +1,30 @@
+---
+title: Popover
+description: A non-modal floating panel anchored to a trigger.
+---
+
+import { PopoverDefault } from '@/previews/popover'
+
+<Preview><PopoverDefault /></Preview>
+
+## Usage
+
+```tsx
+import { Popover, Button } from '@onersoft/design-system'
+
+<Popover.Root>
+  <Popover.Trigger asChild>
+    <Button variant="secondary">Open</Button>
+  </Popover.Trigger>
+  <Popover.Portal>
+    <Popover.Content>
+      Body
+      <Popover.Arrow />
+    </Popover.Content>
+  </Popover.Portal>
+</Popover.Root>
+```
+
+## Parts
+
+`Root`, `Trigger`, `Anchor`, `Portal`, `Content`, `Arrow`, `Close`. Mirrors Radix [`Popover`](https://www.radix-ui.com/primitives/docs/components/popover). `Content` accepts `side`, `align`, `sideOffset` for positioning.

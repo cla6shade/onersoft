@@ -1,0 +1,63 @@
+---
+title: Toast
+description: Transient notifications that don't interrupt the user. Imperative `toast()` API plus Radix primitives if you need finer control.
+---
+
+import { ToastTriggers, ToastMount } from '@/previews/toast'
+
+<ToastMount />
+
+<Preview><ToastTriggers /></Preview>
+
+## Setup
+
+Mount `<Toaster />` once near the root of your app, then call `toast(...)` from anywhere.
+
+```tsx
+import { Toaster, toast } from '@onersoft/design-system'
+
+export default function RootLayout({ children }) {
+  return (
+    <ThemeProvider>
+      {children}
+      <Toaster />
+    </ThemeProvider>
+  )
+}
+
+// later
+toast.success('Saved')
+```
+
+## API
+
+```ts
+toast(title, options?)         // → id (neutral)
+toast.success(title, options?)
+toast.warning(title, options?)
+toast.error(title, options?)
+toast.info(title, options?)
+toast.dismiss(id)
+toast.dismissAll()
+```
+
+`options`:
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `description` | `string` | Supporting line under the title |
+| `duration` | `number` | Auto-dismiss in ms. Pass `Infinity` for sticky. |
+| `action` | `{ label, onClick }` | Optional action button |
+| `id` | `string` | Reuse an id to update an existing toast in place |
+
+## With action
+
+```tsx
+toast.warning('Item deleted', {
+  action: { label: 'Undo', onClick: () => undo() },
+})
+```
+
+## Lower-level primitives
+
+For fully custom layouts, the Radix-shaped parts are exported as `Toast.Root`, `Toast.Title`, `Toast.Description`, `Toast.Close`, `Toast.Action`, `Toast.Provider`, `Toast.Viewport`. See Radix [`Toast`](https://www.radix-ui.com/primitives/docs/components/toast) for usage.

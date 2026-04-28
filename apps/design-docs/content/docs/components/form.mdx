@@ -1,0 +1,69 @@
+---
+title: Form
+description: Composable form primitives wired to react-hook-form. Handles labels, descriptions, errors, and id wiring.
+---
+
+`Form` is a thin layer over [`react-hook-form`](https://react-hook-form.com/) that takes care of the boring parts: linking labels to controls, threading `aria-describedby`, and rendering field errors.
+
+## Usage
+
+```tsx
+'use client'
+
+import { useForm } from 'react-hook-form'
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  Input,
+  Button,
+} from '@onersoft/design-system'
+
+export function ProfileForm() {
+  const form = useForm({ defaultValues: { email: '' } })
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(console.log)}>
+        <FormField
+          control={form.control}
+          name="email"
+          rules={{ required: 'Email is required' }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="you@example.com" {...field} />
+              </FormControl>
+              <FormDescription>회사 도메인 이메일을 사용해주세요.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Save</Button>
+      </form>
+    </Form>
+  )
+}
+```
+
+## Parts
+
+| Part | Role |
+| ---- | ---- |
+| `Form` | Provider wrapping `react-hook-form`'s context. Spread `useForm()` result into it. |
+| `FormField` | Connects `react-hook-form`'s `Controller` to a single field. |
+| `FormItem` | Layout wrapper that owns the field's id. |
+| `FormLabel` | Label whose `htmlFor` is wired automatically. |
+| `FormControl` | Slot for the control (`Input`, `Textarea`, `Select.Trigger`, …). Threads ids and aria. |
+| `FormDescription` | Helper text. Linked via `aria-describedby`. |
+| `FormMessage` | Renders the field's RHF error message; hidden when empty. |
+| `useFormField()` | Hook that returns the active field's id, descriptionId, messageId, error. |
+
+## Notes
+
+`Form` requires `'use client'` because `react-hook-form` is a client-only library. Each `FormField` accepts the same `control`, `name`, `rules`, `render` props as RHF's `Controller`.

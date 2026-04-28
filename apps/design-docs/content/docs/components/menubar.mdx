@@ -1,0 +1,29 @@
+---
+title: Menubar
+description: A horizontal menu bar with desktop-style submenus and keyboard shortcuts.
+---
+
+import { MenubarDefault } from '@/previews/menubar'
+
+<Preview><MenubarDefault /></Preview>
+
+## Usage
+
+```tsx
+import { Menubar } from '@onersoft/design-system'
+
+<Menubar.Root>
+  <Menubar.Menu value="file">
+    <Menubar.Trigger>File</Menubar.Trigger>
+    <Menubar.Portal>
+      <Menubar.Content>
+        <Menubar.Item>New <Menubar.Shortcut>⌘N</Menubar.Shortcut></Menubar.Item>
+      </Menubar.Content>
+    </Menubar.Portal>
+  </Menubar.Menu>
+</Menubar.Root>
+```
+
+## Parts
+
+`Root`, `Menu`, `Trigger`, `Portal`, `Content`, `Item`, `Label`, `Separator`, `Shortcut`, `Group`, `Sub`. Mirrors Radix [`Menubar`](https://www.radix-ui.com/primitives/docs/components/menubar) with the additional `Shortcut` slot.

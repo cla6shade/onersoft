@@ -1,0 +1,39 @@
+@layer ds.components {
+.content {
+  z-index: var(--ds-z-popover);
+  min-width: 14rem;
+  padding: var(--ds-space-4);
+  background-color: var(--ds-color-bg-overlay);
+  color: var(--ds-color-fg-default);
+  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-md);
+  font-family: var(--ds-font-sans);
+  font-size: var(--ds-text-sm);
+  outline: none;
+  animation-duration: var(--ds-duration-medium);
+  animation-timing-function: var(--ds-ease-enter);
+}
+
+.content[data-state='open'][data-side='top'] { animation-name: slideDownFade; }
+.content[data-state='open'][data-side='bottom'] { animation-name: slideUpFade; }
+.content[data-state='open'][data-side='left'] { animation-name: slideRightFade; }
+.content[data-state='open'][data-side='right'] { animation-name: slideLeftFade; }
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDownFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeftFade {
+  from { opacity: 0; transform: translateX(4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideRightFade {
+  from { opacity: 0; transform: translateX(-4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+}

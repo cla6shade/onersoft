@@ -1,0 +1,33 @@
+---
+title: NavigationMenu
+description: A primary site navigation with optional rich submenus.
+---
+
+import { NavigationMenuDefault } from '@/previews/navigation-menu'
+
+<Preview><NavigationMenuDefault /></Preview>
+
+## Usage
+
+```tsx
+import { NavigationMenu } from '@onersoft/design-system'
+
+<NavigationMenu.Root>
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <NavigationMenu.Link href="/cloud">Cloud</NavigationMenu.Link>
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+    <NavigationMenu.Item>
+      <NavigationMenu.Link href="/pricing">Pricing</NavigationMenu.Link>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+  <NavigationMenu.Viewport />
+</NavigationMenu.Root>
+```
+
+## Parts
+
+`Root`, `List`, `Item`, `Trigger`, `Link`, `Content`, `Viewport`, `Sub`. Mirrors Radix [`NavigationMenu`](https://www.radix-ui.com/primitives/docs/components/navigation-menu).

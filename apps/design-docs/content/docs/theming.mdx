@@ -1,0 +1,64 @@
+---
+title: Theming
+description: Light, dark, and system preference. All driven by `data-theme` and `--ds-*` tokens.
+---
+
+## How it works
+
+`ThemeProvider` writes a `data-theme="light" | "dark"` attribute on `<html>`. The token layer (imported via `@onersoft/design-system/styles.css`) defines `--ds-color-*` per theme, and components consume those tokens through CSS Modules.
+
+There is no JS runtime cost beyond the initial resolve — the rest is CSS.
+
+## Default theme
+
+```tsx
+<ThemeProvider defaultTheme="system">{children}</ThemeProvider>
+```
+
+| Value      | Behavior                                                                |
+| ---------- | ----------------------------------------------------------------------- |
+| `'system'` | Match `prefers-color-scheme`. Re-resolves on OS-level changes.         |
+| `'light'`  | Force light.                                                            |
+| `'dark'`   | Force dark.                                                             |
+
+## Reading or changing the theme
+
+```tsx
+import { useTheme } from '@onersoft/design-system'
+
+function ThemeToggle() {
+  const { theme, resolvedTheme, setTheme } = useTheme()
+  return (
+    <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
+      {resolvedTheme} mode
+    </button>
+  )
+}
+```
+
+`theme` is the user's preference (`'system' | 'light' | 'dark'`), `resolvedTheme` is the actually applied value (`'light' | 'dark'`).
+
+## Avoiding hydration flash
+
+`ThemeProvider` auto-injects a tiny script at the top of `<body>` that resolves the theme before paint. If you need to render the script manually (e.g. inside Next.js `<head>`), use `getThemeInitScript()`.
+
+```tsx
+import { getThemeInitScript } from '@onersoft/design-system'
+
+<head>
+  <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
+</head>
+```
+
+## Overriding tokens
+
+Tokens live under `--ds-*` and can be overridden anywhere downstream — globally, per-page, or scoped to a subtree.
+
+```css
+:root {
+  --ds-font-sans: 'Pretendard Variable', system-ui, sans-serif;
+  --ds-radius-md: 0.5rem;
+}
+```
+
+The full token list ships in `dist/style.css` of the package.

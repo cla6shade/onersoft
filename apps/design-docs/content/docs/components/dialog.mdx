@@ -1,0 +1,35 @@
+---
+title: Dialog
+description: A modal overlay for focused tasks. Reach for `AlertDialog` for destructive confirmations.
+---
+
+import { DialogDefault } from '@/previews/dialog'
+
+<Preview><DialogDefault /></Preview>
+
+## Usage
+
+```tsx
+import { Dialog, Button } from '@onersoft/design-system'
+
+<Dialog.Root>
+  <Dialog.Trigger asChild>
+    <Button>Open</Button>
+  </Dialog.Trigger>
+  <Dialog.Portal>
+    <Dialog.Overlay />
+    <Dialog.Content>
+      <Dialog.Title>Title</Dialog.Title>
+      <Dialog.Description>Body</Dialog.Description>
+      <Dialog.Footer>
+        <Dialog.Close asChild><Button variant="ghost">Cancel</Button></Dialog.Close>
+        <Dialog.Close asChild><Button>Confirm</Button></Dialog.Close>
+      </Dialog.Footer>
+    </Dialog.Content>
+  </Dialog.Portal>
+</Dialog.Root>
+```
+
+## Anatomy
+
+`Root → Trigger → Portal → Overlay + Content (Title, Description, Close, Footer)`. All parts mirror Radix [`Dialog`](https://www.radix-ui.com/primitives/docs/components/dialog) APIs with token-aware styling.

@@ -1,0 +1,54 @@
+---
+title: Overview
+description: Install the package, wire up the provider, and ship.
+---
+
+## Install
+
+```sh
+pnpm add @onersoft/design-system
+```
+
+The package depends on `react@^19` and `react-dom@^19` as peers.
+
+## Provider
+
+Wrap your app in `ThemeProvider` so the `data-theme` attribute and `--ds-*` tokens are applied.
+
+```tsx
+import { ThemeProvider } from '@onersoft/design-system'
+import '@onersoft/design-system/styles.css'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider defaultTheme="system">{children}</ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+`@onersoft/design-system/styles.css` contains the token layer plus the per-component CSS Modules. Import it once at the app root.
+
+## Toaster (optional)
+
+To use the imperative `toast()` API, mount `<Toaster />` once near the root.
+
+```tsx
+import { Toaster } from '@onersoft/design-system'
+
+<ThemeProvider>
+  {children}
+  <Toaster />
+</ThemeProvider>
+```
+
+## Importing a component
+
+Every component is a named export.
+
+```tsx
+import { Button, Dialog, Toast } from '@onersoft/design-system'
+```
