@@ -27,7 +27,7 @@ export default defineConfig({
     preserveDirectives(),
     dts({
       include: ['src'],
-      exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.a11y.test.tsx'],
+      exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.a11y.test.tsx', 'src/test/**'],
       entryRoot: 'src',
       outDir: 'dist/types',
     }),
