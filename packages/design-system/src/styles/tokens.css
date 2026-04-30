@@ -162,7 +162,11 @@
    * separate plane (Cards, Dialogs, Avatars) against the page surface
    * without crossing into the brighter Overlay band. */
   --ds-color-bg-elevated: color-mix(in oklab, var(--color-surface-base) 82%, white);
-  --ds-color-bg-overlay: color-mix(in oklab, var(--color-surface-base) 70%, white);
+  /* Overlay tier (Toast, Tooltip, Popover, DropdownMenu) matches the
+   * page surface in dark mode — the previous lifted variant read as a
+   * washed-out gray. Separation from the page comes from the border and
+   * shadow, not a brighter fill. */
+  --ds-color-bg-overlay: var(--color-surface-base);
   --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 94%, black);
 
   --ds-color-fg-default: oklch(0.97 0.006 var(--ds-brand-hue));
