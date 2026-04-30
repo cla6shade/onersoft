@@ -5,16 +5,16 @@ import { Button, Toaster, toast } from '@onersoft/design-system'
 export function ToastTriggers() {
   return (
     <>
-      <Button onClick={() => toast('저장됨', { description: '변경 사항이 적용되었습니다.' })}>
+      <Button onClick={() => toast('Saved', { description: 'Your changes have been applied.' })}>
         Default
       </Button>
-      <Button variant="secondary" onClick={() => toast.success('업로드 완료')}>
+      <Button variant="secondary" onClick={() => toast.success('Upload complete')}>
         Success
       </Button>
       <Button
         variant="ghost"
         onClick={() =>
-          toast.error('네트워크 오류', { description: '잠시 후 다시 시도해주세요.' })
+          toast.error('Network error', { description: 'Please try again in a moment.' })
         }
       >
         Error
