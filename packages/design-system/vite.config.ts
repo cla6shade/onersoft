@@ -40,7 +40,7 @@ export default defineConfig({
   },
   build: {
     cssCodeSplit: true,
-    sourcemap: true,
+    sourcemap: false,
     lib: {
       entry,
       formats: ['es', 'cjs'],

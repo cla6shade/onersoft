@@ -75,8 +75,7 @@
     "**/*.css"
   ],
   "files": [
-    "dist",
-    "!dist/**/*.map"
+    "dist"
   ],
   "exports": {
     ".": {
