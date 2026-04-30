@@ -5,6 +5,18 @@ import { playwright } from '@vitest/browser-playwright'
 export default defineConfig({
   plugins: [react()],
   test: {
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html', 'lcov'],
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: [
+        'src/**/*.test.{ts,tsx}',
+        'src/**/*.a11y.test.{ts,tsx}',
+        'src/**/*.stories.tsx',
+        'src/**/index.ts',
+        'src/test/**',
+      ],
+    },
     projects: [
       {
         extends: true,
