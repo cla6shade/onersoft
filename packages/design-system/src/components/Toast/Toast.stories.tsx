@@ -33,11 +33,13 @@ export const Default: Story = {
           Show toast
         </Button>
         <Toast.Root open={open} onOpenChange={setOpen}>
-          <div>
+          <Toast.Content>
             <Toast.Title>Saved successfully</Toast.Title>
             <Toast.Description>Your changes are now live.</Toast.Description>
-          </div>
-          <Toast.Close aria-label="Dismiss">×</Toast.Close>
+          </Toast.Content>
+          <Toast.Controls>
+            <Toast.Close aria-label="Dismiss">×</Toast.Close>
+          </Toast.Controls>
         </Toast.Root>
         <Toast.Viewport />
       </Toast.Provider>

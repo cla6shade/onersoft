@@ -1,5 +1,7 @@
-import type { ComponentPropsWithoutRef } from 'react'
-import { Toast as RadixToast } from 'radix-ui'
+'use client'
+
+import type { ComponentPropsWithoutRef, HTMLAttributes } from 'react'
+import * as RadixToast from '@radix-ui/react-toast'
 import clsx from 'clsx'
 import styles from './Toast.module.css'
 
@@ -7,6 +9,14 @@ export const Provider = RadixToast.Provider
 
 export function Action({ ...props }: ComponentPropsWithoutRef<typeof RadixToast.Action>) {
   return <RadixToast.Action data-slot="toast-action" {...props} />
+}
+
+export function Content({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+  return <div data-slot="toast-content" className={clsx(styles.content, className)} {...props} />
+}
+
+export function Controls({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+  return <div data-slot="toast-controls" className={clsx(styles.controls, className)} {...props} />
 }
 
 export function Viewport({
