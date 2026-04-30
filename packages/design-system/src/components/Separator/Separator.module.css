@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .root {
   background-color: var(--ds-color-border-default);
   flex-shrink: 0;

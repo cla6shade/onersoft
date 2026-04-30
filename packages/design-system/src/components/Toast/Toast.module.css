@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .viewport {
   /* Container query host so individual toasts can adapt to viewport
    * width without bringing media queries into the component layer. */

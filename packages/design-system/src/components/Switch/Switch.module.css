@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .root {
   /* Composed via custom prop so :focus-visible can stack the focus ring on
    * top of the inset border without re-declaring it per state. */

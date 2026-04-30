@@ -1,18 +1,24 @@
-/* Layer order — earlier layers lose to later ones, and ALL layered rules
- * lose to unlayered rules. Hosts that want to override our components can
- * use plain selectors (no layer needed) and they'll always win, no matter
- * how specific our internal rules are. Hosts wanting to extend without
- * winning everything can use `@layer ds.utilities` themselves.
+/* Layer policy — every rule in this design system lives in a single
+ * `onersoft.ds` cascade layer. Layered rules ALWAYS lose to unlayered ones,
+ * so hosts that want to override can use plain selectors and they'll win
+ * without specificity battles. Hosts that want a controlled order between
+ * library and their own layered styles can declare:
  *
- * Order:
- *   tokens     — CSS custom properties on :root
- *   base       — element-level resets (currently unused, reserved)
- *   components — every .module.css in components/
- *   utilities  — host-extensible last-wins layer
+ *   @layer onersoft.ds, app;
+ *
+ * in their own entrypoint, which forces app rules to win over ours.
+ *
+ * The name is namespaced (`onersoft.ds`, not bare `ds`) to avoid colliding
+ * with hosts or third-party libraries that might use a generic `ds` layer.
+ *
+ * Why a single layer instead of multiple (tokens/base/components/utilities)?
+ * Per-component CSS files emitted by the bundler can be parsed in any order,
+ * which determines layer registration order. With multiple sub-layers the
+ * first-emitted file's layer wins the "first-registered" slot, inverting the
+ * intended cascade. A single layer name eliminates that hazard. See Mantine
+ * v7 for the same pattern.
  */
-@layer ds.tokens, ds.base, ds.components, ds.utilities;
-
-@layer ds.tokens {
+@layer onersoft.ds {
 :root {
   /* ---------------------------------------------------------------------
    * Theme-agnostic tokens
@@ -319,4 +325,4 @@
     --ds-color-fg-muted: oklch(0.34 0.02 var(--ds-brand-hue));
   }
 }
-} /* @layer ds.tokens */
+} /* @layer onersoft.ds */

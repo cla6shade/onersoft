@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .demoCard {
   width: 20rem;
   color: var(--ds-color-fg-default);

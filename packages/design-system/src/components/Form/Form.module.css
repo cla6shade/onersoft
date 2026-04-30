@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .root {
   display: grid;
   gap: var(--ds-space-2);

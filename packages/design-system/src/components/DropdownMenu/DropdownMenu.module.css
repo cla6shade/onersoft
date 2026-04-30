@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .content {
   z-index: var(--ds-z-dropdown);
   min-width: 12rem;

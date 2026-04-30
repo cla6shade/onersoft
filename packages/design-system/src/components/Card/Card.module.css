@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .root {
   /* Establish a query container so descendants (Header, Body) adapt to
    * the card's actual width, not the viewport's. Useful when a Card

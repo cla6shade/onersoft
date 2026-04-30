@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .content {
   z-index: var(--ds-z-tooltip);
   padding: var(--ds-space-1) var(--ds-space-3);

@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 .label {
   display: inline-flex;
   align-items: center;

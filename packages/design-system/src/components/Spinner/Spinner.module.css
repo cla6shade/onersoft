@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 /* Two-phase animation (the Material pattern):
  *   - .spinner rotates the whole SVG linearly
  *   - .head morphs the visible arc length and offset on a separate cycle

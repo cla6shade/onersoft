@@ -1,4 +1,4 @@
-@layer ds.components {
+@layer onersoft.ds {
 /* Inline shortcut glyph. The previous design impersonated a physical key
  * cap with a saturated fill and a 2px bottom bevel — distinctly Win95.
  * Dropped the bevel, replaced the dedicated kbd surface tokens with a
