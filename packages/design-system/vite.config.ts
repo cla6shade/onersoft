@@ -16,7 +16,7 @@ const entry: Record<string, string> = {
   index: resolve(__dirname, 'src/index.ts'),
 }
 for (const c of components) {
-  entry[c.toLowerCase()] = resolve(componentsDir, c, 'index.ts')
+  entry[c] = resolve(componentsDir, c, 'index.ts')
 }
 
 // https://ko.vite.dev/guide/build.html#library-mode
