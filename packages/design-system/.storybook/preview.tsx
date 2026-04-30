@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import type { Decorator, Preview } from '@storybook/react-vite'
 import { ThemeProvider, useTheme } from 'next-themes'
+import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css'
 import '../src/styles/tokens.css'
 import './preview.css'
 

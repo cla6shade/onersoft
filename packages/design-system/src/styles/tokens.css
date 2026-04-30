@@ -23,7 +23,7 @@
    * face by overriding --ds-font-sans at :root.
    * --ds-font-display intentionally aliases sans: the design system is a
    * neutral base; distinctiveness lives in the consuming app. */
-  --ds-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  --ds-font-sans: "Pretendard Variable", "Apple SD Gothic Neo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --ds-font-mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
   --ds-font-display: var(--ds-font-sans);
 

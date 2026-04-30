@@ -1,5 +1,6 @@
 import { RootProvider } from 'fumadocs-ui/provider/next'
 import { Inter } from 'next/font/google'
+import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css'
 import './global.css'
 
 const inter = Inter({
