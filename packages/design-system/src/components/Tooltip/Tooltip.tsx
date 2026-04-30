@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import * as RadixTooltip from '@radix-ui/react-tooltip'
-import clsx from 'clsx'
-import styles from './Tooltip.module.css'
+import type { ComponentProps } from 'react';
+import * as RadixTooltip from '@radix-ui/react-tooltip';
+import clsx from 'clsx';
+import styles from './Tooltip.module.css';
 
-export const Provider = RadixTooltip.Provider
-export const Root = RadixTooltip.Root
-export const Portal = RadixTooltip.Portal
+export const Provider = RadixTooltip.Provider;
+export const Root = RadixTooltip.Root;
+export const Portal = RadixTooltip.Portal;
 
 export function Trigger({ ...props }: ComponentProps<typeof RadixTooltip.Trigger>) {
-  return <RadixTooltip.Trigger data-slot="tooltip-trigger" {...props} />
+  return <RadixTooltip.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
 export function Content({
@@ -25,5 +25,5 @@ export function Content({
       className={clsx(styles.content, className)}
       {...props}
     />
-  )
+  );
 }

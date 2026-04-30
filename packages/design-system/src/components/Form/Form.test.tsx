@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { useForm } from 'react-hook-form'
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { useForm } from 'react-hook-form';
 import {
   Form,
   FormField,
@@ -10,11 +10,11 @@ import {
   FormControl,
   FormDescription,
   FormMessage,
-} from './Form'
-import { Input } from '../Input'
+} from './Form';
+import { Input } from '../Input';
 
 function BasicHarness() {
-  const form = useForm({ defaultValues: { email: '' } })
+  const form = useForm({ defaultValues: { email: '' } });
   return (
     <Form {...form}>
       <FormField
@@ -32,7 +32,7 @@ function BasicHarness() {
         )}
       />
     </Form>
-  )
+  );
 }
 
 function ErrorHarness() {
@@ -41,7 +41,7 @@ function ErrorHarness() {
     errors: {
       email: { type: 'manual', message: '유효한 이메일 형식이 아닙니다.' },
     },
-  })
+  });
   return (
     <Form {...form}>
       <FormField
@@ -58,11 +58,11 @@ function ErrorHarness() {
         )}
       />
     </Form>
-  )
+  );
 }
 
 function InteractiveHarness() {
-  const form = useForm({ defaultValues: { email: '' }, mode: 'onChange' })
+  const form = useForm({ defaultValues: { email: '' }, mode: 'onChange' });
   return (
     <Form {...form}>
       <FormField
@@ -85,31 +85,31 @@ function InteractiveHarness() {
         )}
       />
     </Form>
-  )
+  );
 }
 
 describe('Form', () => {
   it('wires aria-describedby and omits aria-invalid in basic state', () => {
-    render(<BasicHarness />)
-    const input = screen.getByLabelText('Email')
-    expect(input).toHaveAttribute('aria-describedby')
-    expect(input).not.toHaveAttribute('aria-invalid')
-  })
+    render(<BasicHarness />);
+    const input = screen.getByLabelText('Email');
+    expect(input).toHaveAttribute('aria-describedby');
+    expect(input).not.toHaveAttribute('aria-invalid');
+  });
 
   it('sets aria-invalid and renders alert when there is an error', () => {
-    render(<ErrorHarness />)
-    const input = screen.getByLabelText('Email')
-    expect(input).toHaveAttribute('aria-invalid', 'true')
-    expect(screen.getByRole('alert')).toHaveTextContent('유효한 이메일 형식이 아닙니다.')
-  })
+    render(<ErrorHarness />);
+    const input = screen.getByLabelText('Email');
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByRole('alert')).toHaveTextContent('유효한 이메일 형식이 아닙니다.');
+  });
 
   it('toggles error message based on onChange validation', async () => {
-    const user = userEvent.setup()
-    render(<InteractiveHarness />)
-    const input = screen.getByLabelText('이메일')
-    await user.type(input, 'foo')
-    expect(await screen.findByRole('alert')).toBeInTheDocument()
-    await user.type(input, '@bar')
-    expect(screen.queryByRole('alert')).toBeNull()
-  })
-})
+    const user = userEvent.setup();
+    render(<InteractiveHarness />);
+    const input = screen.getByLabelText('이메일');
+    await user.type(input, 'foo');
+    expect(await screen.findByRole('alert')).toBeInTheDocument();
+    await user.type(input, '@bar');
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+});

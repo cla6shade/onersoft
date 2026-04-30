@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { NavigationMenu } from '@onersoft/design-system'
+import { NavigationMenu } from '@onersoft/design-system';
 
 export function NavigationMenuDefault() {
   return (
@@ -16,7 +16,9 @@ export function NavigationMenuDefault() {
               </NavigationMenu.Link>
               <NavigationMenu.Link href="#observe">
                 <strong>Observe</strong>
-                <div style={{ color: 'var(--ds-color-text-muted)' }}>Distributed tracing and logs</div>
+                <div style={{ color: 'var(--ds-color-text-muted)' }}>
+                  Distributed tracing and logs
+                </div>
               </NavigationMenu.Link>
             </div>
           </NavigationMenu.Content>
@@ -30,5 +32,5 @@ export function NavigationMenuDefault() {
       </NavigationMenu.List>
       <NavigationMenu.Viewport />
     </NavigationMenu.Root>
-  )
+  );
 }

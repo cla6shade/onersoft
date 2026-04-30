@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Select } from '.'
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Select } from '.';
 
 describe('Select a11y', () => {
   it('has no axe violations when open', async () => {
@@ -23,8 +23,8 @@ describe('Select a11y', () => {
           </Select.Content>
         </Select.Portal>
       </Select.Root>,
-    )
-    const results = await runAxe(screen.getByRole('listbox'))
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(screen.getByRole('listbox'));
+    expect(results.violations).toEqual([]);
+  });
+});

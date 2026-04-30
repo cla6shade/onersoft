@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Separator } from './Separator'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Separator } from './Separator';
 
 describe('Separator a11y', () => {
   it('has no axe violations', async () => {
@@ -14,8 +14,8 @@ describe('Separator a11y', () => {
         <Separator orientation="vertical" style={{ height: 16 }} />
         <span>B</span>
       </div>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Checkbox } from '../Checkbox'
-import { Label } from './Label'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Checkbox } from '../Checkbox';
+import { Label } from './Label';
 
 const meta: Meta<typeof Label> = {
   title: 'Primitives/Label',
@@ -15,10 +15,10 @@ const meta: Meta<typeof Label> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Label>
+export default meta;
+type Story = StoryObj<typeof Label>;
 
 export const Default: Story = {
   render: () => (
@@ -27,4 +27,4 @@ export const Default: Story = {
       <Label htmlFor="newsletter">Subscribe to the newsletter</Label>
     </div>
   ),
-}
+};

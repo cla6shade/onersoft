@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Badge } from './Badge'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Badge } from './Badge';
 
 const meta: Meta<typeof Badge> = {
   title: 'Primitives/Badge',
@@ -15,10 +15,10 @@ const meta: Meta<typeof Badge> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Badge>
+export default meta;
+type Story = StoryObj<typeof Badge>;
 
 export const Variants: Story = {
   render: () => (
@@ -30,4 +30,4 @@ export const Variants: Story = {
       <Badge variant="danger">Deprecated</Badge>
     </div>
   ),
-}
+};

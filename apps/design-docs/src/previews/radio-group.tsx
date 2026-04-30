@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { RadioGroup, Label } from '@onersoft/design-system'
+import { RadioGroup, Label } from '@onersoft/design-system';
 
 const options = [
   { value: 'efficient', label: 'Efficient' },
   { value: 'balanced', label: 'Balanced' },
   { value: 'performance', label: 'Performance' },
-]
+];
 
 export function RadioGroupDefault() {
   return (
@@ -22,5 +22,5 @@ export function RadioGroupDefault() {
         </div>
       ))}
     </RadioGroup.Root>
-  )
+  );
 }

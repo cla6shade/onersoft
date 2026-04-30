@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import clsx from 'clsx'
-import styles from './Textarea.module.css'
+import type { ComponentProps } from 'react';
+import clsx from 'clsx';
+import styles from './Textarea.module.css';
 
 export interface TextareaProps extends ComponentProps<'textarea'> {
-  invalid?: boolean
-  resize?: 'none' | 'vertical' | 'horizontal' | 'both'
+  invalid?: boolean;
+  resize?: 'none' | 'vertical' | 'horizontal' | 'both';
 }
 
 export function Textarea({
@@ -24,5 +24,5 @@ export function Textarea({
       style={{ resize, ...style }}
       {...props}
     />
-  )
+  );
 }

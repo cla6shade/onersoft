@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Menubar } from '.'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Menubar } from '.';
 
 describe('Menubar a11y', () => {
   it('has no axe violations with one menu open', async () => {
@@ -23,8 +23,8 @@ describe('Menubar a11y', () => {
           </Menubar.Portal>
         </Menubar.Menu>
       </Menubar.Root>,
-    )
-    const results = await runAxe(document.body)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(document.body);
+    expect(results.violations).toEqual([]);
+  });
+});

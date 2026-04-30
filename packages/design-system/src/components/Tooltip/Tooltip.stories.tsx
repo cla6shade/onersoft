@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from '../Button'
-import { Tooltip } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '../Button';
+import { Tooltip } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Tooltip',
@@ -13,10 +13,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -31,4 +31,4 @@ export const Default: Story = {
       </Tooltip.Root>
     </Tooltip.Provider>
   ),
-}
+};

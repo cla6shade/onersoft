@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import * as RadixToggle from '@radix-ui/react-toggle'
-import clsx from 'clsx'
-import type { ControlSize } from '../../types'
-import styles from './Toggle.module.css'
+import type { ComponentProps } from 'react';
+import * as RadixToggle from '@radix-ui/react-toggle';
+import clsx from 'clsx';
+import type { ControlSize } from '../../types';
+import styles from './Toggle.module.css';
 
 export interface ToggleProps extends ComponentProps<typeof RadixToggle.Root> {
-  size?: ControlSize
+  size?: ControlSize;
 }
 
 export function Toggle({ className, size = 'md', ...props }: ToggleProps) {
@@ -17,5 +17,5 @@ export function Toggle({ className, size = 'md', ...props }: ToggleProps) {
       className={clsx(styles.root, styles[size], className)}
       {...props}
     />
-  )
+  );
 }

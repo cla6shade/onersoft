@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Tabs } from '@onersoft/design-system'
+import { Tabs } from '@onersoft/design-system';
 
 export function TabsDefault() {
   return (
@@ -14,5 +14,5 @@ export function TabsDefault() {
       <Tabs.Content value="activity">Recent activity across the project.</Tabs.Content>
       <Tabs.Content value="settings">Configuration and preferences.</Tabs.Content>
     </Tabs.Root>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Label } from '../Label'
-import { Textarea } from './Textarea'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Label } from '../Label';
+import { Textarea } from './Textarea';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Primitives/Textarea',
@@ -15,20 +15,16 @@ const meta: Meta<typeof Textarea> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Textarea>
+export default meta;
+type Story = StoryObj<typeof Textarea>;
 
 export const Default: Story = {
   render: () => (
     <div className={demo.fieldColumnWide}>
       <Label htmlFor="bio">Bio</Label>
-      <Textarea
-        id="bio"
-        placeholder="Tell us a bit about yourself..."
-        rows={4}
-      />
+      <Textarea id="bio" placeholder="Tell us a bit about yourself..." rows={4} />
     </div>
   ),
-}
+};

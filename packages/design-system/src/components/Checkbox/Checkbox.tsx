@@ -1,14 +1,11 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import * as RadixCheckbox from '@radix-ui/react-checkbox'
-import clsx from 'clsx'
-import styles from './Checkbox.module.css'
+import type { ComponentProps } from 'react';
+import * as RadixCheckbox from '@radix-ui/react-checkbox';
+import clsx from 'clsx';
+import styles from './Checkbox.module.css';
 
-export function Checkbox({
-  className,
-  ...props
-}: ComponentProps<typeof RadixCheckbox.Root>) {
+export function Checkbox({ className, ...props }: ComponentProps<typeof RadixCheckbox.Root>) {
   return (
     <RadixCheckbox.Root data-slot="checkbox" className={clsx(styles.root, className)} {...props}>
       <RadixCheckbox.Indicator data-slot="checkbox-indicator" className={styles.indicator}>
@@ -24,5 +21,5 @@ export function Checkbox({
         </svg>
       </RadixCheckbox.Indicator>
     </RadixCheckbox.Root>
-  )
+  );
 }

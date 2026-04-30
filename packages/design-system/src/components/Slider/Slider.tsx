@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import * as RadixSlider from '@radix-ui/react-slider'
-import clsx from 'clsx'
-import styles from './Slider.module.css'
+import type { ComponentProps } from 'react';
+import * as RadixSlider from '@radix-ui/react-slider';
+import clsx from 'clsx';
+import styles from './Slider.module.css';
 
 export function Slider({
   className,
@@ -11,9 +11,9 @@ export function Slider({
   defaultValue,
   ...props
 }: ComponentProps<typeof RadixSlider.Root>) {
-  const thumbs = value ?? defaultValue ?? [0]
-  const { 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, ...rootProps } = props
-  const thumbLabel = ariaLabel ?? (ariaLabelledBy ? undefined : 'Value')
+  const thumbs = value ?? defaultValue ?? [0];
+  const { 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, ...rootProps } = props;
+  const thumbLabel = ariaLabel ?? (ariaLabelledBy ? undefined : 'Value');
   return (
     <RadixSlider.Root
       data-slot="slider"
@@ -35,5 +35,5 @@ export function Slider({
         />
       ))}
     </RadixSlider.Root>
-  )
+  );
 }

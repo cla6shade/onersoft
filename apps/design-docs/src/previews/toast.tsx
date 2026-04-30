@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Button, Toaster, toast } from '@onersoft/design-system'
+import { Button, Toaster, toast } from '@onersoft/design-system';
 
 export function ToastTriggers() {
   return (
@@ -20,9 +20,9 @@ export function ToastTriggers() {
         Error
       </Button>
     </>
-  )
+  );
 }
 
 export function ToastMount() {
-  return <Toaster />
+  return <Toaster />;
 }

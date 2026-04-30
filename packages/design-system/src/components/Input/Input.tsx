@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import clsx from 'clsx'
-import type { ControlSize } from '../../types'
-import styles from './Input.module.css'
+import type { ComponentProps } from 'react';
+import clsx from 'clsx';
+import type { ControlSize } from '../../types';
+import styles from './Input.module.css';
 
 export interface InputProps extends Omit<ComponentProps<'input'>, 'size'> {
-  size?: ControlSize
-  invalid?: boolean
+  size?: ControlSize;
+  invalid?: boolean;
 }
 
 export function Input({
@@ -25,5 +25,5 @@ export function Input({
       className={clsx(styles.input, styles[size], className)}
       {...props}
     />
-  )
+  );
 }

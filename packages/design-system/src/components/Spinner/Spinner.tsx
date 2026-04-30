@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import clsx from 'clsx'
-import type { ControlSize } from '../../types'
-import styles from './Spinner.module.css'
+import type { ComponentProps } from 'react';
+import clsx from 'clsx';
+import type { ControlSize } from '../../types';
+import styles from './Spinner.module.css';
 
 export interface SpinnerProps extends Omit<ComponentProps<'svg'>, 'children'> {
-  size?: ControlSize
+  size?: ControlSize;
   /** Optional accessible label; defaults to "Loading". Set empty string when decorative. */
-  label?: string
+  label?: string;
 }
 
 export function Spinner({ className, size = 'md', label = 'Loading', ...props }: SpinnerProps) {
@@ -43,5 +43,5 @@ export function Spinner({ className, size = 'md', label = 'Loading', ...props }:
         className={styles.head}
       />
     </svg>
-  )
+  );
 }

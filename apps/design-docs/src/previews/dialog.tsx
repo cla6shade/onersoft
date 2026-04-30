@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Dialog, Button } from '@onersoft/design-system'
+import { Dialog, Button } from '@onersoft/design-system';
 
 export function DialogDefault() {
   return (
@@ -26,5 +26,5 @@ export function DialogDefault() {
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
-  )
+  );
 }

@@ -1,41 +1,73 @@
 @layer onersoft.ds {
-.content {
-  z-index: var(--ds-z-tooltip);
-  padding: var(--ds-space-1) var(--ds-space-3);
-  background-color: var(--ds-color-bg-overlay);
-  color: var(--ds-color-fg-default);
-  font-family: var(--ds-font-sans);
-  font-size: var(--ds-text-xs);
-  font-weight: var(--ds-weight-medium);
-  line-height: var(--ds-leading-snug);
-  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
-  border-radius: var(--ds-radius-sm);
-  box-shadow: var(--ds-shadow-xs);
-  user-select: none;
-  animation-duration: var(--ds-duration-fast);
-  animation-timing-function: var(--ds-ease-enter);
-  will-change: transform, opacity;
-}
+  .content {
+    z-index: var(--ds-z-tooltip);
+    padding: var(--ds-space-1) var(--ds-space-3);
+    background-color: var(--ds-color-bg-overlay);
+    color: var(--ds-color-fg-default);
+    font-family: var(--ds-font-sans);
+    font-size: var(--ds-text-xs);
+    font-weight: var(--ds-weight-medium);
+    line-height: var(--ds-leading-snug);
+    border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+    border-radius: var(--ds-radius-sm);
+    box-shadow: var(--ds-shadow-xs);
+    user-select: none;
+    animation-duration: var(--ds-duration-fast);
+    animation-timing-function: var(--ds-ease-enter);
+    will-change: transform, opacity;
+  }
 
-.content[data-state='delayed-open'][data-side='top'] { animation-name: slideDownFade; }
-.content[data-state='delayed-open'][data-side='bottom'] { animation-name: slideUpFade; }
-.content[data-state='delayed-open'][data-side='left'] { animation-name: slideRightFade; }
-.content[data-state='delayed-open'][data-side='right'] { animation-name: slideLeftFade; }
+  .content[data-state='delayed-open'][data-side='top'] {
+    animation-name: slideDownFade;
+  }
+  .content[data-state='delayed-open'][data-side='bottom'] {
+    animation-name: slideUpFade;
+  }
+  .content[data-state='delayed-open'][data-side='left'] {
+    animation-name: slideRightFade;
+  }
+  .content[data-state='delayed-open'][data-side='right'] {
+    animation-name: slideLeftFade;
+  }
 
-@keyframes slideUpFade {
-  from { opacity: 0; transform: translateY(2px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideDownFade {
-  from { opacity: 0; transform: translateY(-2px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideLeftFade {
-  from { opacity: 0; transform: translateX(2px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideRightFade {
-  from { opacity: 0; transform: translateX(-2px); }
-  to { opacity: 1; transform: translateX(0); }
-}
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideDownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideLeftFade {
+    from {
+      opacity: 0;
+      transform: translateX(2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideRightFade {
+    from {
+      opacity: 0;
+      transform: translateX(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }

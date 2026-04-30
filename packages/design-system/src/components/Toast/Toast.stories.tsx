@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from '../Button'
-import { Toast } from '.'
+import { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '../Button';
+import { Toast } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Toast',
@@ -14,20 +14,20 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
     return (
       <Toast.Provider swipeDirection="right" duration={4000}>
         <Button
           onClick={() => {
-            setOpen(false)
-            setTimeout(() => setOpen(true), 50)
+            setOpen(false);
+            setTimeout(() => setOpen(true), 50);
           }}
         >
           Show toast
@@ -43,6 +43,6 @@ export const Default: Story = {
         </Toast.Root>
         <Toast.Viewport />
       </Toast.Provider>
-    )
+    );
   },
-}
+};

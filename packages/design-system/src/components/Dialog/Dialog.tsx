@@ -1,49 +1,64 @@
-'use client'
+'use client';
 
-import type { ComponentProps } from 'react'
-import * as RadixDialog from '@radix-ui/react-dialog'
-import clsx from 'clsx'
-import styles from './Dialog.module.css'
+import type { ComponentProps } from 'react';
+import * as RadixDialog from '@radix-ui/react-dialog';
+import clsx from 'clsx';
+import styles from './Dialog.module.css';
 
-export const Root = RadixDialog.Root
-export const Portal = RadixDialog.Portal
+export const Root = RadixDialog.Root;
+export const Portal = RadixDialog.Portal;
 
 export function Trigger({ ...props }: ComponentProps<typeof RadixDialog.Trigger>) {
-  return <RadixDialog.Trigger data-slot="dialog-trigger" {...props} />
+  return <RadixDialog.Trigger data-slot="dialog-trigger" {...props} />;
 }
 
 export function Close({ ...props }: ComponentProps<typeof RadixDialog.Close>) {
-  return <RadixDialog.Close data-slot="dialog-close" {...props} />
+  return <RadixDialog.Close data-slot="dialog-close" {...props} />;
 }
 
-export function Overlay({
-  className,
-  ...props
-}: ComponentProps<typeof RadixDialog.Overlay>) {
-  return <RadixDialog.Overlay data-slot="dialog-overlay" className={clsx(styles.overlay, className)} {...props} />
+export function Overlay({ className, ...props }: ComponentProps<typeof RadixDialog.Overlay>) {
+  return (
+    <RadixDialog.Overlay
+      data-slot="dialog-overlay"
+      className={clsx(styles.overlay, className)}
+      {...props}
+    />
+  );
 }
 
-export function Content({
-  className,
-  ...props
-}: ComponentProps<typeof RadixDialog.Content>) {
-  return <RadixDialog.Content data-slot="dialog-content" className={clsx(styles.content, className)} {...props} />
+export function Content({ className, ...props }: ComponentProps<typeof RadixDialog.Content>) {
+  return (
+    <RadixDialog.Content
+      data-slot="dialog-content"
+      className={clsx(styles.content, className)}
+      {...props}
+    />
+  );
 }
 
-export function Title({
-  className,
-  ...props
-}: ComponentProps<typeof RadixDialog.Title>) {
-  return <RadixDialog.Title data-slot="dialog-title" className={clsx(styles.title, className)} {...props} />
+export function Title({ className, ...props }: ComponentProps<typeof RadixDialog.Title>) {
+  return (
+    <RadixDialog.Title
+      data-slot="dialog-title"
+      className={clsx(styles.title, className)}
+      {...props}
+    />
+  );
 }
 
 export function Description({
   className,
   ...props
 }: ComponentProps<typeof RadixDialog.Description>) {
-  return <RadixDialog.Description data-slot="dialog-description" className={clsx(styles.description, className)} {...props} />
+  return (
+    <RadixDialog.Description
+      data-slot="dialog-description"
+      className={clsx(styles.description, className)}
+      {...props}
+    />
+  );
 }
 
 export function Footer({ className, ...props }: ComponentProps<'div'>) {
-  return <div data-slot="dialog-footer" className={clsx(styles.footer, className)} {...props} />
+  return <div data-slot="dialog-footer" className={clsx(styles.footer, className)} {...props} />;
 }

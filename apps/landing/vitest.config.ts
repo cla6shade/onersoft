@@ -1,5 +1,5 @@
-import { defineProject } from 'vitest/config'
-import react from '@vitejs/plugin-react'
+import { defineProject } from 'vitest/config';
+import react from '@vitejs/plugin-react';
 
 export default defineProject({
   plugins: [react()],
@@ -9,4 +9,4 @@ export default defineProject({
     globals: true,
     setupFiles: ['./vitest.setup.ts'],
   },
-})
+});

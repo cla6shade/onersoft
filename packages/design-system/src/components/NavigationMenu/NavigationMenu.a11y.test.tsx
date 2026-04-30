@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { NavigationMenu } from '.'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { NavigationMenu } from '.';
 
 describe('NavigationMenu a11y', () => {
   it('has no axe violations', async () => {
@@ -16,8 +16,8 @@ describe('NavigationMenu a11y', () => {
           </NavigationMenu.Item>
         </NavigationMenu.List>
       </NavigationMenu.Root>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

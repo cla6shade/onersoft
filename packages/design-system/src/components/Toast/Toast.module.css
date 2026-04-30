@@ -1,191 +1,205 @@
 @layer onersoft.ds {
-.viewport {
-  /* Container query host so individual toasts can adapt to viewport
+  .viewport {
+    /* Container query host so individual toasts can adapt to viewport
    * width without bringing media queries into the component layer. */
-  container-type: inline-size;
-  container-name: ds-toast;
-  position: fixed;
-  bottom: var(--ds-space-6);
-  right: var(--ds-space-6);
-  z-index: var(--ds-z-tooltip);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-space-2);
-  width: min(24rem, calc(100vw - var(--ds-space-7)));
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  outline: none;
-}
+    container-type: inline-size;
+    container-name: ds-toast;
+    position: fixed;
+    bottom: var(--ds-space-6);
+    right: var(--ds-space-6);
+    z-index: var(--ds-z-tooltip);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-2);
+    width: min(24rem, calc(100vw - var(--ds-space-7)));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+  }
 
-.root {
-  /* Outer row: content column + controls cluster.
+  .root {
+    /* Outer row: content column + controls cluster.
    * Inner column (.content) uses `gap`, so absent items (no description,
    * no action) don't reserve space — only present items create rhythm.
    * `align-items: center` keeps title-only toasts vertically symmetric
    * (close button is taller than a single line of title); when description
    * is present, the controls cluster floats centered against the taller
    * content block, which reads naturally. */
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-3);
-  padding: var(--ds-space-3) var(--ds-space-4);
-  background-color: var(--ds-color-bg-overlay);
-  color: var(--ds-color-fg-default);
-  font-family: var(--ds-font-sans);
-  font-size: var(--ds-text-sm);
-  line-height: var(--ds-leading-snug);
-  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
-  border-radius: var(--ds-radius-md);
-  box-shadow: var(--ds-shadow-sm);
-}
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-3);
+    padding: var(--ds-space-3) var(--ds-space-4);
+    background-color: var(--ds-color-bg-overlay);
+    color: var(--ds-color-fg-default);
+    font-family: var(--ds-font-sans);
+    font-size: var(--ds-text-sm);
+    line-height: var(--ds-leading-snug);
+    border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+    border-radius: var(--ds-radius-md);
+    box-shadow: var(--ds-shadow-sm);
+  }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--ds-space-1);
-  flex: 1;
-  min-width: 0;
-}
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ds-space-1);
+    flex: 1;
+    min-width: 0;
+  }
 
-/* Right-side cluster — action + close grouped together so the action
+  /* Right-side cluster — action + close grouped together so the action
  * doesn't float in empty horizontal space below the description. */
-.controls {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-1);
-  flex-shrink: 0;
-}
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-1);
+    flex-shrink: 0;
+  }
 
-.root[data-state='open'] {
-  animation: slideIn var(--ds-duration-medium) var(--ds-ease-enter);
-}
+  .root[data-state='open'] {
+    animation: slideIn var(--ds-duration-medium) var(--ds-ease-enter);
+  }
 
-.root[data-state='closed'] {
-  animation: fadeOut var(--ds-duration-medium) var(--ds-ease-exit) forwards;
-}
+  .root[data-state='closed'] {
+    animation: fadeOut var(--ds-duration-medium) var(--ds-ease-exit) forwards;
+  }
 
-.root[data-swipe='move'] {
-  transform: translateX(var(--radix-toast-swipe-move-x));
-}
+  .root[data-swipe='move'] {
+    transform: translateX(var(--radix-toast-swipe-move-x));
+  }
 
-.root[data-swipe='cancel'] {
-  transform: translateX(0);
-  transition: transform var(--ds-duration-fast) var(--ds-ease-standard);
-}
+  .root[data-swipe='cancel'] {
+    transform: translateX(0);
+    transition: transform var(--ds-duration-fast) var(--ds-ease-standard);
+  }
 
-.root[data-swipe='end'] {
-  animation: swipeOut var(--ds-duration-fast) var(--ds-ease-exit);
-}
+  .root[data-swipe='end'] {
+    animation: swipeOut var(--ds-duration-fast) var(--ds-ease-exit);
+  }
 
-.title {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-space-2);
-  margin: 0;
-  font-weight: var(--ds-weight-semibold);
-  font-size: var(--ds-text-sm);
-  line-height: var(--ds-leading-snug);
-}
+  .title {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ds-space-2);
+    margin: 0;
+    font-weight: var(--ds-weight-semibold);
+    font-size: var(--ds-text-sm);
+    line-height: var(--ds-leading-snug);
+  }
 
-.description {
-  margin: 0;
-  color: var(--ds-color-fg-muted);
-  font-size: var(--ds-text-sm);
-  line-height: var(--ds-leading-normal);
-}
+  .description {
+    margin: 0;
+    color: var(--ds-color-fg-muted);
+    font-size: var(--ds-text-sm);
+    line-height: var(--ds-leading-normal);
+  }
 
-/* Intent indicator — sits as a real flex child between leading edge and
+  /* Intent indicator — sits as a real flex child between leading edge and
  * .content. Color is set inline (via JSX) so hosts can replace this node
  * entirely with a custom icon. No CSS attribute-selector magic. */
-.indicator {
-  flex-shrink: 0;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: var(--ds-radius-full);
-  background-color: currentColor;
-}
-
-.close {
-  flex-shrink: 0;
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  background: transparent;
-  color: var(--ds-color-fg-muted);
-  border: 0;
-  border-radius: var(--ds-radius-xs);
-  font: inherit;
-  font-size: var(--ds-text-md);
-  cursor: pointer;
-  transition: color var(--ds-duration-fast) var(--ds-ease-standard);
-}
-
-.close:hover {
-  color: var(--ds-color-fg-default);
-}
-
-.close:focus-visible {
-  outline: none;
-  box-shadow: var(--ds-shadow-focus);
-}
-
-.actionButton {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  height: var(--ds-control-height-sm);
-  padding: 0 var(--ds-space-3);
-  background-color: transparent;
-  color: var(--ds-color-accent);
-  font: inherit;
-  font-size: var(--ds-text-sm);
-  font-weight: var(--ds-weight-medium);
-  line-height: var(--ds-leading-control);
-  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
-  border-radius: var(--ds-radius-sm);
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    background-color var(--ds-duration-fast) var(--ds-ease-standard),
-    color var(--ds-duration-fast) var(--ds-ease-standard),
-    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
-}
-
-.actionButton:hover {
-  background-color: var(--ds-color-accent-soft);
-}
-
-.actionButton:focus-visible {
-  outline: none;
-  box-shadow: var(--ds-shadow-focus);
-}
-
-/* Below ~20rem the toast viewport gets cramped — collapse padding. */
-@container ds-toast (max-width: 20rem) {
-  .root {
-    padding: var(--ds-space-2) var(--ds-space-3);
-    gap: var(--ds-space-1) var(--ds-space-2);
+  .indicator {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--ds-radius-full);
+    background-color: currentColor;
   }
-}
 
-@keyframes slideIn {
-  from { transform: translateX(calc(100% + var(--ds-space-6))); }
-  to { transform: translateX(0); }
-}
+  .close {
+    flex-shrink: 0;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    background: transparent;
+    color: var(--ds-color-fg-muted);
+    border: 0;
+    border-radius: var(--ds-radius-xs);
+    font: inherit;
+    font-size: var(--ds-text-md);
+    cursor: pointer;
+    transition: color var(--ds-duration-fast) var(--ds-ease-standard);
+  }
 
-@keyframes fadeOut {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(var(--ds-space-3)); }
-}
+  .close:hover {
+    color: var(--ds-color-fg-default);
+  }
 
-@keyframes swipeOut {
-  from { transform: translateX(var(--radix-toast-swipe-end-x)); }
-  to { transform: translateX(calc(100% + var(--ds-space-6))); }
-}
+  .close:focus-visible {
+    outline: none;
+    box-shadow: var(--ds-shadow-focus);
+  }
+
+  .actionButton {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    height: var(--ds-control-height-sm);
+    padding: 0 var(--ds-space-3);
+    background-color: transparent;
+    color: var(--ds-color-accent);
+    font: inherit;
+    font-size: var(--ds-text-sm);
+    font-weight: var(--ds-weight-medium);
+    line-height: var(--ds-leading-control);
+    border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+    border-radius: var(--ds-radius-sm);
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background-color var(--ds-duration-fast) var(--ds-ease-standard),
+      color var(--ds-duration-fast) var(--ds-ease-standard),
+      box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
+  }
+
+  .actionButton:hover {
+    background-color: var(--ds-color-accent-soft);
+  }
+
+  .actionButton:focus-visible {
+    outline: none;
+    box-shadow: var(--ds-shadow-focus);
+  }
+
+  /* Below ~20rem the toast viewport gets cramped — collapse padding. */
+  @container ds-toast (max-width: 20rem) {
+    .root {
+      padding: var(--ds-space-2) var(--ds-space-3);
+      gap: var(--ds-space-1) var(--ds-space-2);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(calc(100% + var(--ds-space-6)));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(var(--ds-space-3));
+    }
+  }
+
+  @keyframes swipeOut {
+    from {
+      transform: translateX(var(--radix-toast-swipe-end-x));
+    }
+    to {
+      transform: translateX(calc(100% + var(--ds-space-6)));
+    }
+  }
 }

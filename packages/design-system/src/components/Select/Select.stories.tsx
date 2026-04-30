@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Select } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Select } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Select',
@@ -12,10 +12,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -36,11 +36,13 @@ export const Default: Story = {
             <Select.Group>
               <Select.Label>Experimental</Select.Label>
               <Select.Item value="turbo">Turbo</Select.Item>
-              <Select.Item value="max" disabled>Max (coming soon)</Select.Item>
+              <Select.Item value="max" disabled>
+                Max (coming soon)
+              </Select.Item>
             </Select.Group>
           </Select.Viewport>
         </Select.Content>
       </Select.Portal>
     </Select.Root>
   ),
-}
+};

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useForm } from 'react-hook-form'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useForm } from 'react-hook-form';
 import {
   Form,
   FormField,
@@ -8,10 +8,10 @@ import {
   FormControl,
   FormDescription,
   FormMessage,
-} from './Form'
-import { Input } from '../Input'
-import { Textarea } from '../Textarea'
-import { Select } from '../Select'
+} from './Form';
+import { Input } from '../Input';
+import { Textarea } from '../Textarea';
+import { Select } from '../Select';
 
 const meta: Meta = {
   title: 'Forms/Form',
@@ -24,14 +24,14 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Basic: Story = {
   render: function Basic() {
-    const form = useForm({ defaultValues: { email: '' } })
+    const form = useForm({ defaultValues: { email: '' } });
     return (
       <Form {...form}>
         <FormField
@@ -49,9 +49,9 @@ export const Basic: Story = {
           )}
         />
       </Form>
-    )
+    );
   },
-}
+};
 
 export const WithError: Story = {
   render: function WithError() {
@@ -60,7 +60,7 @@ export const WithError: Story = {
       errors: {
         email: { type: 'manual', message: '유효한 이메일 형식이 아닙니다.' },
       },
-    })
+    });
     return (
       <Form {...form}>
         <FormField
@@ -78,13 +78,13 @@ export const WithError: Story = {
           )}
         />
       </Form>
-    )
+    );
   },
-}
+};
 
 export const Interactive: Story = {
   render: function Interactive() {
-    const form = useForm({ defaultValues: { email: '' }, mode: 'onChange' })
+    const form = useForm({ defaultValues: { email: '' }, mode: 'onChange' });
     return (
       <Form {...form}>
         <FormField
@@ -108,13 +108,13 @@ export const Interactive: Story = {
           )}
         />
       </Form>
-    )
+    );
   },
-}
+};
 
 export const WithTextarea: Story = {
   render: function WithTextarea() {
-    const form = useForm({ defaultValues: { feedback: '' } })
+    const form = useForm({ defaultValues: { feedback: '' } });
     return (
       <Form {...form}>
         <FormField
@@ -132,13 +132,13 @@ export const WithTextarea: Story = {
           )}
         />
       </Form>
-    )
+    );
   },
-}
+};
 
 export const WithSelect: Story = {
   render: function WithSelect() {
-    const form = useForm({ defaultValues: { lang: 'ko' } })
+    const form = useForm({ defaultValues: { lang: 'ko' } });
     return (
       <Form {...form}>
         <FormField
@@ -168,6 +168,6 @@ export const WithSelect: Story = {
           )}
         />
       </Form>
-    )
+    );
   },
-}
+};

@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { ToggleGroup } from '@onersoft/design-system'
+import { ToggleGroup } from '@onersoft/design-system';
 
 export function ToggleGroupSingle() {
   return (
@@ -9,7 +9,7 @@ export function ToggleGroupSingle() {
       <ToggleGroup.Item value="list">List</ToggleGroup.Item>
       <ToggleGroup.Item value="board">Board</ToggleGroup.Item>
     </ToggleGroup.Root>
-  )
+  );
 }
 
 export function ToggleGroupMultiple() {
@@ -19,5 +19,5 @@ export function ToggleGroupMultiple() {
       <ToggleGroup.Item value="italic">Italic</ToggleGroup.Item>
       <ToggleGroup.Item value="underline">Underline</ToggleGroup.Item>
     </ToggleGroup.Root>
-  )
+  );
 }

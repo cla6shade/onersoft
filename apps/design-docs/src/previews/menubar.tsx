@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Menubar } from '@onersoft/design-system'
+import { Menubar } from '@onersoft/design-system';
 
 export function MenubarDefault() {
   return (
@@ -44,5 +44,5 @@ export function MenubarDefault() {
         </Menubar.Portal>
       </Menubar.Menu>
     </Menubar.Root>
-  )
+  );
 }

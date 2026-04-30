@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Progress } from './Progress'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Progress } from './Progress';
 
 const meta: Meta<typeof Progress> = {
   title: 'Primitives/Progress',
@@ -14,10 +14,10 @@ const meta: Meta<typeof Progress> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Progress>
+export default meta;
+type Story = StoryObj<typeof Progress>;
 
 export const Determinate: Story = {
   render: () => (
@@ -25,7 +25,7 @@ export const Determinate: Story = {
       <Progress value={62} />
     </div>
   ),
-}
+};
 
 export const Indeterminate: Story = {
   render: () => (
@@ -33,4 +33,4 @@ export const Indeterminate: Story = {
       <Progress value={null} />
     </div>
   ),
-}
+};

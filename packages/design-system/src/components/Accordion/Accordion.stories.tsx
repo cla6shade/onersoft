@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Accordion } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Accordion } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Accordion',
@@ -13,10 +13,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -34,8 +34,8 @@ export const Default: Story = {
           <Accordion.Trigger>How do I theme it?</Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content>
-          Set <code>data-theme=&quot;light&quot;</code> or <code>data-theme=&quot;dark&quot;</code> on the{' '}
-          <code>&lt;html&gt;</code> element, or wire up <code>next-themes</code> with{' '}
+          Set <code>data-theme=&quot;light&quot;</code> or <code>data-theme=&quot;dark&quot;</code>{' '}
+          on the <code>&lt;html&gt;</code> element, or wire up <code>next-themes</code> with{' '}
           <code>attribute=&quot;data-theme&quot;</code>.
         </Accordion.Content>
       </Accordion.Item>
@@ -44,9 +44,10 @@ export const Default: Story = {
           <Accordion.Trigger>Can I extend a component&apos;s styles?</Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content>
-          Pass a <code>className</code> to any styled part — it&apos;s merged with <code>clsx</code>.
+          Pass a <code>className</code> to any styled part — it&apos;s merged with <code>clsx</code>
+          .
         </Accordion.Content>
       </Accordion.Item>
     </Accordion.Root>
   ),
-}
+};

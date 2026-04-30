@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Accordion } from '@onersoft/design-system'
+import { Accordion } from '@onersoft/design-system';
 
 export function AccordionSingle() {
   return (
@@ -18,11 +18,12 @@ export function AccordionSingle() {
           <Accordion.Trigger>How is it themed?</Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content>
-          Through `--ds-*` CSS custom properties driven by the `data-theme` attribute on the html element (wire up `next-themes` with `attribute="data-theme"`).
+          Through `--ds-*` CSS custom properties driven by the `data-theme` attribute on the html
+          element (wire up `next-themes` with `attribute="data-theme"`).
         </Accordion.Content>
       </Accordion.Item>
     </Accordion.Root>
-  )
+  );
 }
 
 export function AccordionMultiple() {
@@ -41,5 +42,5 @@ export function AccordionMultiple() {
         <Accordion.Content>More content here.</Accordion.Content>
       </Accordion.Item>
     </Accordion.Root>
-  )
+  );
 }

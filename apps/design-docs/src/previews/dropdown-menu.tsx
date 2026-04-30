@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { DropdownMenu, Button } from '@onersoft/design-system'
+import { DropdownMenu, Button } from '@onersoft/design-system';
 
 export function DropdownMenuDefault() {
   return (
@@ -24,5 +24,5 @@ export function DropdownMenuDefault() {
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
-  )
+  );
 }

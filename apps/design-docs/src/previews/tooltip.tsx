@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Tooltip, Button } from '@onersoft/design-system'
+import { Tooltip, Button } from '@onersoft/design-system';
 
 export function TooltipDefault() {
   return (
@@ -14,5 +14,5 @@ export function TooltipDefault() {
         </Tooltip.Portal>
       </Tooltip.Root>
     </Tooltip.Provider>
-  )
+  );
 }

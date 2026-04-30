@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Card, Button } from '@onersoft/design-system'
+import { Card, Button } from '@onersoft/design-system';
 
 export function CardDefault() {
   return (
@@ -14,10 +14,12 @@ export function CardDefault() {
         <strong style={{ fontSize: 'var(--ds-text-3xl)' }}>12,847</strong>
       </Card.Body>
       <Card.Footer>
-        <Button variant="ghost" size="sm">View report</Button>
+        <Button variant="ghost" size="sm">
+          View report
+        </Button>
       </Card.Footer>
     </Card>
-  )
+  );
 }
 
 export function CardInteractive() {
@@ -30,5 +32,5 @@ export function CardInteractive() {
         </Card.Header>
       </a>
     </Card>
-  )
+  );
 }

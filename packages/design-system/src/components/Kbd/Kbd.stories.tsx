@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Kbd } from './Kbd'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Kbd } from './Kbd';
 
 const meta: Meta<typeof Kbd> = {
   title: 'Primitives/Kbd',
@@ -14,10 +14,10 @@ const meta: Meta<typeof Kbd> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Kbd>
+export default meta;
+type Story = StoryObj<typeof Kbd>;
 
 export const Default: Story = {
   render: () => (
@@ -25,4 +25,4 @@ export const Default: Story = {
       Press <Kbd>⌘</Kbd> + <Kbd>K</Kbd> to open the command palette.
     </div>
   ),
-}
+};

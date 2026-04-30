@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Card } from './Card'
-import { Button } from '../Button'
-import { Progress } from '../Progress'
-import { Badge } from '../Badge'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Card } from './Card';
+import { Button } from '../Button';
+import { Progress } from '../Progress';
+import { Badge } from '../Badge';
 
 const meta: Meta<typeof Card> = {
   title: 'Surfaces/Card',
@@ -12,14 +12,14 @@ const meta: Meta<typeof Card> = {
     docs: {
       description: {
         component:
-          'Editorial container surface with `Header → Body → Footer` sections separated by hairline rules. Optional `Card.Eyebrow` sits above the title to give grouped content a section label rather than a generic title-and-supporting-line block. A CSS container is set on the root so internal padding adapts to the card\'s actual width — cards in narrow regions tighten automatically.',
+          "Editorial container surface with `Header → Body → Footer` sections separated by hairline rules. Optional `Card.Eyebrow` sits above the title to give grouped content a section label rather than a generic title-and-supporting-line block. A CSS container is set on the root so internal padding adapts to the card's actual width — cards in narrow regions tighten automatically.",
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Card>
+export default meta;
+type Story = StoryObj<typeof Card>;
 
 export const Basic: Story = {
   render: () => (
@@ -57,7 +57,7 @@ export const Basic: Story = {
       </Card>
     </div>
   ),
-}
+};
 
 export const WithProgress: Story = {
   render: () => (
@@ -105,7 +105,7 @@ export const WithProgress: Story = {
       </Card>
     </div>
   ),
-}
+};
 
 export const Interactive: Story = {
   parameters: {
@@ -129,7 +129,7 @@ export const Interactive: Story = {
       </Card>
     </div>
   ),
-}
+};
 
 export const APIKey: Story = {
   render: () => (
@@ -171,7 +171,7 @@ export const APIKey: Story = {
       </Card>
     </div>
   ),
-}
+};
 
 export const Composition: Story = {
   parameters: {
@@ -223,7 +223,7 @@ export const Composition: Story = {
       </Card>
     </div>
   ),
-}
+};
 
 export const ContainerQueryDemo: Story = {
   parameters: {
@@ -254,4 +254,4 @@ export const ContainerQueryDemo: Story = {
       </Card>
     </div>
   ),
-}
+};

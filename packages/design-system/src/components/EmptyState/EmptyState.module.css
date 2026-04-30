@@ -1,46 +1,46 @@
 @layer onersoft.ds {
-.root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--ds-space-3);
-  padding: var(--ds-space-8) var(--ds-space-5);
-  font-family: var(--ds-font-sans);
-  color: var(--ds-color-fg-default);
-}
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--ds-space-3);
+    padding: var(--ds-space-8) var(--ds-space-5);
+    font-family: var(--ds-font-sans);
+    color: var(--ds-color-fg-default);
+  }
 
-.media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: var(--ds-space-2);
-  color: var(--ds-color-fg-muted);
-  background-color: var(--ds-color-bg-sunken);
-  border-radius: var(--ds-radius-full);
-}
+  .media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: var(--ds-space-2);
+    color: var(--ds-color-fg-muted);
+    background-color: var(--ds-color-bg-sunken);
+    border-radius: var(--ds-radius-full);
+  }
 
-.title {
-  margin: 0;
-  font-size: var(--ds-text-md);
-  font-weight: var(--ds-weight-semibold);
-  letter-spacing: var(--ds-tracking-tight);
-  line-height: var(--ds-leading-snug);
-}
+  .title {
+    margin: 0;
+    font-size: var(--ds-text-md);
+    font-weight: var(--ds-weight-semibold);
+    letter-spacing: var(--ds-tracking-tight);
+    line-height: var(--ds-leading-snug);
+  }
 
-.description {
-  margin: 0;
-  max-width: 28rem;
-  color: var(--ds-color-fg-muted);
-  font-size: var(--ds-text-sm);
-  line-height: var(--ds-leading-normal);
-}
+  .description {
+    margin: 0;
+    max-width: 28rem;
+    color: var(--ds-color-fg-muted);
+    font-size: var(--ds-text-sm);
+    line-height: var(--ds-leading-normal);
+  }
 
-.actions {
-  display: flex;
-  gap: var(--ds-space-2);
-  margin-top: var(--ds-space-2);
-}
+  .actions {
+    display: flex;
+    gap: var(--ds-space-2);
+    margin-top: var(--ds-space-2);
+  }
 }
