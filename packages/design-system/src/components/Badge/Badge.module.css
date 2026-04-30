@@ -33,18 +33,33 @@
   color: var(--ds-color-accent);
 }
 
+/* Status badges: 14% soft tint of the status color over the page, with a
+ * brighter (dark) / darker (light) shade of the same hue for the label so
+ * it clears WCAG AA on the soft fill. The L offsets are per-status because
+ * each hue has a different perceptual ceiling — warning (yellow) needs a
+ * larger lift than danger (red) in dark mode. light-dark() picks the right
+ * branch from color-scheme, which the theme tokens already set. */
 .success {
   background-color: color-mix(in oklab, var(--ds-color-success) 14%, transparent);
-  color: var(--ds-color-success-text);
+  color: light-dark(
+    oklch(from var(--ds-color-success) 0.42 c h),
+    oklch(from var(--ds-color-success) 0.78 c h)
+  );
 }
 
 .warning {
   background-color: color-mix(in oklab, var(--ds-color-warning) 14%, transparent);
-  color: var(--ds-color-warning-text);
+  color: light-dark(
+    oklch(from var(--ds-color-warning) 0.46 c h),
+    oklch(from var(--ds-color-warning) 0.86 c h)
+  );
 }
 
 .danger {
   background-color: color-mix(in oklab, var(--ds-color-danger) 14%, transparent);
-  color: var(--ds-color-danger-text);
+  color: light-dark(
+    oklch(from var(--ds-color-danger) 0.45 c h),
+    oklch(from var(--ds-color-danger) 0.74 c h)
+  );
 }
 }
