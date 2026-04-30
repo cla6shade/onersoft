@@ -13,10 +13,6 @@ export function Trigger({ ...props }: ComponentPropsWithoutRef<typeof RadixToolt
   return <RadixTooltip.Trigger data-slot="tooltip-trigger" {...props} />
 }
 
-export function Arrow({ ...props }: ComponentPropsWithoutRef<typeof RadixTooltip.Arrow>) {
-  return <RadixTooltip.Arrow data-slot="tooltip-arrow" {...props} />
-}
-
 export function Content({
   className,
   sideOffset = 6,

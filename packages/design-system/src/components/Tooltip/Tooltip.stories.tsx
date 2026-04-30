@@ -26,10 +26,7 @@ export const Default: Story = {
           <Button variant="secondary">Hover me</Button>
         </Tooltip.Trigger>
         <Tooltip.Portal>
-          <Tooltip.Content side="top">
-            Keyboard shortcut: ⌘K
-            <Tooltip.Arrow />
-          </Tooltip.Content>
+          <Tooltip.Content side="top">Keyboard shortcut: ⌘K</Tooltip.Content>
         </Tooltip.Portal>
       </Tooltip.Root>
     </Tooltip.Provider>
