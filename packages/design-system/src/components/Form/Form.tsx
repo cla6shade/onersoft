@@ -5,6 +5,7 @@ import {
   forwardRef,
   useContext,
   useId,
+  useMemo,
   type ComponentPropsWithoutRef,
   type HTMLAttributes,
   type ReactNode,
@@ -43,10 +44,11 @@ const FormFieldContext = createContext<FormFieldContextValue | null>(null)
 function FormField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->(props: ControllerProps<TFieldValues, TName>) {
+>({ name, ...props }: ControllerProps<TFieldValues, TName>) {
+  const value = useMemo(() => ({ name }), [name])
   return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
-      <Controller {...props} />
+    <FormFieldContext.Provider value={value}>
+      <Controller name={name} {...props} />
     </FormFieldContext.Provider>
   )
 }
@@ -61,8 +63,9 @@ export type FormItemProps = HTMLAttributes<HTMLDivElement>
 
 const FormItem = forwardRef<HTMLDivElement, FormItemProps>(({ className, ...props }, ref) => {
   const id = useId()
+  const value = useMemo(() => ({ id }), [id])
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider value={value}>
       <div
         ref={ref}
         data-slot="form-item"
