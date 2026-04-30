@@ -1,6 +1,6 @@
 'use client'
 
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentProps } from 'react'
 import * as RadixMenubar from '@radix-ui/react-menubar'
 import clsx from 'clsx'
 import styles from './Menubar.module.css'
@@ -13,7 +13,7 @@ export function Root({
   className,
   loop = true,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixMenubar.Root>) {
+}: ComponentProps<typeof RadixMenubar.Root>) {
   /* `loop` lets keyboard arrow navigation wrap from the last menu back to
    * the first. Defaulting it on matches native menubar behavior. */
   return (
@@ -21,14 +21,14 @@ export function Root({
   )
 }
 
-export function Menu(props: ComponentPropsWithoutRef<typeof RadixMenubar.Menu>) {
+export function Menu(props: ComponentProps<typeof RadixMenubar.Menu>) {
   return <RadixMenubar.Menu {...props} />
 }
 
 export function Trigger({
   className,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixMenubar.Trigger>) {
+}: ComponentProps<typeof RadixMenubar.Trigger>) {
   return <RadixMenubar.Trigger data-slot="menubar-trigger" className={clsx(styles.trigger, className)} {...props} />
 }
 
@@ -37,7 +37,7 @@ export function Content({
   align = 'start',
   sideOffset = 4,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixMenubar.Content>) {
+}: ComponentProps<typeof RadixMenubar.Content>) {
   return (
     <RadixMenubar.Content
       data-slot="menubar-content"
@@ -52,27 +52,27 @@ export function Content({
 export function Item({
   className,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixMenubar.Item>) {
+}: ComponentProps<typeof RadixMenubar.Item>) {
   return <RadixMenubar.Item data-slot="menubar-item" className={clsx(styles.item, className)} {...props} />
 }
 
 export function Label({
   className,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixMenubar.Label>) {
+}: ComponentProps<typeof RadixMenubar.Label>) {
   return <RadixMenubar.Label data-slot="menubar-label" className={clsx(styles.label, className)} {...props} />
 }
 
 export function Separator({
   className,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixMenubar.Separator>) {
+}: ComponentProps<typeof RadixMenubar.Separator>) {
   return <RadixMenubar.Separator data-slot="menubar-separator" className={clsx(styles.separator, className)} {...props} />
 }
 
 export function Shortcut({
   className,
   ...props
-}: ComponentPropsWithoutRef<'span'>) {
+}: ComponentProps<'span'>) {
   return <span data-slot="menubar-shortcut" className={clsx(styles.shortcut, className)} {...props} />
 }

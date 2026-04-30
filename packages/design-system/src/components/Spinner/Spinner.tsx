@@ -1,20 +1,19 @@
 'use client'
 
-import { forwardRef, type SVGAttributes } from 'react'
+import type { ComponentProps } from 'react'
 import clsx from 'clsx'
 import type { ControlSize } from '../../types'
 import styles from './Spinner.module.css'
 
-export interface SpinnerProps extends Omit<SVGAttributes<SVGSVGElement>, 'children'> {
+export interface SpinnerProps extends Omit<ComponentProps<'svg'>, 'children'> {
   size?: ControlSize
   /** Optional accessible label; defaults to "Loading". Set empty string when decorative. */
   label?: string
 }
 
-export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(
-  ({ className, size = 'md', label = 'Loading', ...props }, ref) => (
+export function Spinner({ className, size = 'md', label = 'Loading', ...props }: SpinnerProps) {
+  return (
     <svg
-      ref={ref}
       data-slot="spinner"
       viewBox="0 0 24 24"
       role={label ? 'status' : 'presentation'}
@@ -44,7 +43,5 @@ export const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(
         className={styles.head}
       />
     </svg>
-  ),
-)
-
-Spinner.displayName = 'Spinner'
+  )
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentProps } from 'react'
 import * as RadixAccordion from '@radix-ui/react-accordion'
 import clsx from 'clsx'
 import styles from './Accordion.module.css'
@@ -8,12 +8,12 @@ import styles from './Accordion.module.css'
 export function Root({
   className,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixAccordion.Root>) {
+}: ComponentProps<typeof RadixAccordion.Root>) {
   return (
     <RadixAccordion.Root
       data-slot="accordion-root"
       className={clsx(styles.root, className)}
-      {...(props as ComponentPropsWithoutRef<typeof RadixAccordion.Root>)}
+      {...props}
     />
   )
 }
@@ -21,14 +21,14 @@ export function Root({
 export function Item({
   className,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixAccordion.Item>) {
+}: ComponentProps<typeof RadixAccordion.Item>) {
   return <RadixAccordion.Item data-slot="accordion-item" className={clsx(styles.item, className)} {...props} />
 }
 
 export function Header({
   className,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixAccordion.Header>) {
+}: ComponentProps<typeof RadixAccordion.Header>) {
   return <RadixAccordion.Header data-slot="accordion-header" className={clsx(styles.header, className)} {...props} />
 }
 
@@ -36,7 +36,7 @@ export function Trigger({
   className,
   children,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixAccordion.Trigger>) {
+}: ComponentProps<typeof RadixAccordion.Trigger>) {
   return (
     <RadixAccordion.Trigger data-slot="accordion-trigger" className={clsx(styles.trigger, className)} {...props}>
       <span className={styles.label}>{children}</span>
@@ -58,7 +58,7 @@ export function Content({
   className,
   children,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixAccordion.Content>) {
+}: ComponentProps<typeof RadixAccordion.Content>) {
   return (
     <RadixAccordion.Content data-slot="accordion-content" className={clsx(styles.content, className)} {...props}>
       <div className={styles.contentInner}>{children}</div>

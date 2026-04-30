@@ -1,10 +1,10 @@
 'use client'
 
-import { forwardRef, type HTMLAttributes } from 'react'
+import type { ComponentProps } from 'react'
 import clsx from 'clsx'
 import styles from './Skeleton.module.css'
 
-export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
+export interface SkeletonProps extends ComponentProps<'div'> {
   /** `text` collapses to a line-height-aware bar; `circle` enforces 1:1 aspect. */
   variant?: 'block' | 'text' | 'circle'
   /** CSS width — number coerces to px. */
@@ -13,10 +13,16 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   height?: number | string
 }
 
-export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
-  ({ className, variant = 'block', width, height, style, ...props }, ref) => (
+export function Skeleton({
+  className,
+  variant = 'block',
+  width,
+  height,
+  style,
+  ...props
+}: SkeletonProps) {
+  return (
     <div
-      ref={ref}
       data-slot="skeleton"
       role="status"
       aria-busy="true"
@@ -30,7 +36,5 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
       style={{ width, height, ...style }}
       {...props}
     />
-  ),
-)
-
-Skeleton.displayName = 'Skeleton'
+  )
+}

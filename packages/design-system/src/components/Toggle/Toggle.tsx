@@ -1,24 +1,21 @@
 'use client'
 
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import type { ComponentProps } from 'react'
 import * as RadixToggle from '@radix-ui/react-toggle'
 import clsx from 'clsx'
 import type { ControlSize } from '../../types'
 import styles from './Toggle.module.css'
 
-export interface ToggleProps extends ComponentPropsWithoutRef<typeof RadixToggle.Root> {
+export interface ToggleProps extends ComponentProps<typeof RadixToggle.Root> {
   size?: ControlSize
 }
 
-export const Toggle = forwardRef<HTMLButtonElement, ToggleProps>(
-  ({ className, size = 'md', ...props }, ref) => (
+export function Toggle({ className, size = 'md', ...props }: ToggleProps) {
+  return (
     <RadixToggle.Root
-      ref={ref}
       data-slot="toggle"
       className={clsx(styles.root, styles[size], className)}
       {...props}
     />
-  ),
-)
-
-Toggle.displayName = 'Toggle'
+  )
+}

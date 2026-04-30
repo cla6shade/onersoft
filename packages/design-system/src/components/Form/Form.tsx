@@ -2,12 +2,10 @@
 
 import {
   createContext,
-  forwardRef,
   useContext,
   useId,
   useMemo,
-  type ComponentPropsWithoutRef,
-  type HTMLAttributes,
+  type ComponentProps,
   type ReactNode,
 } from 'react'
 import * as Slot from '@radix-ui/react-slot'
@@ -59,23 +57,21 @@ interface FormItemContextValue {
 
 const FormItemContext = createContext<FormItemContextValue | null>(null)
 
-export type FormItemProps = HTMLAttributes<HTMLDivElement>
+export type FormItemProps = ComponentProps<'div'>
 
-const FormItem = forwardRef<HTMLDivElement, FormItemProps>(({ className, ...props }, ref) => {
+function FormItem({ className, ...props }: FormItemProps) {
   const id = useId()
   const value = useMemo(() => ({ id }), [id])
   return (
     <FormItemContext.Provider value={value}>
       <div
-        ref={ref}
         data-slot="form-item"
         className={clsx(styles.root, className)}
         {...props}
       />
     </FormItemContext.Provider>
   )
-})
-FormItem.displayName = 'FormItem'
+}
 
 function useFormField() {
   const fieldContext = useContext(FormFieldContext)
@@ -98,34 +94,29 @@ function useFormField() {
   }
 }
 
-export type FormLabelProps = ComponentPropsWithoutRef<typeof RadixLabel.Root>
+export type FormLabelProps = ComponentProps<typeof RadixLabel.Root>
 
-const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
-  ({ className, htmlFor, ...props }, ref) => {
-    const { error, formItemId } = useFormField()
-    return (
-      <RadixLabel.Root
-        ref={ref}
-        data-slot="form-label"
-        data-invalid={error ? true : undefined}
-        className={clsx(error && styles.labelInvalid, className)}
-        htmlFor={htmlFor ?? formItemId}
-        {...props}
-      />
-    )
-  },
-)
-FormLabel.displayName = 'FormLabel'
+function FormLabel({ className, htmlFor, ...props }: FormLabelProps) {
+  const { error, formItemId } = useFormField()
+  return (
+    <RadixLabel.Root
+      data-slot="form-label"
+      data-invalid={error ? true : undefined}
+      className={clsx(error && styles.labelInvalid, className)}
+      htmlFor={htmlFor ?? formItemId}
+      {...props}
+    />
+  )
+}
 
-export interface FormControlProps extends HTMLAttributes<HTMLElement> {
+export interface FormControlProps extends ComponentProps<typeof Slot.Root> {
   children: ReactNode
 }
 
-const FormControl = forwardRef<HTMLElement, FormControlProps>(({ ...props }, ref) => {
+function FormControl({ ...props }: FormControlProps) {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
   return (
     <Slot.Root
-      ref={ref}
       data-slot="form-control"
       id={formItemId}
       aria-describedby={error ? `${formDescriptionId} ${formMessageId}` : formDescriptionId}
@@ -134,28 +125,23 @@ const FormControl = forwardRef<HTMLElement, FormControlProps>(({ ...props }, ref
       {...props}
     />
   )
-})
-FormControl.displayName = 'FormControl'
+}
 
-export type FormDescriptionProps = HTMLAttributes<HTMLParagraphElement>
+export type FormDescriptionProps = ComponentProps<'p'>
 
-const FormDescription = forwardRef<HTMLParagraphElement, FormDescriptionProps>(
-  ({ className, ...props }, ref) => {
-    const { formDescriptionId } = useFormField()
-    return (
-      <p
-        ref={ref}
-        data-slot="form-description"
-        id={formDescriptionId}
-        className={clsx(styles.description, className)}
-        {...props}
-      />
-    )
-  },
-)
-FormDescription.displayName = 'FormDescription'
+function FormDescription({ className, ...props }: FormDescriptionProps) {
+  const { formDescriptionId } = useFormField()
+  return (
+    <p
+      data-slot="form-description"
+      id={formDescriptionId}
+      className={clsx(styles.description, className)}
+      {...props}
+    />
+  )
+}
 
-export interface FormMessageProps extends HTMLAttributes<HTMLParagraphElement> {
+export interface FormMessageProps extends ComponentProps<'p'> {
   children?: ReactNode
 }
 
@@ -163,26 +149,22 @@ export interface FormMessageProps extends HTMLAttributes<HTMLParagraphElement> {
  * children (so consumers can show static fallback text in the same slot).
  * Returns null when there's nothing to show — this keeps
  * `aria-describedby` from referencing an unrendered id. */
-const FormMessage = forwardRef<HTMLParagraphElement, FormMessageProps>(
-  ({ className, children, ...props }, ref) => {
-    const { error, formMessageId } = useFormField()
-    const body = error ? String(error.message ?? '') : children
-    if (!body) return null
-    return (
-      <p
-        ref={ref}
-        data-slot="form-message"
-        id={formMessageId}
-        role={error ? 'alert' : undefined}
-        className={clsx(error && styles.error, className)}
-        {...props}
-      >
-        {body}
-      </p>
-    )
-  },
-)
-FormMessage.displayName = 'FormMessage'
+function FormMessage({ className, children, ...props }: FormMessageProps) {
+  const { error, formMessageId } = useFormField()
+  const body = error ? String(error.message ?? '') : children
+  if (!body) return null
+  return (
+    <p
+      data-slot="form-message"
+      id={formMessageId}
+      role={error ? 'alert' : undefined}
+      className={clsx(error && styles.error, className)}
+      {...props}
+    >
+      {body}
+    </p>
+  )
+}
 
 export {
   Form,

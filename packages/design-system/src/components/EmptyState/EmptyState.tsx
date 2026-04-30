@@ -1,43 +1,30 @@
 'use client'
 
-import { forwardRef, type HTMLAttributes } from 'react'
+import type { ComponentProps } from 'react'
 import clsx from 'clsx'
 import styles from './EmptyState.module.css'
 
-const Root = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} data-slot="empty-state" className={clsx(styles.root, className)} {...props} />
-  ),
-)
-Root.displayName = 'EmptyState'
+function Root({ className, ...props }: ComponentProps<'div'>) {
+  return <div data-slot="empty-state" className={clsx(styles.root, className)} {...props} />
+}
 
-const Media = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} data-slot="empty-state-media" aria-hidden className={clsx(styles.media, className)} {...props} />
-  ),
-)
-Media.displayName = 'EmptyState.Media'
+function Media({ className, ...props }: ComponentProps<'div'>) {
+  return (
+    <div data-slot="empty-state-media" aria-hidden className={clsx(styles.media, className)} {...props} />
+  )
+}
 
-const Title = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => (
-    <h3 ref={ref} data-slot="empty-state-title" className={clsx(styles.title, className)} {...props} />
-  ),
-)
-Title.displayName = 'EmptyState.Title'
+function Title({ className, ...props }: ComponentProps<'h3'>) {
+  return <h3 data-slot="empty-state-title" className={clsx(styles.title, className)} {...props} />
+}
 
-const Description = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
-  ({ className, ...props }, ref) => (
-    <p ref={ref} data-slot="empty-state-description" className={clsx(styles.description, className)} {...props} />
-  ),
-)
-Description.displayName = 'EmptyState.Description'
+function Description({ className, ...props }: ComponentProps<'p'>) {
+  return <p data-slot="empty-state-description" className={clsx(styles.description, className)} {...props} />
+}
 
-const Actions = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} data-slot="empty-state-actions" className={clsx(styles.actions, className)} {...props} />
-  ),
-)
-Actions.displayName = 'EmptyState.Actions'
+function Actions({ className, ...props }: ComponentProps<'div'>) {
+  return <div data-slot="empty-state-actions" className={clsx(styles.actions, className)} {...props} />
+}
 
 export const EmptyState = Object.assign(Root, {
   Media,
