@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { RadioGroup as RadixRadioGroup } from 'radix-ui'
+import * as RadixRadioGroup from '@radix-ui/react-radio-group'
 import clsx from 'clsx'
 import styles from './RadioGroup.module.css'
 

@@ -1,5 +1,7 @@
+'use client'
+
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Progress as RadixProgress } from 'radix-ui'
+import * as RadixProgress from '@radix-ui/react-progress'
 import clsx from 'clsx'
 import styles from './Progress.module.css'
 

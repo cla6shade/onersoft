@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef, type InputHTMLAttributes } from 'react'
 import clsx from 'clsx'
 import type { ControlSize } from '../../types'

@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Tabs as RadixTabs } from 'radix-ui'
+import * as RadixTabs from '@radix-ui/react-tabs'
 import clsx from 'clsx'
 import styles from './Tabs.module.css'
 

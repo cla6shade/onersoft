@@ -1,6 +1,6 @@
 import './styles/tokens.css'
 
-export { Button, type ButtonProps } from './components/Button'
+export { Button, type ButtonProps, type ButtonVariant } from './components/Button'
 export { Dialog } from './components/Dialog'
 export { Tooltip } from './components/Tooltip'
 export { Popover } from './components/Popover'

@@ -1,5 +1,7 @@
+'use client'
+
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Switch as RadixSwitch } from 'radix-ui'
+import * as RadixSwitch from '@radix-ui/react-switch'
 import clsx from 'clsx'
 import styles from './Switch.module.css'
 

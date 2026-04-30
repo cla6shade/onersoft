@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { NavigationMenu as RadixNavMenu } from 'radix-ui'
+import * as RadixNavMenu from '@radix-ui/react-navigation-menu'
 import clsx from 'clsx'
 import styles from './NavigationMenu.module.css'
 

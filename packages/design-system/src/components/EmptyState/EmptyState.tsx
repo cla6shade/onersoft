@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef, type HTMLAttributes } from 'react'
 import clsx from 'clsx'
 import styles from './EmptyState.module.css'

@@ -1,5 +1,7 @@
+'use client'
+
 import { forwardRef, type HTMLAttributes } from 'react'
-import { Slot } from 'radix-ui'
+import * as Slot from '@radix-ui/react-slot'
 import clsx from 'clsx'
 import type { CompactSize } from '../../types'
 import styles from './Badge.module.css'

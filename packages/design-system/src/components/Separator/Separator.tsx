@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Separator as RadixSeparator } from 'radix-ui'
+import * as RadixSeparator from '@radix-ui/react-separator'
 import clsx from 'clsx'
 import styles from './Separator.module.css'
 

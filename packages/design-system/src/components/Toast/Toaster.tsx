@@ -1,5 +1,7 @@
+'use client'
+
 import { useSyncExternalStore } from 'react'
-import { Toast as RadixToast } from 'radix-ui'
+import * as RadixToast from '@radix-ui/react-toast'
 import clsx from 'clsx'
 import styles from './Toast.module.css'
 import {

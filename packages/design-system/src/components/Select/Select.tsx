@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Select as RadixSelect } from 'radix-ui'
+import * as RadixSelect from '@radix-ui/react-select'
 import clsx from 'clsx'
 import styles from './Select.module.css'
 

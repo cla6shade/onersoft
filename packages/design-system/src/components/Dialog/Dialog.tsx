@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef, HTMLAttributes } from 'react'
-import { Dialog as RadixDialog } from 'radix-ui'
+import * as RadixDialog from '@radix-ui/react-dialog'
 import clsx from 'clsx'
 import styles from './Dialog.module.css'
 

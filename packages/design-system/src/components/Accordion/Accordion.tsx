@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Accordion as RadixAccordion } from 'radix-ui'
+import * as RadixAccordion from '@radix-ui/react-accordion'
 import clsx from 'clsx'
 import styles from './Accordion.module.css'
 

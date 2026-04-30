@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
-@import '@onersoft/design-system/styles.css';
+@import '@onersoft/design-system/tokens.css';
 
 html {
   scrollbar-gutter: stable;

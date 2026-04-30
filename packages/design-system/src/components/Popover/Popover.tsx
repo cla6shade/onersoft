@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Popover as RadixPopover } from 'radix-ui'
+import * as RadixPopover from '@radix-ui/react-popover'
 import clsx from 'clsx'
 import styles from './Popover.module.css'
 

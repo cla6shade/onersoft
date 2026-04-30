@@ -1,5 +1,7 @@
+'use client'
+
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Checkbox as RadixCheckbox } from 'radix-ui'
+import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import clsx from 'clsx'
 import styles from './Checkbox.module.css'
 

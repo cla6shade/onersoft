@@ -1,5 +1,7 @@
+'use client'
+
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Toggle as RadixToggle } from 'radix-ui'
+import * as RadixToggle from '@radix-ui/react-toggle'
 import clsx from 'clsx'
 import type { ControlSize } from '../../types'
 import styles from './Toggle.module.css'

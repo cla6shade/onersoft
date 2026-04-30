@@ -9,5 +9,3 @@ export type ControlSize = 'sm' | 'md' | 'lg'
 /** Compact two-step sizing for Badge / Kbd inline elements. */
 export type CompactSize = 'sm' | 'md'
 
-/** Button visual variants. */
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost'

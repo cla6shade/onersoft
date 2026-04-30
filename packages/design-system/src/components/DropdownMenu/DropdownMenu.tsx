@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { DropdownMenu as RadixDropdownMenu } from 'radix-ui'
+import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu'
 import clsx from 'clsx'
 import styles from './DropdownMenu.module.css'
 

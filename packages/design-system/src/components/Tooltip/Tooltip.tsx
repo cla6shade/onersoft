@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Tooltip as RadixTooltip } from 'radix-ui'
+import * as RadixTooltip from '@radix-ui/react-tooltip'
 import clsx from 'clsx'
 import styles from './Tooltip.module.css'
 

@@ -1,8 +1,12 @@
+'use client'
+
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Slot } from 'radix-ui'
+import * as Slot from '@radix-ui/react-slot'
 import clsx from 'clsx'
-import type { ButtonVariant, ControlSize } from '../../types'
+import type { ControlSize } from '../../types'
 import styles from './Button.module.css'
+
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost'
 
 export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   variant?: ButtonVariant

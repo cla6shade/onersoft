@@ -1,3 +1,5 @@
+'use client'
+
 import {
   createContext,
   forwardRef,
@@ -7,7 +9,8 @@ import {
   type HTMLAttributes,
   type ReactNode,
 } from 'react'
-import { Slot, Label as RadixLabel } from 'radix-ui'
+import * as Slot from '@radix-ui/react-slot'
+import * as RadixLabel from '@radix-ui/react-label'
 import {
   Controller,
   FormProvider,

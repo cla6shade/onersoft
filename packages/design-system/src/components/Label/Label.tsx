@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Label as RadixLabel } from 'radix-ui'
+import * as RadixLabel from '@radix-ui/react-label'
 import clsx from 'clsx'
 import styles from './Label.module.css'
 

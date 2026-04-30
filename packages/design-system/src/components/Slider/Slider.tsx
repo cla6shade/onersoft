@@ -1,5 +1,7 @@
+'use client'
+
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Slider as RadixSlider } from 'radix-ui'
+import * as RadixSlider from '@radix-ui/react-slider'
 import clsx from 'clsx'
 import styles from './Slider.module.css'
 

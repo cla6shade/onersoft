@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Menubar as RadixMenubar } from 'radix-ui'
+import * as RadixMenubar from '@radix-ui/react-menubar'
 import clsx from 'clsx'
 import styles from './Menubar.module.css'
 

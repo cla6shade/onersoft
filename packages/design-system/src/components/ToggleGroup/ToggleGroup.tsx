@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { ToggleGroup as RadixToggleGroup } from 'radix-ui'
+import * as RadixToggleGroup from '@radix-ui/react-toggle-group'
 import clsx from 'clsx'
 import styles from './ToggleGroup.module.css'
 

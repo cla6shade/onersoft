@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef } from 'react'
-import { Avatar as RadixAvatar } from 'radix-ui'
+import * as RadixAvatar from '@radix-ui/react-avatar'
 import clsx from 'clsx'
 import styles from './Avatar.module.css'
 

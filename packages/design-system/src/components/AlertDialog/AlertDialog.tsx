@@ -1,5 +1,7 @@
+'use client'
+
 import type { ComponentPropsWithoutRef, HTMLAttributes } from 'react'
-import { AlertDialog as RadixAlertDialog } from 'radix-ui'
+import * as RadixAlertDialog from '@radix-ui/react-alert-dialog'
 import clsx from 'clsx'
 import styles from './AlertDialog.module.css'
 
