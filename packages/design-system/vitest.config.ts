@@ -31,7 +31,11 @@ export default defineConfig({
             headless: true,
             // @ts-ignore — provider typing
             provider: playwright({}),
-            instances: [{ browser: 'chromium' }],
+            instances: [
+              { browser: 'chromium' },
+              { browser: 'firefox' },
+              { browser: 'webkit' },
+            ],
           },
           css: {
             modules: { classNameStrategy: 'non-scoped' },

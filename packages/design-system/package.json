@@ -275,5 +275,13 @@
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
-  }
+  },
+  "browserslist": [
+    "Chrome >= 111",
+    "Edge >= 111",
+    "Firefox >= 113",
+    "Safari >= 16.2",
+    "iOS >= 16.2",
+    "Opera >= 97"
+  ]
 }
