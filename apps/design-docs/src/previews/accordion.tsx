@@ -18,7 +18,7 @@ export function AccordionSingle() {
           <Accordion.Trigger>How is it themed?</Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content>
-          Through `--ds-*` CSS custom properties resolved by `ThemeProvider`.
+          Through `--ds-*` CSS custom properties driven by the `data-theme` attribute on the html element (wire up `next-themes` with `attribute="data-theme"`).
         </Accordion.Content>
       </Accordion.Item>
     </Accordion.Root>

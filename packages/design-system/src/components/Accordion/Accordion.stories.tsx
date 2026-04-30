@@ -35,7 +35,8 @@ export const Default: Story = {
         </Accordion.Header>
         <Accordion.Content>
           Set <code>data-theme=&quot;light&quot;</code> or <code>data-theme=&quot;dark&quot;</code> on the{' '}
-          <code>&lt;html&gt;</code> element, or use the bundled ThemeProvider.
+          <code>&lt;html&gt;</code> element, or wire up <code>next-themes</code> with{' '}
+          <code>attribute=&quot;data-theme&quot;</code>.
         </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="c">
