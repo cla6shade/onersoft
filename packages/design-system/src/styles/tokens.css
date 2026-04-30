@@ -88,6 +88,7 @@
   /* Borders */
   --ds-border-width-thin: 1px;
   --ds-border-width-medium: 1.5px;
+  --ds-border-width-thick: 2px;
 
   /* Container max-widths. `prose` enforces the 65–75ch body line-length
    * principle from the design brief; the rest are page/region defaults. */
