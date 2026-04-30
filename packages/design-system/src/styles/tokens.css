@@ -195,13 +195,6 @@
   --ds-color-warning: oklch(0.78 0.15 75);
   --ds-color-info: oklch(0.70 0.10 var(--ds-brand-hue));
 
-  /* Kbd uses a dedicated fg/bg pair tuned to clear WCAG AA at small
-   * sizes. The general surface tokens (bg-sunken / fg-default) target a
-   * different visual goal — gentle recession — and don't always satisfy
-   * 4.5:1 once mixed against the brand hue. */
-  --ds-color-kbd-bg: oklch(0.28 0.015 var(--ds-brand-hue));
-  --ds-color-kbd-fg: oklch(0.97 0.006 var(--ds-brand-hue));
-
   /* Per-theme ring colors. Offset color matches the surface so the ring
    * reads as floating above the control rather than touching it. */
   --ds-ring-color: var(--ds-color-accent);
@@ -277,9 +270,6 @@
   --ds-color-success: oklch(0.58 0.14 150);
   --ds-color-warning: oklch(0.72 0.15 70);
   --ds-color-info: oklch(0.55 0.12 var(--ds-brand-hue));
-
-  --ds-color-kbd-bg: oklch(0.92 0.008 var(--ds-brand-hue));
-  --ds-color-kbd-fg: oklch(0.17 0.015 var(--ds-brand-hue));
 
   --ds-ring-color: var(--ds-color-accent);
   --ds-ring-offset-color: var(--ds-color-bg-surface);
