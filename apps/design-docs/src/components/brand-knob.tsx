@@ -1,7 +1,6 @@
 'use client';
 
 import { useId, useState, useSyncExternalStore } from 'react';
-import { Slider } from '@onersoft/design-system';
 import {
   BRAND_DEFAULTS,
   CHROMA_MAX,
@@ -12,6 +11,7 @@ import {
   setBrand,
   subscribeBrand,
 } from './brand-store';
+import { KnobAxis } from './knob-axis';
 
 export function BrandKnob() {
   const { hue, chroma } = useSyncExternalStore(
@@ -25,14 +25,10 @@ export function BrandKnob() {
 
   const swatch = `oklch(0.68 ${chroma} ${hue})`;
   const swatchMuted = `oklch(0.5 ${chroma} ${hue})`;
-  const isDefault =
-    hue === BRAND_DEFAULTS.hue && chroma === BRAND_DEFAULTS.chroma;
+  const isDefault = hue === BRAND_DEFAULTS.hue && chroma === BRAND_DEFAULTS.chroma;
 
   return (
-    <div
-      className="fixed bottom-4 right-4 z-[var(--ds-z-overlay)] font-sans"
-      data-brand-knob
-    >
+    <div className="fixed bottom-4 right-4 z-[var(--ds-z-overlay)] font-sans" data-brand-knob>
       {open ? (
         <div
           className="w-[260px] rounded-[var(--ds-radius-lg)] border bg-[color:var(--ds-color-bg-elevated)] p-4 shadow-[var(--ds-shadow-md)]"
@@ -78,65 +74,26 @@ export function BrandKnob() {
           </div>
 
           <div className="space-y-3.5">
-            <div>
-              <div className="flex items-baseline justify-between mb-1.5">
-                <label
-                  htmlFor={hueId}
-                  className="text-[11px] uppercase tracking-[0.1em]"
-                  style={{ color: 'var(--ds-color-fg-muted)' }}
-                >
-                  Hue
-                </label>
-                <span
-                  className="text-[11px] tabular-nums"
-                  style={{
-                    fontFamily: 'var(--ds-font-mono)',
-                    color: 'var(--ds-color-fg-default)',
-                  }}
-                >
-                  {hue}°
-                </span>
-              </div>
-              <Slider
-                id={hueId}
-                min={0}
-                max={HUE_MAX}
-                step={1}
-                value={[hue]}
-                onValueChange={([v]) => setBrand({ hue: v })}
-                aria-label="Brand hue"
-              />
-            </div>
-
-            <div>
-              <div className="flex items-baseline justify-between mb-1.5">
-                <label
-                  htmlFor={chromaId}
-                  className="text-[11px] uppercase tracking-[0.1em]"
-                  style={{ color: 'var(--ds-color-fg-muted)' }}
-                >
-                  Chroma
-                </label>
-                <span
-                  className="text-[11px] tabular-nums"
-                  style={{
-                    fontFamily: 'var(--ds-font-mono)',
-                    color: 'var(--ds-color-fg-default)',
-                  }}
-                >
-                  {chroma.toFixed(3)}
-                </span>
-              </div>
-              <Slider
-                id={chromaId}
-                min={0}
-                max={CHROMA_MAX}
-                step={0.005}
-                value={[chroma]}
-                onValueChange={([v]) => setBrand({ chroma: v })}
-                aria-label="Brand chroma"
-              />
-            </div>
+            <KnobAxis
+              id={hueId}
+              label="Hue"
+              display={`${hue}°`}
+              value={hue}
+              min={0}
+              max={HUE_MAX}
+              step={1}
+              onChange={(v) => setBrand({ hue: v })}
+            />
+            <KnobAxis
+              id={chromaId}
+              label="Chroma"
+              display={chroma.toFixed(3)}
+              value={chroma}
+              min={0}
+              max={CHROMA_MAX}
+              step={0.005}
+              onChange={(v) => setBrand({ chroma: v })}
+            />
 
             <div className="flex items-center justify-between pt-1">
               <button

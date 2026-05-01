@@ -16,8 +16,7 @@ const BASELINE_COLOR_ACCENT =
   'color-mix(in oklab, var(--ds-color-accent) 35%, var(--ds-color-border-strong))';
 const DELTA_COLOR = 'var(--ds-color-fg-muted)';
 const ACCENT_COLOR = 'var(--ds-color-accent)';
-const ROW_HIGHLIGHT_BG =
-  'color-mix(in oklab, var(--ds-color-accent) 6%, transparent)';
+const ROW_HIGHLIGHT_BG = 'color-mix(in oklab, var(--ds-color-accent) 6%, transparent)';
 
 export function BarChart() {
   return (
@@ -60,16 +59,10 @@ function ScenarioRow({ scenario }: { scenario: Scenario }) {
   return (
     <div>
       <div className="mb-3">
-        <div
-          className="text-[0.95rem] font-medium"
-          style={{ color: 'var(--ds-color-fg-default)' }}
-        >
+        <div className="text-[0.95rem] font-medium" style={{ color: 'var(--ds-color-fg-default)' }}>
           {scenario.label}
         </div>
-        <div
-          className="text-[11px] mt-0.5"
-          style={{ color: 'var(--ds-color-fg-subtle)' }}
-        >
+        <div className="text-[11px] mt-0.5" style={{ color: 'var(--ds-color-fg-subtle)' }}>
           {scenario.sub}
         </div>
       </div>
@@ -107,21 +100,24 @@ interface BarProps {
   tone: 'baseline' | 'lib' | 'onersoft';
 }
 
+const LABEL_COLOR_BY_TONE: Record<BarProps['tone'], string> = {
+  onersoft: ACCENT_COLOR,
+  baseline: 'var(--ds-color-fg-subtle)',
+  lib: 'var(--ds-color-fg-muted)',
+};
+
+const NUMBER_COLOR_BY_TONE: Record<BarProps['tone'], string> = {
+  onersoft: ACCENT_COLOR,
+  baseline: 'var(--ds-color-fg-subtle)',
+  lib: 'var(--ds-color-fg-default)',
+};
+
 function Bar({ lib, basePct, deltaPct, delta, total, tone }: BarProps) {
   const isAccent = tone === 'onersoft';
   const isBaseline = tone === 'baseline';
 
-  const labelColor = isAccent
-    ? ACCENT_COLOR
-    : isBaseline
-      ? 'var(--ds-color-fg-subtle)'
-      : 'var(--ds-color-fg-muted)';
-
-  const numberColor = isAccent
-    ? ACCENT_COLOR
-    : isBaseline
-      ? 'var(--ds-color-fg-subtle)'
-      : 'var(--ds-color-fg-default)';
+  const labelColor = LABEL_COLOR_BY_TONE[tone];
+  const numberColor = NUMBER_COLOR_BY_TONE[tone];
 
   return (
     <div
@@ -184,9 +180,7 @@ function Bar({ lib, basePct, deltaPct, delta, total, tone }: BarProps) {
           <span
             className="text-[10px] mt-0.5"
             style={{
-              color: isAccent
-                ? ACCENT_COLOR
-                : 'var(--ds-color-fg-subtle)',
+              color: isAccent ? ACCENT_COLOR : 'var(--ds-color-fg-subtle)',
             }}
           >
             +{delta.toFixed(1)}
@@ -196,4 +190,3 @@ function Bar({ lib, basePct, deltaPct, delta, total, tone }: BarProps) {
     </div>
   );
 }
-

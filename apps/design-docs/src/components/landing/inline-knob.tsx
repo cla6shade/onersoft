@@ -1,7 +1,6 @@
 'use client';
 
 import { useId, useSyncExternalStore } from 'react';
-import { Slider } from '@onersoft/design-system';
 import {
   BRAND_DEFAULTS,
   CHROMA_MAX,
@@ -12,6 +11,14 @@ import {
   setBrand,
   subscribeBrand,
 } from '../brand-store';
+import { KnobAxis } from '../knob-axis';
+
+const INLINE_LABEL_CLASS = 'text-[11px] uppercase tracking-[0.14em]';
+const INLINE_VALUE_CLASS = 'text-[1rem] tabular-nums';
+const INLINE_LABEL_STYLE = {
+  fontFamily: 'var(--ds-font-mono)',
+  color: 'var(--ds-color-fg-muted)',
+};
 
 export function InlineKnob() {
   const { hue, chroma } = useSyncExternalStore(
@@ -22,8 +29,7 @@ export function InlineKnob() {
   const hueId = useId();
   const chromaId = useId();
 
-  const isDefault =
-    hue === BRAND_DEFAULTS.hue && chroma === BRAND_DEFAULTS.chroma;
+  const isDefault = hue === BRAND_DEFAULTS.hue && chroma === BRAND_DEFAULTS.chroma;
 
   return (
     <div
@@ -37,22 +43,30 @@ export function InlineKnob() {
         <KnobAxis
           id={hueId}
           label="Hue"
-          value={hue}
           display={`${hue}°`}
+          value={hue}
           min={0}
           max={HUE_MAX}
           step={1}
           onChange={(v) => setBrand({ hue: v })}
+          gap="roomy"
+          labelClassName={INLINE_LABEL_CLASS}
+          valueClassName={INLINE_VALUE_CLASS}
+          labelStyle={INLINE_LABEL_STYLE}
         />
         <KnobAxis
           id={chromaId}
           label="Chroma"
-          value={chroma}
           display={chroma.toFixed(3)}
+          value={chroma}
           min={0}
           max={CHROMA_MAX}
           step={0.005}
           onChange={(v) => setBrand({ chroma: v })}
+          gap="roomy"
+          labelClassName={INLINE_LABEL_CLASS}
+          valueClassName={INLINE_VALUE_CLASS}
+          labelStyle={INLINE_LABEL_STYLE}
         />
       </div>
       <div
@@ -81,63 +95,6 @@ export function InlineKnob() {
           oklch(L {chroma.toFixed(3)} {hue})
         </span>
       </div>
-    </div>
-  );
-}
-
-interface KnobAxisProps {
-  id: string;
-  label: string;
-  value: number;
-  display: string;
-  min: number;
-  max: number;
-  step: number;
-  onChange: (v: number) => void;
-}
-
-function KnobAxis({
-  id,
-  label,
-  value,
-  display,
-  min,
-  max,
-  step,
-  onChange,
-}: KnobAxisProps) {
-  return (
-    <div>
-      <div className="flex items-baseline justify-between mb-3">
-        <label
-          htmlFor={id}
-          className="text-[11px] uppercase tracking-[0.14em]"
-          style={{
-            fontFamily: 'var(--ds-font-mono)',
-            color: 'var(--ds-color-fg-muted)',
-          }}
-        >
-          {label}
-        </label>
-        <span
-          className="text-[1rem] tabular-nums"
-          style={{
-            fontFamily: 'var(--ds-font-mono)',
-            color: 'var(--ds-color-fg-default)',
-          }}
-        >
-          {display}
-        </span>
-      </div>
-      <Slider
-        id={id}
-        min={min}
-        max={max}
-        step={step}
-        value={[value]}
-        onValueChange={([v]) => onChange(v)}
-        aria-label={`Brand ${label.toLowerCase()}`}
-      />
     </div>
   );
 }
