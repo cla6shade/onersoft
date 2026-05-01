@@ -8,7 +8,7 @@
     height: 1.5rem;
     padding: 0;
     border: 0;
-    background-color: var(--ds-color-bg-sunken);
+    background-color: var(--ds-color-bg-subtle);
     border-radius: var(--ds-radius-full);
     box-shadow: var(--switch-border);
     cursor: pointer;
