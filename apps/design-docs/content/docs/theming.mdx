@@ -1,54 +1,77 @@
 ---
 title: Theming
-description: Light, dark, and system preference. All driven by `data-theme` and `--ds-*` tokens.
+description: Light and dark modes are driven by a `data-theme` attribute and `--ds-*` tokens. The host app owns the toggle.
 ---
 
 ## How it works
 
-`ThemeProvider` writes a `data-theme="light" | "dark"` attribute on `<html>`. The token layer (imported via `@onersoft/design-system/styles.css`) defines `--ds-color-*` per theme, and components consume those tokens through CSS Modules.
+The token CSS defines colors against `:root` (dark, the default) and `:root[data-theme='light']`. Components consume those tokens through CSS Modules. Switching themes is just flipping the `data-theme` attribute on `<html>` — there is no JS runtime in the design system itself.
 
-There is no JS runtime cost beyond the initial resolve — the rest is CSS.
+The package does **not** export a `ThemeProvider`, `useTheme`, or any FOUC-prevention script. The host app is responsible for:
 
-## Default theme
+1. Writing `data-theme="light"` or `data-theme="dark"` on `<html>` before first paint.
+2. Toggling that attribute when the user changes themes.
+3. (Optionally) persisting the preference and reacting to `prefers-color-scheme`.
+
+This keeps the package free of framework assumptions — any theming library, or none at all, works.
+
+## Recommended setup with `next-themes`
+
+For Next.js apps, `next-themes` handles the `data-theme` attribute, system-preference resolution, and the FOUC-prevention script for you.
 
 ```tsx
-<ThemeProvider defaultTheme="system">{children}</ThemeProvider>
+// app/layout.tsx
+import { ThemeProvider } from 'next-themes';
+import '@onersoft/design-system/tokens.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="data-theme" defaultTheme="system">
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
 ```
 
-| Value      | Behavior                                                                |
-| ---------- | ----------------------------------------------------------------------- |
-| `'system'` | Match `prefers-color-scheme`. Re-resolves on OS-level changes.         |
-| `'light'`  | Force light.                                                            |
-| `'dark'`   | Force dark.                                                             |
+The key piece is `attribute="data-theme"` — without it, `next-themes` writes `class="dark"` instead, which the design system's tokens don't read.
 
-## Reading or changing the theme
+To toggle themes:
 
 ```tsx
-import { useTheme } from '@onersoft/design-system'
+import { useTheme } from 'next-themes';
 
 function ThemeToggle() {
-  const { theme, resolvedTheme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme();
   return (
     <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
       {resolvedTheme} mode
     </button>
-  )
+  );
 }
 ```
 
-`theme` is the user's preference (`'system' | 'light' | 'dark'`), `resolvedTheme` is the actually applied value (`'light' | 'dark'`).
+## Manual setup
 
-## Avoiding hydration flash
+Without a theming library, ensure `<html>` has `data-theme` set before the first paint. A small inline script in `<head>` does this:
 
-`ThemeProvider` auto-injects a tiny script at the top of `<body>` that resolves the theme before paint. If you need to render the script manually (e.g. inside Next.js `<head>`), use `getThemeInitScript()`.
-
-```tsx
-import { getThemeInitScript } from '@onersoft/design-system'
-
-<head>
-  <script dangerouslySetInnerHTML={{ __html: getThemeInitScript() }} />
-</head>
+```html
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored ?? (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (_) {}
+  })();
+</script>
 ```
+
+Without this, the page paints in the default (dark) theme until your React tree hydrates.
 
 ## Overriding tokens
 
@@ -61,4 +84,37 @@ Tokens live under `--ds-*` and can be overridden anywhere downstream — globall
 }
 ```
 
-The full token list ships in `dist/style.css` of the package.
+For brand colors, override the **raw** color tokens instead of the `--ds-color-*` aliases — the aliases are derived from raw tokens via `var()` or `color-mix()`, so everything downstream stays consistent.
+
+| Raw token | What it drives |
+| --- | --- |
+| `--color-brand-primary` | accent and all hover/pressed/disabled/soft variants, border-accent, ring-color |
+| `--color-brand-primary-muted` | accent-muted |
+| `--color-surface-base` | every surface tier (surface/elevated/overlay/sunken), surface-hover/pressed, elevated-hover, ring-offset, fg-subtle |
+| `--color-text-base` | body text (`fg-default`), border-default/strong |
+| `--color-text-muted` | secondary text (`fg-muted`, `fg-subtle`) |
+| `--color-accent-fg` | text and icons rendered on top of accent surfaces |
+
+```css
+:root {
+  --color-brand-primary: oklch(0.74 0.08 200);
+  --color-surface-base: oklch(0.18 0.012 220);
+}
+
+:root[data-theme='light'] {
+  --color-brand-primary: oklch(0.52 0.09 200);
+  --color-surface-base: oklch(0.97 0.006 220);
+}
+```
+
+`--color-text-base` and `--color-accent-fg` are inverse-luminance pairs (text on surface vs text on accent). They are not derived from each other, so override them together when retheming if you change the surface or accent lightness.
+
+## Cascade layer
+
+All design system CSS (tokens and components) lives inside `@layer onersoft.ds`. Any unlayered CSS in the host app automatically wins, with no specificity battles. To order the design system relative to your own layered CSS, declare the order in your entry stylesheet:
+
+```css
+@layer onersoft.ds, app;
+```
+
+Rules in your `app` layer now win over the design system, while still losing to anything truly unlayered.
