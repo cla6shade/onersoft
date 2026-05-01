@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Install the package, wire up the provider, and ship.
+description: Install the package, import the tokens, and start using components.
 ---
 
 ## Install
@@ -9,46 +9,54 @@ description: Install the package, wire up the provider, and ship.
 pnpm add @onersoft/design-system
 ```
 
-The package depends on `react@^19` and `react-dom@^19` as peers.
+Peer dependencies:
 
-## Provider
+| Peer              | Version | Notes                                |
+| ----------------- | ------- | ------------------------------------ |
+| `react`           | `^19`   | required                             |
+| `react-dom`       | `^19`   | required                             |
+| `react-hook-form` | `^7.74` | optional — only if you use `Form`    |
 
-Wrap your app in `ThemeProvider` so the `data-theme` attribute and `--ds-*` tokens are applied.
+## Import a component
+
+Every component is a named export. Importing from the package barrel automatically pulls in the token CSS — no separate stylesheet import is required.
 
 ```tsx
-import { ThemeProvider } from '@onersoft/design-system'
-import '@onersoft/design-system/styles.css'
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider defaultTheme="system">{children}</ThemeProvider>
-      </body>
-    </html>
-  )
-}
+import { Button, Dialog, toast } from '@onersoft/design-system';
 ```
 
-`@onersoft/design-system/styles.css` contains the token layer plus the per-component CSS Modules. Import it once at the app root.
+The package declares `sideEffects: ["**/*.css"]`, so bundlers (Next.js, Vite, Webpack) preserve those CSS imports while still tree-shaking unused JS.
+
+## Token CSS only
+
+If you import individual component entry points (`@onersoft/design-system/Button`) instead of the barrel, or if you need tokens in a CSS-only context (SSR layout, MDX, an external page), import the token layer directly:
+
+```ts
+import '@onersoft/design-system/tokens.css';
+```
+
+This file contains all `--ds-*` tokens plus the `:root[data-theme='light']` branch.
+
+## Theming
+
+The design system does **not** ship a `ThemeProvider`. Tokens branch on a `data-theme` attribute that the host app is responsible for writing on `<html>`. See [Theming](/docs/theming) for the recommended setup with `next-themes`.
 
 ## Toaster (optional)
 
 To use the imperative `toast()` API, mount `<Toaster />` once near the root.
 
 ```tsx
-import { Toaster } from '@onersoft/design-system'
+import { Toaster, toast } from '@onersoft/design-system';
 
-<ThemeProvider>
-  {children}
-  <Toaster />
-</ThemeProvider>
-```
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+      <Toaster />
+    </>
+  );
+}
 
-## Importing a component
-
-Every component is a named export.
-
-```tsx
-import { Button, Dialog, Toast } from '@onersoft/design-system'
+// anywhere in the tree
+toast.success('Saved');
 ```

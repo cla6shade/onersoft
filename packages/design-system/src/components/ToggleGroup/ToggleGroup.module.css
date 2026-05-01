@@ -1,7 +1,7 @@
 @layer onersoft.ds {
   .root {
     display: inline-flex;
-    background-color: var(--ds-color-bg-sunken);
+    background-color: var(--ds-color-bg-subtle);
     border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
     border-radius: var(--ds-radius-md);
     padding: var(--ds-space-1);
