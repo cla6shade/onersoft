@@ -19,11 +19,15 @@ export function Tiny() {
             className="mt-5 leading-[1.7] max-w-[44ch]"
             style={{ color: 'var(--ds-color-fg-muted)' }}
           >
-            CSS-in-JS, Tailwind, recipe registries — every abstraction exists to
-            produce one thing: a <code style={{ fontFamily: 'var(--ds-font-mono)', color: 'var(--ds-color-fg-default)' }}>.css</code> file. Onersoft produces it at build
-            time and keeps the abstraction thin — a component API and a token
-            system, nothing more. The weight goes; the developer experience
-            stays.
+            CSS-in-JS, Tailwind, recipe registries — every abstraction exists to produce one thing:
+            a{' '}
+            <code
+              style={{ fontFamily: 'var(--ds-font-mono)', color: 'var(--ds-color-fg-default)' }}
+            >
+              .css
+            </code>{' '}
+            file. Onersoft produces it at build time and keeps the abstraction thin — a component
+            API and a token system, nothing more. The weight goes; the developer experience stays.
           </p>
 
           <div
@@ -43,10 +47,9 @@ export function Tiny() {
               className="text-[0.85rem] leading-[1.65] max-w-[44ch]"
               style={{ color: 'var(--ds-color-fg-subtle)' }}
             >
-              ~161 kB (gz) — the cost of Next.js 16 + React 19 alone, before any
-              UI library. Every site pays this floor before a single component
-              renders. The portion of each bar past it is what a library
-              actually adds on top.
+              ~161 kB (gz) — the cost of Next.js 16 + React 19 alone, before any UI library. Every
+              site pays this floor before a single component renders. The portion of each bar past
+              it is what a library actually adds on top.
             </p>
           </div>
         </div>

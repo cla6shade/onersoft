@@ -15,14 +15,10 @@ export function Oklch() {
       >
         Edit once, overrides all.
       </h2>
-      <p
-        className="mt-5 leading-[1.7] max-w-[64ch]"
-        style={{ color: 'var(--ds-color-fg-muted)' }}
-      >
-        OKLCH is a color space designed for human perception, not for screens.
-        Surface, text, border, and accent are all derived from the same
-        hue·chroma coordinates, so changing two values reshapes the entire
-        palette in light and dark, in lockstep. Try it yourself.
+      <p className="mt-5 leading-[1.7] max-w-[64ch]" style={{ color: 'var(--ds-color-fg-muted)' }}>
+        OKLCH is a color space designed for human perception, not for screens. Surface, text,
+        border, and accent are all derived from the same hue·chroma coordinates, so changing two
+        values reshapes the entire palette in light and dark, in lockstep. Try it yourself.
       </p>
 
       {/* Live demo: knob + tokens (left) + components (right) */}
@@ -70,13 +66,10 @@ export function Oklch() {
 
       {/* Retheme code */}
       <div className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16 items-start">
-        <p
-          className="leading-[1.7] text-[0.95rem]"
-          style={{ color: 'var(--ds-color-fg-muted)' }}
-        >
-          In your host app, override the same two variables. No mapping table,
-          no light/dark palette to define separately. Perceptual uniformity
-          keeps lightness contrast intact at any hue you pick.
+        <p className="leading-[1.7] text-[0.95rem]" style={{ color: 'var(--ds-color-fg-muted)' }}>
+          In your host app, override the same two variables. No mapping table, no light/dark palette
+          to define separately. Perceptual uniformity keeps lightness contrast intact at any hue you
+          pick.
         </p>
         <pre
           className="rounded-[var(--ds-radius-lg)] p-6 sm:p-7 overflow-x-auto text-[0.85rem] leading-[1.7] border"

@@ -29,28 +29,18 @@ export function InstallCommand() {
         fontFamily: 'var(--ds-font-mono)',
       }}
     >
-      <span
-        aria-hidden
-        className="text-[0.85rem]"
-        style={{ color: 'var(--ds-color-fg-subtle)' }}
-      >
+      <span aria-hidden className="text-[0.85rem]" style={{ color: 'var(--ds-color-fg-subtle)' }}>
         $
       </span>
-      <span
-        className="text-[0.9rem]"
-        style={{ color: 'var(--ds-color-fg-default)' }}
-      >
+      <span className="text-[0.9rem]" style={{ color: 'var(--ds-color-fg-default)' }}>
         {COMMAND}
       </span>
       <span
         aria-live="polite"
         className="ml-1 text-[10px] uppercase tracking-[0.14em]"
         style={{
-          color: copied
-            ? 'var(--ds-color-accent)'
-            : 'var(--ds-color-fg-subtle)',
-          transition:
-            'color var(--ds-duration-fast) var(--ds-ease-standard)',
+          color: copied ? 'var(--ds-color-accent)' : 'var(--ds-color-fg-subtle)',
+          transition: 'color var(--ds-duration-fast) var(--ds-ease-standard)',
         }}
       >
         {copied ? 'Copied' : 'Copy'}

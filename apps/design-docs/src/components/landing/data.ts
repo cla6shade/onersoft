@@ -68,4 +68,3 @@ export const SWATCHES: Swatch[] = [
   { name: 'accent', token: '--ds-color-accent' },
   { name: 'accent-soft', token: '--ds-color-accent-soft' },
 ];
-

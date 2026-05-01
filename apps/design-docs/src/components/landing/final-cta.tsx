@@ -20,10 +20,7 @@ export function FinalCta() {
           →
         </span>
       </Link>
-      <p
-        className="mt-6 max-w-[46ch] leading-[1.65]"
-        style={{ color: 'var(--ds-color-fg-muted)' }}
-      >
+      <p className="mt-6 max-w-[46ch] leading-[1.65]" style={{ color: 'var(--ds-color-fg-muted)' }}>
         Components, props, and tokens — documented with live previews.
       </p>
     </Section>

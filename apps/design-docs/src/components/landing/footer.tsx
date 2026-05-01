@@ -10,10 +10,7 @@ export function Footer() {
           color: 'var(--ds-color-fg-subtle)',
         }}
       >
-        <span
-          className="uppercase tracking-[0.14em]"
-          style={{ color: 'var(--ds-color-fg-muted)' }}
-        >
+        <span className="uppercase tracking-[0.14em]" style={{ color: 'var(--ds-color-fg-muted)' }}>
           onersoft
         </span>
         <a

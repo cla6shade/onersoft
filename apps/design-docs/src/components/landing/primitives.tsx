@@ -7,19 +7,12 @@ interface SectionProps {
   children: ReactNode;
 }
 
-export function Section({
-  id,
-  className = '',
-  topBorder = true,
-  children,
-}: SectionProps) {
+export function Section({ id, className = '', topBorder = true, children }: SectionProps) {
   return (
     <section
       id={id}
       className={`px-6 sm:px-10 ${topBorder ? 'border-t' : ''} ${className}`}
-      style={
-        topBorder ? { borderColor: 'var(--ds-color-border-default)' } : undefined
-      }
+      style={topBorder ? { borderColor: 'var(--ds-color-border-default)' } : undefined}
     >
       <div className="mx-auto w-full max-w-[var(--container)]">{children}</div>
     </section>

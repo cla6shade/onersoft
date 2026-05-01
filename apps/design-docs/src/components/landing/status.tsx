@@ -44,10 +44,9 @@ export function Status() {
             className="mt-5 leading-[1.7] max-w-[44ch]"
             style={{ color: 'var(--ds-color-fg-muted)' }}
           >
-            Every release runs the component suite through axe-core under
-            Playwright on Chromium, Firefox, and WebKit. Integration-tested
-            with Next.js and Vite + React — the two stacks we ship with. The
-            version is{' '}
+            Every release runs the component suite through axe-core under Playwright on Chromium,
+            Firefox, and WebKit. Integration-tested with Next.js and Vite + React — the two stacks
+            we ship with. The version is{' '}
             <code
               style={{
                 fontFamily: 'var(--ds-font-mono)',
@@ -56,8 +55,7 @@ export function Status() {
             >
               0.0.1
             </code>{' '}
-            for a reason: expect APIs and component names to change before
-            we cut a stable release.
+            for a reason: expect APIs and component names to change before we cut a stable release.
           </p>
         </div>
 
@@ -102,9 +100,7 @@ function SpecRowItem({ row, divider }: { row: SpecRow; divider: boolean }) {
         <span
           className="text-[0.95rem]"
           style={{
-            color: isWarn
-              ? 'var(--ds-color-accent)'
-              : 'var(--ds-color-fg-default)',
+            color: isWarn ? 'var(--ds-color-accent)' : 'var(--ds-color-fg-default)',
             fontWeight: isWarn ? 500 : 400,
             fontFamily: isWarn ? 'var(--ds-font-mono)' : undefined,
           }}
