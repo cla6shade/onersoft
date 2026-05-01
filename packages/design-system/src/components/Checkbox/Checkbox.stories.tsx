@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Label } from '../Label'
-import { Checkbox } from './Checkbox'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Label } from '../Label';
+import { Checkbox } from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Primitives/Checkbox',
@@ -15,10 +15,10 @@ const meta: Meta<typeof Checkbox> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Checkbox>
+export default meta;
+type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   render: () => (
@@ -27,7 +27,7 @@ export const Default: Story = {
       <Label htmlFor="terms">Accept terms of service</Label>
     </div>
   ),
-}
+};
 
 export const Indeterminate: Story = {
   render: () => (
@@ -36,4 +36,4 @@ export const Indeterminate: Story = {
       <Label htmlFor="indeterminate">Partially selected</Label>
     </div>
   ),
-}
+};

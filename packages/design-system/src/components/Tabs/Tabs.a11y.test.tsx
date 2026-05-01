@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Tabs } from '.'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Tabs } from '.';
 
 describe('Tabs a11y', () => {
   it('has no axe violations', async () => {
@@ -16,8 +16,8 @@ describe('Tabs a11y', () => {
         <Tabs.Content value="activity">Activity content.</Tabs.Content>
         <Tabs.Content value="settings">Settings content.</Tabs.Content>
       </Tabs.Root>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

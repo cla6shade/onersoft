@@ -1,7 +1,7 @@
-import '@testing-library/jest-dom/vitest'
-import { afterEach, vi } from 'vitest'
-import { cleanup } from '@testing-library/react'
-import './src/styles/tokens.css'
+import '@testing-library/jest-dom/vitest';
+import { afterEach, vi } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import './src/styles/tokens.css';
 
 if (!window.matchMedia) {
   Object.defineProperty(window, 'matchMedia', {
@@ -16,7 +16,7 @@ if (!window.matchMedia) {
       removeEventListener: vi.fn(),
       dispatchEvent: vi.fn(),
     }),
-  })
+  });
 }
 
 if (!window.ResizeObserver) {
@@ -26,9 +26,9 @@ if (!window.ResizeObserver) {
     unobserve() {}
 
     disconnect() {}
-  }
+  };
 }
 
 afterEach(() => {
-  cleanup()
-})
+  cleanup();
+});

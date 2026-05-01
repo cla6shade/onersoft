@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Separator } from './Separator'
-import styles from './Separator.stories.module.css'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Separator } from './Separator';
+import styles from './Separator.stories.module.css';
 
 const meta: Meta<typeof Separator> = {
   title: 'Primitives/Separator',
@@ -14,10 +14,10 @@ const meta: Meta<typeof Separator> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Separator>
+export default meta;
+type Story = StoryObj<typeof Separator>;
 
 export const Horizontal: Story = {
   render: () => (
@@ -34,4 +34,4 @@ export const Horizontal: Story = {
       </div>
     </div>
   ),
-}
+};

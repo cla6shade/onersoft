@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { AlertDialog } from '.'
-import { Button } from '../Button'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { AlertDialog } from '.';
+import { Button } from '../Button';
 
 describe('AlertDialog a11y', () => {
   it('has no axe violations when open', async () => {
@@ -15,9 +15,7 @@ describe('AlertDialog a11y', () => {
           <AlertDialog.Overlay />
           <AlertDialog.Content>
             <AlertDialog.Title>Delete?</AlertDialog.Title>
-            <AlertDialog.Description>
-              This action cannot be undone.
-            </AlertDialog.Description>
+            <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
             <AlertDialog.Footer>
               <AlertDialog.Cancel asChild>
                 <Button variant="ghost">Cancel</Button>
@@ -29,8 +27,8 @@ describe('AlertDialog a11y', () => {
           </AlertDialog.Content>
         </AlertDialog.Portal>
       </AlertDialog.Root>,
-    )
-    const results = await runAxe(document.body)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(document.body);
+    expect(results.violations).toEqual([]);
+  });
+});

@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Input } from './Input'
-import { Label } from '../Label'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Input } from './Input';
+import { Label } from '../Label';
 
 describe('Input a11y', () => {
   it('has no axe violations when paired with a Label', async () => {
@@ -11,10 +11,10 @@ describe('Input a11y', () => {
         <Label htmlFor="email">Email</Label>
         <Input id="email" type="email" placeholder="you@example.com" />
       </div>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
 
   it('has no axe violations in invalid + disabled states', async () => {
     const { container } = render(
@@ -28,8 +28,8 @@ describe('Input a11y', () => {
           <Input id="disabled" defaultValue="ro" disabled />
         </div>
       </div>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

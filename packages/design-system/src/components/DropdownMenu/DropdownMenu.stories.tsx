@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from '../Button'
-import { DropdownMenu } from '.'
+import { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '../Button';
+import { DropdownMenu } from '.';
 
 const meta: Meta = {
   title: 'Primitives/DropdownMenu',
@@ -14,15 +14,15 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => {
-    const [showGrid, setShowGrid] = useState(true)
-    const [density, setDensity] = useState('comfortable')
+    const [showGrid, setShowGrid] = useState(true);
+    const [density, setDensity] = useState('comfortable');
     return (
       <DropdownMenu.Root defaultOpen>
         <DropdownMenu.Trigger asChild>
@@ -54,6 +54,6 @@ export const Default: Story = {
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
-    )
+    );
   },
-}
+};

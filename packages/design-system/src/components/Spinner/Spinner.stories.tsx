@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Spinner } from './Spinner'
-import { Button } from '../Button'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Spinner } from './Spinner';
+import { Button } from '../Button';
 
 const meta: Meta<typeof Spinner> = {
   title: 'Status/Spinner',
@@ -19,10 +19,10 @@ const meta: Meta<typeof Spinner> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Spinner>
+export default meta;
+type Story = StoryObj<typeof Spinner>;
 
 export const Sizes: Story = {
   render: () => (
@@ -32,7 +32,7 @@ export const Sizes: Story = {
       <Spinner size="lg" />
     </div>
   ),
-}
+};
 
 export const InsideButton: Story = {
   render: () => (
@@ -45,7 +45,7 @@ export const InsideButton: Story = {
       </Button>
     </div>
   ),
-}
+};
 
 export const InheritsColor: Story = {
   render: () => (
@@ -61,4 +61,4 @@ export const InheritsColor: Story = {
       </span>
     </div>
   ),
-}
+};

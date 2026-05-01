@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Badge } from './Badge'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Badge } from './Badge';
 
 describe('Badge a11y', () => {
   it('has no axe violations across variants', async () => {
@@ -13,8 +13,8 @@ describe('Badge a11y', () => {
         <Badge variant="warning">Warning</Badge>
         <Badge variant="danger">Danger</Badge>
       </>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

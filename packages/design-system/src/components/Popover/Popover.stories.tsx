@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Button } from '../Button'
-import { Input } from '../Input'
-import { Label } from '../Label'
-import { Popover } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Button } from '../Button';
+import { Input } from '../Input';
+import { Label } from '../Label';
+import { Popover } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Popover',
@@ -16,10 +16,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -45,7 +45,7 @@ export const Default: Story = {
       </Popover.Portal>
     </Popover.Root>
   ),
-}
+};
 
 export const Anchored: Story = {
   parameters: {
@@ -60,7 +60,10 @@ export const Anchored: Story = {
     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-space-12)' }}>
       <Popover.Root defaultOpen>
         <Popover.Anchor asChild>
-          <span aria-label="anchor target" style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--ds-color-accent)' }} />
+          <span
+            aria-label="anchor target"
+            style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--ds-color-accent)' }}
+          />
         </Popover.Anchor>
         <Popover.Trigger asChild>
           <Button size="sm" variant="ghost">
@@ -73,4 +76,4 @@ export const Anchored: Story = {
       </Popover.Root>
     </div>
   ),
-}
+};

@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { useForm } from 'react-hook-form'
-import { runAxe } from '../../test/axe'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { useForm } from 'react-hook-form';
+import { runAxe } from '../../test/axe';
 import {
   Form,
   FormField,
@@ -10,14 +10,14 @@ import {
   FormControl,
   FormDescription,
   FormMessage,
-} from './Form'
-import { Input } from '../Input'
+} from './Form';
+import { Input } from '../Input';
 
 function Harness() {
   const form = useForm({
     defaultValues: { email: 'invalid' },
     errors: { email: { type: 'manual', message: 'Invalid email.' } },
-  })
+  });
   return (
     <Form {...form}>
       <FormField
@@ -35,13 +35,13 @@ function Harness() {
         )}
       />
     </Form>
-  )
+  );
 }
 
 describe('Form a11y', () => {
   it('has no axe violations with label, description, and error message', async () => {
-    const { container } = render(<Harness />)
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    const { container } = render(<Harness />);
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

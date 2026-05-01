@@ -1,47 +1,49 @@
-@layer ds.components {
-.skeleton {
-  display: block;
-  width: 100%;
-  background-color: var(--ds-color-bg-sunken);
-  border-radius: var(--ds-radius-sm);
-  position: relative;
-  overflow: hidden;
-}
-
-.skeleton::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in oklab, var(--ds-color-fg-default) 5%, transparent) 50%,
-    transparent 100%
-  );
-  animation: shimmer 1400ms var(--ds-ease-standard) infinite;
-  transform: translateX(-100%);
-}
-
-.text {
-  height: 0.875em;
-  border-radius: var(--ds-radius-xs);
-}
-
-.circle {
-  aspect-ratio: 1;
-  width: auto;
-  border-radius: var(--ds-radius-full);
-}
-
-@keyframes shimmer {
-  to { transform: translateX(100%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .skeleton::after {
-    animation: none;
-    background: color-mix(in oklab, var(--ds-color-fg-default) 4%, transparent);
-    transform: none;
+@layer onersoft.ds {
+  .skeleton {
+    display: block;
+    width: 100%;
+    background-color: var(--ds-color-bg-sunken);
+    border-radius: var(--ds-radius-sm);
+    position: relative;
+    overflow: hidden;
   }
-}
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--ds-color-fg-default) 5%, transparent) 50%,
+      transparent 100%
+    );
+    animation: shimmer 1400ms var(--ds-ease-standard) infinite;
+    transform: translateX(-100%);
+  }
+
+  .text {
+    height: 0.875em;
+    border-radius: var(--ds-radius-xs);
+  }
+
+  .circle {
+    aspect-ratio: 1;
+    width: auto;
+    border-radius: var(--ds-radius-full);
+  }
+
+  @keyframes shimmer {
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton::after {
+      animation: none;
+      background: color-mix(in oklab, var(--ds-color-fg-default) 4%, transparent);
+      transform: none;
+    }
+  }
 }

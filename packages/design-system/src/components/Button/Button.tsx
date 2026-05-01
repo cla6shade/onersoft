@@ -1,27 +1,32 @@
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Slot } from 'radix-ui'
-import clsx from 'clsx'
-import type { ButtonVariant, ControlSize } from '../../types'
-import styles from './Button.module.css'
+'use client';
 
-export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
-  variant?: ButtonVariant
-  size?: ControlSize
-  asChild?: boolean
+import type { ComponentProps } from 'react';
+import * as Slot from '@radix-ui/react-slot';
+import clsx from 'clsx';
+import type { ControlSize } from '../../types';
+import styles from './Button.module.css';
+
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+
+export interface ButtonProps extends ComponentProps<'button'> {
+  variant?: ButtonVariant;
+  size?: ControlSize;
+  asChild?: boolean;
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', size = 'md', asChild = false, className, ...props }, ref) => {
-    const Comp = asChild ? Slot.Root : 'button'
-    return (
-      <Comp
-        ref={ref}
-        data-slot="button"
-        className={clsx(styles.button, styles[variant], styles[size], className)}
-        {...props}
-      />
-    )
-  },
-)
-
-Button.displayName = 'Button'
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  asChild = false,
+  className,
+  ...props
+}: ButtonProps) {
+  const Comp = asChild ? Slot.Root : 'button';
+  return (
+    <Comp
+      data-slot="button"
+      className={clsx(styles.button, styles[variant], styles[size], className)}
+      {...props}
+    />
+  );
+}

@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Label } from '../Label'
-import { Input } from './Input'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Label } from '../Label';
+import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
   title: 'Primitives/Input',
@@ -15,10 +15,10 @@ const meta: Meta<typeof Input> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Input>
+export default meta;
+type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   render: () => (
@@ -27,7 +27,7 @@ export const Default: Story = {
       <Input id="email" type="email" placeholder="you@onersoft.com" />
     </div>
   ),
-}
+};
 
 export const Invalid: Story = {
   render: () => (
@@ -36,7 +36,7 @@ export const Invalid: Story = {
       <Input id="invalid" defaultValue="not-a-token" invalid />
     </div>
   ),
-}
+};
 
 export const Disabled: Story = {
   render: () => (
@@ -45,4 +45,4 @@ export const Disabled: Story = {
       <Input id="disabled" defaultValue="Read only" disabled />
     </div>
   ),
-}
+};

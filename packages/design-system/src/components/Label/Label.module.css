@@ -1,13 +1,13 @@
-@layer ds.components {
-.label {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-space-2);
-  color: var(--ds-color-fg-default);
-  font-family: var(--ds-font-sans);
-  font-size: var(--ds-text-sm);
-  font-weight: var(--ds-weight-medium);
-  line-height: var(--ds-leading-snug);
-  user-select: none;
-}
+@layer onersoft.ds {
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ds-space-2);
+    color: var(--ds-color-fg-default);
+    font-family: var(--ds-font-sans);
+    font-size: var(--ds-text-sm);
+    font-weight: var(--ds-weight-medium);
+    line-height: var(--ds-leading-snug);
+    user-select: none;
+  }
 }

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from '../Button'
-import { Dialog } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '../Button';
+import { Dialog } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Dialog',
@@ -13,10 +13,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -43,4 +43,4 @@ export const Default: Story = {
       </Dialog.Portal>
     </Dialog.Root>
   ),
-}
+};

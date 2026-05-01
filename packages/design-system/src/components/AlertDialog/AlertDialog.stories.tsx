@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from '../Button'
-import { AlertDialog } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '../Button';
+import { AlertDialog } from '.';
 
 const meta: Meta = {
   title: 'Primitives/AlertDialog',
@@ -13,10 +13,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Destructive: Story = {
   render: () => (
@@ -43,4 +43,4 @@ export const Destructive: Story = {
       </AlertDialog.Portal>
     </AlertDialog.Root>
   ),
-}
+};

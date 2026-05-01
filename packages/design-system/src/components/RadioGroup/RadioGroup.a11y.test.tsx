@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { RadioGroup } from '.'
-import { Label } from '../Label'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { RadioGroup } from '.';
+import { Label } from '../Label';
 
 describe('RadioGroup a11y', () => {
   it('has no axe violations', async () => {
@@ -19,8 +19,8 @@ describe('RadioGroup a11y', () => {
           </div>
         ))}
       </RadioGroup.Root>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Toggle } from './Toggle'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Toggle } from './Toggle';
 
 const meta: Meta<typeof Toggle> = {
   title: 'Primitives/Toggle',
@@ -13,15 +13,15 @@ const meta: Meta<typeof Toggle> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Toggle>
+export default meta;
+type Story = StoryObj<typeof Toggle>;
 
 export const Default: Story = {
   args: { children: 'Bold', 'aria-label': 'Toggle bold' },
-}
+};
 
 export const Pressed: Story = {
   args: { children: 'Italic', defaultPressed: true, 'aria-label': 'Toggle italic' },
-}
+};

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Button } from './Button'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Primitives/Button',
@@ -24,18 +24,18 @@ const meta: Meta<typeof Button> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Button>
+export default meta;
+type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {}
+export const Primary: Story = {};
 
-export const Secondary: Story = { args: { variant: 'secondary' } }
+export const Secondary: Story = { args: { variant: 'secondary' } };
 
-export const Ghost: Story = { args: { variant: 'ghost' } }
+export const Ghost: Story = { args: { variant: 'ghost' } };
 
-export const Disabled: Story = { args: { disabled: true } }
+export const Disabled: Story = { args: { disabled: true } };
 
 export const AllVariants: Story = {
   render: () => (
@@ -49,11 +49,11 @@ export const AllVariants: Story = {
       )}
     </div>
   ),
-}
+};
 
 export const AsChildLink: Story = {
   args: {
     asChild: true,
     children: <a href="#home">Navigate</a>,
   },
-}
+};

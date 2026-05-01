@@ -1,10 +1,10 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Popover } from '.'
-import { Button } from '../Button'
-import { Input } from '../Input'
-import { Label } from '../Label'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Popover } from '.';
+import { Button } from '../Button';
+import { Input } from '../Input';
+import { Label } from '../Label';
 
 describe('Popover a11y', () => {
   it('has no axe violations when open', async () => {
@@ -20,8 +20,8 @@ describe('Popover a11y', () => {
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>,
-    )
-    const results = await runAxe(document.body)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(document.body);
+    expect(results.violations).toEqual([]);
+  });
+});

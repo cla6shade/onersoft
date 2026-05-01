@@ -1,12 +1,13 @@
-import { RootProvider } from 'fumadocs-ui/provider/next'
-import { Inter } from 'next/font/google'
-import './global.css'
+import { RootProvider } from 'fumadocs-ui/provider/next';
+import { Inter } from 'next/font/google';
+import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
+import './global.css';
 
 const inter = Inter({
   subsets: ['latin'],
-})
+});
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
@@ -20,5 +21,5 @@ export default function Layout({ children }: LayoutProps<'/'>) {
         </RootProvider>
       </body>
     </html>
-  )
+  );
 }

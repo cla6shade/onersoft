@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Label } from '../Label'
-import { RadioGroup } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Label } from '../Label';
+import { RadioGroup } from '.';
 
 const meta: Meta = {
   title: 'Primitives/RadioGroup',
@@ -14,10 +14,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -34,4 +34,4 @@ export const Default: Story = {
       ))}
     </RadioGroup.Root>
   ),
-}
+};

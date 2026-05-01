@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Popover, Button, Input, Label } from '@onersoft/design-system'
+import { Popover, Button, Input, Label } from '@onersoft/design-system';
 
 export function PopoverDefault() {
   return (
@@ -15,7 +15,9 @@ export function PopoverDefault() {
             <Input id="display-name" size="sm" defaultValue="Pedro Duarte" />
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Popover.Close asChild>
-                <Button size="sm" variant="ghost">Close</Button>
+                <Button size="sm" variant="ghost">
+                  Close
+                </Button>
               </Popover.Close>
             </div>
           </div>
@@ -23,5 +25,5 @@ export function PopoverDefault() {
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
-  )
+  );
 }

@@ -5,6 +5,7 @@ build
 out
 coverage
 storybook-static
+.source
 pnpm-lock.yaml
 *.min.js
 *.min.css

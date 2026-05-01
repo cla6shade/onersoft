@@ -12,4 +12,4 @@ export {
   type FormControlProps,
   type FormDescriptionProps,
   type FormMessageProps,
-} from './Form'
+} from './Form';

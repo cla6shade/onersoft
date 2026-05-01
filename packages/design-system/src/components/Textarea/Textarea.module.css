@@ -1,45 +1,45 @@
-@layer ds.components {
-.textarea {
-  display: block;
-  width: 100%;
-  min-height: 6rem;
-  padding: var(--ds-space-3);
-  background-color: var(--ds-color-bg-surface);
-  color: var(--ds-color-fg-default);
-  font-family: var(--ds-font-sans);
-  font-size: var(--ds-text-base);
-  line-height: var(--ds-leading-normal);
-  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
-  border-radius: var(--ds-radius-md);
-  outline: none;
-  transition:
-    border-color var(--ds-duration-fast) var(--ds-ease-standard),
-    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
-}
+@layer onersoft.ds {
+  .textarea {
+    display: block;
+    width: 100%;
+    min-height: 6rem;
+    padding: var(--ds-space-3);
+    background-color: var(--ds-color-bg-surface);
+    color: var(--ds-color-fg-default);
+    font-family: var(--ds-font-sans);
+    font-size: var(--ds-text-base);
+    line-height: var(--ds-leading-normal);
+    border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+    border-radius: var(--ds-radius-md);
+    outline: none;
+    transition:
+      border-color var(--ds-duration-fast) var(--ds-ease-standard),
+      box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
+  }
 
-.textarea::placeholder {
-  color: var(--ds-color-fg-muted);
-}
+  .textarea::placeholder {
+    color: var(--ds-color-fg-muted);
+  }
 
-.textarea:hover:not(:disabled):not([data-invalid]) {
-  border-color: var(--ds-color-border-strong);
-}
+  .textarea:hover:not(:disabled):not([data-invalid]) {
+    border-color: var(--ds-color-border-strong);
+  }
 
-.textarea:focus-visible {
-  border-color: var(--ds-color-accent);
-  box-shadow: var(--ds-shadow-focus-field);
-}
+  .textarea:focus-visible {
+    border-color: var(--ds-color-accent);
+    box-shadow: var(--ds-shadow-focus-field);
+  }
 
-.textarea[data-invalid] {
-  border-color: var(--ds-color-danger);
-}
+  .textarea[data-invalid] {
+    border-color: var(--ds-color-danger);
+  }
 
-.textarea[data-invalid]:focus-visible {
-  box-shadow: var(--ds-shadow-focus-field-invalid);
-}
+  .textarea[data-invalid]:focus-visible {
+    box-shadow: var(--ds-shadow-focus-field-invalid);
+  }
 
-.textarea:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+  .textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }

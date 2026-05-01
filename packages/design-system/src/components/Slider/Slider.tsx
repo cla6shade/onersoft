@@ -1,18 +1,21 @@
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { Slider as RadixSlider } from 'radix-ui'
-import clsx from 'clsx'
-import styles from './Slider.module.css'
+'use client';
 
-export const Slider = forwardRef<
-  HTMLSpanElement,
-  ComponentPropsWithoutRef<typeof RadixSlider.Root>
->(({ className, value, defaultValue, ...props }, ref) => {
-  const thumbs = value ?? defaultValue ?? [0]
-  const { 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, ...rootProps } = props
-  const thumbLabel = ariaLabel ?? (ariaLabelledBy ? undefined : 'Value')
+import type { ComponentProps } from 'react';
+import * as RadixSlider from '@radix-ui/react-slider';
+import clsx from 'clsx';
+import styles from './Slider.module.css';
+
+export function Slider({
+  className,
+  value,
+  defaultValue,
+  ...props
+}: ComponentProps<typeof RadixSlider.Root>) {
+  const thumbs = value ?? defaultValue ?? [0];
+  const { 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, ...rootProps } = props;
+  const thumbLabel = ariaLabel ?? (ariaLabelledBy ? undefined : 'Value');
   return (
     <RadixSlider.Root
-      ref={ref}
       data-slot="slider"
       className={clsx(styles.root, className)}
       value={value}
@@ -32,7 +35,5 @@ export const Slider = forwardRef<
         />
       ))}
     </RadixSlider.Root>
-  )
-})
-
-Slider.displayName = 'Slider'
+  );
+}

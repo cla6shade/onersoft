@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { Dialog } from '.'
-import { Button } from '../Button'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { Dialog } from '.';
+import { Button } from '../Button';
 
 describe('Dialog a11y', () => {
   it('has no axe violations when open', async () => {
@@ -27,8 +27,8 @@ describe('Dialog a11y', () => {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>,
-    )
-    const results = await runAxe(document.body)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(document.body);
+    expect(results.violations).toEqual([]);
+  });
+});

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ToggleGroup } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { ToggleGroup } from '.';
 
 const meta: Meta = {
   title: 'Primitives/ToggleGroup',
@@ -12,10 +12,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const SingleSelection: Story = {
   render: () => (
@@ -25,7 +25,7 @@ export const SingleSelection: Story = {
       <ToggleGroup.Item value="board">Board</ToggleGroup.Item>
     </ToggleGroup.Root>
   ),
-}
+};
 
 export const MultipleSelection: Story = {
   render: () => (
@@ -35,4 +35,4 @@ export const MultipleSelection: Story = {
       <ToggleGroup.Item value="underline">Underline</ToggleGroup.Item>
     </ToggleGroup.Root>
   ),
-}
+};

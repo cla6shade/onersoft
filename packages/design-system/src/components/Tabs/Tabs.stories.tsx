@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Tabs } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Tabs } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Tabs',
@@ -12,10 +12,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -30,4 +30,4 @@ export const Default: Story = {
       <Tabs.Content value="settings">Configuration and preferences.</Tabs.Content>
     </Tabs.Root>
   ),
-}
+};

@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Select } from '@onersoft/design-system'
+import { Select } from '@onersoft/design-system';
 
 export function SelectDefault() {
   return (
@@ -21,11 +21,13 @@ export function SelectDefault() {
             <Select.Group>
               <Select.Label>Experimental</Select.Label>
               <Select.Item value="turbo">Turbo</Select.Item>
-              <Select.Item value="max" disabled>Max (coming soon)</Select.Item>
+              <Select.Item value="max" disabled>
+                Max (coming soon)
+              </Select.Item>
             </Select.Group>
           </Select.Viewport>
         </Select.Content>
       </Select.Portal>
     </Select.Root>
-  )
+  );
 }

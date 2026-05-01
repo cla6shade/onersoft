@@ -1,18 +1,14 @@
-import { useSyncExternalStore } from 'react'
-import { Toast as RadixToast } from 'radix-ui'
-import clsx from 'clsx'
-import styles from './Toast.module.css'
-import {
-  getServerSnapshot,
-  getSnapshot,
-  subscribe,
-  toast,
-  type ToastIntent,
-} from './store'
+'use client';
+
+import { useSyncExternalStore } from 'react';
+import * as RadixToast from '@radix-ui/react-toast';
+import clsx from 'clsx';
+import styles from './Toast.module.css';
+import { getServerSnapshot, getSnapshot, subscribe, toast, type ToastIntent } from './store';
 
 /* Must outlast the longest exit keyframe in Toast.module.css (`fadeOut`,
  * currently --ds-duration-medium = 180ms). */
-const EXIT_ANIMATION_MS = 200
+const EXIT_ANIMATION_MS = 200;
 
 /* Intent → token color map, kept in JSX (not CSS) so hosts can pass a
  * custom indicator React node entirely from the outside without
@@ -22,16 +18,16 @@ const INTENT_COLOR: Record<Exclude<ToastIntent, 'neutral'>, string> = {
   warning: 'var(--ds-color-warning)',
   danger: 'var(--ds-color-danger)',
   info: 'var(--ds-color-info)',
-}
+};
 
 export interface ToasterProps {
   /** Default auto-dismiss duration ms applied via Radix Provider (per-toast `duration` overrides). */
-  duration?: number
+  duration?: number;
   /** Swipe direction to dismiss; defaults to `right`. */
-  swipeDirection?: 'right' | 'left' | 'up' | 'down'
+  swipeDirection?: 'right' | 'left' | 'up' | 'down';
   /** Pixel threshold for the swipe gesture. */
-  swipeThreshold?: number
-  className?: string
+  swipeThreshold?: number;
+  className?: string;
 }
 
 /**
@@ -45,7 +41,7 @@ export function Toaster({
   swipeThreshold,
   className,
 }: ToasterProps) {
-  const entries = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  const entries = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return (
     <RadixToast.Provider
@@ -64,7 +60,7 @@ export function Toaster({
              * triggered (button, swipe, duration). The CSS exit animation
              * starts immediately. Calling dismiss() right away would
              * unmount before the first frame renders — delay it. */
-            if (!open) window.setTimeout(() => toast.dismiss(entry.id), EXIT_ANIMATION_MS)
+            if (!open) window.setTimeout(() => toast.dismiss(entry.id), EXIT_ANIMATION_MS);
           }}
         >
           <div className={styles.content}>
@@ -105,7 +101,10 @@ export function Toaster({
           </div>
         </RadixToast.Root>
       ))}
-      <RadixToast.Viewport data-slot="toast-viewport" className={clsx(styles.viewport, className)} />
+      <RadixToast.Viewport
+        data-slot="toast-viewport"
+        className={clsx(styles.viewport, className)}
+      />
     </RadixToast.Provider>
-  )
+  );
 }

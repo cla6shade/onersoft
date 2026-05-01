@@ -1,30 +1,30 @@
-@layer ds.components {
-.root {
-  display: grid;
-  gap: var(--ds-space-2);
-  font-family: var(--ds-font-sans);
-}
+@layer onersoft.ds {
+  .root {
+    display: grid;
+    gap: var(--ds-space-2);
+    font-family: var(--ds-font-sans);
+  }
 
-.description {
-  /* Description is rendered after error in the DOM (so screen readers
+  .description {
+    /* Description is rendered after error in the DOM (so screen readers
    * read description → error via aria-describedby), but visually we
    * want the error to surface immediately under the control. CSS `order`
    * pushes the description below the error without touching DOM order. */
-  order: 1;
-  margin: 0;
-  color: var(--ds-color-fg-muted);
-  font-size: var(--ds-text-xs);
-  line-height: var(--ds-leading-normal);
-}
+    order: 1;
+    margin: 0;
+    color: var(--ds-color-fg-muted);
+    font-size: var(--ds-text-xs);
+    line-height: var(--ds-leading-normal);
+  }
 
-.error {
-  margin: 0;
-  color: var(--ds-color-danger);
-  font-size: var(--ds-text-xs);
-  line-height: var(--ds-leading-normal);
-}
+  .error {
+    margin: 0;
+    color: var(--ds-color-danger);
+    font-size: var(--ds-text-xs);
+    line-height: var(--ds-leading-normal);
+  }
 
-.labelInvalid {
-  color: var(--ds-color-danger);
-}
+  .labelInvalid {
+    color: var(--ds-color-danger);
+  }
 }

@@ -1,32 +1,34 @@
-import type { ComponentPropsWithoutRef } from 'react'
-import { Popover as RadixPopover } from 'radix-ui'
-import clsx from 'clsx'
-import styles from './Popover.module.css'
+'use client';
 
-export const Root = RadixPopover.Root
-export const Portal = RadixPopover.Portal
+import type { ComponentProps } from 'react';
+import * as RadixPopover from '@radix-ui/react-popover';
+import clsx from 'clsx';
+import styles from './Popover.module.css';
 
-export function Trigger({ ...props }: ComponentPropsWithoutRef<typeof RadixPopover.Trigger>) {
-  return <RadixPopover.Trigger data-slot="popover-trigger" {...props} />
+export const Root = RadixPopover.Root;
+export const Portal = RadixPopover.Portal;
+
+export function Trigger({ ...props }: ComponentProps<typeof RadixPopover.Trigger>) {
+  return <RadixPopover.Trigger data-slot="popover-trigger" {...props} />;
 }
 
-export function Anchor({ ...props }: ComponentPropsWithoutRef<typeof RadixPopover.Anchor>) {
-  return <RadixPopover.Anchor data-slot="popover-anchor" {...props} />
+export function Anchor({ ...props }: ComponentProps<typeof RadixPopover.Anchor>) {
+  return <RadixPopover.Anchor data-slot="popover-anchor" {...props} />;
 }
 
-export function Close({ ...props }: ComponentPropsWithoutRef<typeof RadixPopover.Close>) {
-  return <RadixPopover.Close data-slot="popover-close" {...props} />
+export function Close({ ...props }: ComponentProps<typeof RadixPopover.Close>) {
+  return <RadixPopover.Close data-slot="popover-close" {...props} />;
 }
 
-export function Arrow({ ...props }: ComponentPropsWithoutRef<typeof RadixPopover.Arrow>) {
-  return <RadixPopover.Arrow data-slot="popover-arrow" {...props} />
+export function Arrow({ ...props }: ComponentProps<typeof RadixPopover.Arrow>) {
+  return <RadixPopover.Arrow data-slot="popover-arrow" {...props} />;
 }
 
 export function Content({
   className,
   sideOffset = 8,
   ...props
-}: ComponentPropsWithoutRef<typeof RadixPopover.Content>) {
+}: ComponentProps<typeof RadixPopover.Content>) {
   return (
     <RadixPopover.Content
       data-slot="popover-content"
@@ -34,5 +36,5 @@ export function Content({
       className={clsx(styles.content, className)}
       {...props}
     />
-  )
+  );
 }

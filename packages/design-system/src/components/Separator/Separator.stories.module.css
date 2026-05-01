@@ -1,32 +1,32 @@
-@layer ds.components {
-.demoCard {
-  width: 20rem;
-  color: var(--ds-color-fg-default);
-  font-family: var(--ds-font-sans);
-}
+@layer onersoft.ds {
+  .demoCard {
+    width: 20rem;
+    color: var(--ds-color-fg-default);
+    font-family: var(--ds-font-sans);
+  }
 
-.demoTitle {
-  font-size: var(--ds-text-md);
-  font-weight: var(--ds-weight-semibold);
-}
+  .demoTitle {
+    font-size: var(--ds-text-md);
+    font-weight: var(--ds-weight-semibold);
+  }
 
-.demoCaption {
-  color: var(--ds-color-fg-muted);
-  font-size: var(--ds-text-sm);
-}
+  .demoCaption {
+    color: var(--ds-color-fg-muted);
+    font-size: var(--ds-text-sm);
+  }
 
-.demoBlockSeparator {
-  margin: var(--ds-space-4) 0;
-}
+  .demoBlockSeparator {
+    margin: var(--ds-space-4) 0;
+  }
 
-.demoMetaRow {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-3);
-  font-size: var(--ds-text-sm);
-}
+  .demoMetaRow {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-3);
+    font-size: var(--ds-text-sm);
+  }
 
-.demoVerticalSeparator {
-  height: 1rem;
-}
+  .demoVerticalSeparator {
+    height: 1rem;
+  }
 }

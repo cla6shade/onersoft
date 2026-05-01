@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Skeleton } from './Skeleton'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Skeleton } from './Skeleton';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'Status/Skeleton',
@@ -14,10 +14,10 @@ const meta: Meta<typeof Skeleton> = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Skeleton>
+export default meta;
+type Story = StoryObj<typeof Skeleton>;
 
 export const Block: Story = {
   render: () => (
@@ -25,7 +25,7 @@ export const Block: Story = {
       <Skeleton height={120} />
     </div>
   ),
-}
+};
 
 export const Text: Story = {
   render: () => (
@@ -35,11 +35,11 @@ export const Text: Story = {
       <Skeleton variant="text" width="75%" />
     </div>
   ),
-}
+};
 
 export const Circle: Story = {
   render: () => <Skeleton variant="circle" width={48} />,
-}
+};
 
 export const Composed: Story = {
   render: () => (
@@ -53,4 +53,4 @@ export const Composed: Story = {
       </div>
     </div>
   ),
-}
+};

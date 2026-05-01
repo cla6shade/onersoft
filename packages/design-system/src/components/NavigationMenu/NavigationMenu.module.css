@@ -1,139 +1,183 @@
-@layer ds.components {
-.root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-family: var(--ds-font-sans);
-  color: var(--ds-color-fg-default);
-}
+@layer onersoft.ds {
+  .root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: var(--ds-font-sans);
+    color: var(--ds-color-fg-default);
+  }
 
-.list {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-1);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  .list {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-.trigger,
-.link {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-space-1);
-  height: var(--ds-control-height-sm);
-  padding: 0 var(--ds-space-3);
-  background: transparent;
-  color: var(--ds-color-fg-muted);
-  font: inherit;
-  font-size: var(--ds-text-sm);
-  font-weight: var(--ds-weight-medium);
-  line-height: var(--ds-leading-control);
-  text-decoration: none;
-  border: 0;
-  border-radius: var(--ds-radius-sm);
-  cursor: pointer;
-  outline: none;
-  transition:
-    color var(--ds-duration-fast) var(--ds-ease-standard),
-    background-color var(--ds-duration-fast) var(--ds-ease-standard),
-    box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
-}
+  .trigger,
+  .link {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ds-space-1);
+    height: var(--ds-control-height-sm);
+    padding: 0 var(--ds-space-3);
+    background: transparent;
+    color: var(--ds-color-fg-muted);
+    font: inherit;
+    font-size: var(--ds-text-sm);
+    font-weight: var(--ds-weight-medium);
+    line-height: var(--ds-leading-control);
+    text-decoration: none;
+    border: 0;
+    border-radius: var(--ds-radius-sm);
+    cursor: pointer;
+    outline: none;
+    transition:
+      color var(--ds-duration-fast) var(--ds-ease-standard),
+      background-color var(--ds-duration-fast) var(--ds-ease-standard),
+      box-shadow var(--ds-duration-fast) var(--ds-ease-standard);
+  }
 
-.trigger:hover,
-.link:hover,
-.trigger[data-state='open'],
-.link[data-active] {
-  color: var(--ds-color-fg-default);
-  background-color: var(--ds-color-surface-hover);
-}
+  .trigger:hover,
+  .link:hover,
+  .trigger[data-state='open'],
+  .link[data-active] {
+    color: var(--ds-color-fg-default);
+    background-color: var(--ds-color-surface-hover);
+  }
 
-.trigger:focus-visible,
-.link:focus-visible {
-  box-shadow: var(--ds-shadow-focus);
-}
+  .trigger:focus-visible,
+  .link:focus-visible {
+    box-shadow: var(--ds-shadow-focus);
+  }
 
-.caret {
-  transition: transform var(--ds-duration-medium) var(--ds-ease-standard);
-}
+  .caret {
+    transition: transform var(--ds-duration-medium) var(--ds-ease-standard);
+  }
 
-.trigger[data-state='open'] .caret {
-  transform: rotate(180deg);
-}
+  .trigger[data-state='open'] .caret {
+    transform: rotate(180deg);
+  }
 
-.content {
-  /* Radix portals each Item.Content into the Viewport. The Viewport
+  .content {
+    /* Radix portals each Item.Content into the Viewport. The Viewport
    * provides the fixed positioning context, so Content fills it. */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  animation-duration: var(--ds-duration-fast);
-  animation-timing-function: var(--ds-ease-enter);
-  animation-fill-mode: forwards;
-}
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation-duration: var(--ds-duration-fast);
+    animation-timing-function: var(--ds-ease-enter);
+    animation-fill-mode: forwards;
+  }
 
-.content[data-motion='from-start'] { animation-name: enterFromLeft; }
-.content[data-motion='from-end'] { animation-name: enterFromRight; }
-.content[data-motion='to-start'] { animation-name: exitToLeft; }
-.content[data-motion='to-end'] { animation-name: exitToRight; }
+  .content[data-motion='from-start'] {
+    animation-name: enterFromLeft;
+  }
+  .content[data-motion='from-end'] {
+    animation-name: enterFromRight;
+  }
+  .content[data-motion='to-start'] {
+    animation-name: exitToLeft;
+  }
+  .content[data-motion='to-end'] {
+    animation-name: exitToRight;
+  }
 
-/* The viewport renders below the trigger row. We size it from Radix's
+  /* The viewport renders below the trigger row. We size it from Radix's
  * exposed CSS vars (set when content is mounted) and position it
  * absolutely so it doesn't push the trigger row down when opening. */
-.viewport {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: var(--ds-space-2);
-  width: var(--radix-navigation-menu-viewport-width, auto);
-  height: var(--radix-navigation-menu-viewport-height, auto);
-  min-width: 14rem;
-  background-color: var(--ds-color-bg-overlay);
-  color: var(--ds-color-fg-default);
-  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
-  border-radius: var(--ds-radius-md);
-  box-shadow: var(--ds-shadow-md);
-  overflow: hidden;
-  transform-origin: top left;
-  z-index: var(--ds-z-popover);
-  transition:
-    width var(--ds-duration-medium) var(--ds-ease-standard),
-    height var(--ds-duration-medium) var(--ds-ease-standard);
-}
+  .viewport {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: var(--ds-space-2);
+    width: var(--radix-navigation-menu-viewport-width, auto);
+    height: var(--radix-navigation-menu-viewport-height, auto);
+    min-width: 14rem;
+    background-color: var(--ds-color-bg-overlay);
+    color: var(--ds-color-fg-default);
+    border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+    border-radius: var(--ds-radius-md);
+    box-shadow: var(--ds-shadow-md);
+    overflow: hidden;
+    transform-origin: top left;
+    z-index: var(--ds-z-popover);
+    transition:
+      width var(--ds-duration-medium) var(--ds-ease-standard),
+      height var(--ds-duration-medium) var(--ds-ease-standard);
+  }
 
-.viewport[data-state='open'] {
-  animation: scaleIn var(--ds-duration-fast) var(--ds-ease-enter);
-}
+  .viewport[data-state='open'] {
+    animation: scaleIn var(--ds-duration-fast) var(--ds-ease-enter);
+  }
 
-.viewport[data-state='closed'] {
-  animation: scaleOut var(--ds-duration-fast) var(--ds-ease-exit);
-}
+  .viewport[data-state='closed'] {
+    animation: scaleOut var(--ds-duration-fast) var(--ds-ease-exit);
+  }
 
-@keyframes enterFromRight {
-  from { opacity: 0; transform: translateX(8px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes enterFromLeft {
-  from { opacity: 0; transform: translateX(-8px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes exitToRight {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(8px); }
-}
-@keyframes exitToLeft {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(-8px); }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes scaleOut {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.96); }
-}
+  @keyframes enterFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes enterFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes exitToRight {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(8px);
+    }
+  }
+  @keyframes exitToLeft {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+  }
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes scaleOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
 }

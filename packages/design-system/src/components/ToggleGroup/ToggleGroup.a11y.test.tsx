@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/react'
-import { runAxe } from '../../test/axe'
-import { ToggleGroup } from '.'
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { runAxe } from '../../test/axe';
+import { ToggleGroup } from '.';
 
 describe('ToggleGroup a11y', () => {
   it('has no axe violations', async () => {
@@ -16,8 +16,8 @@ describe('ToggleGroup a11y', () => {
           <ToggleGroup.Item value="italic">Italic</ToggleGroup.Item>
         </ToggleGroup.Root>
       </div>,
-    )
-    const results = await runAxe(container)
-    expect(results.violations).toEqual([])
-  })
-})
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toEqual([]);
+  });
+});

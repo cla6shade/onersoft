@@ -1,31 +1,48 @@
-@layer ds.components {
-.kbd {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--ds-color-kbd-bg);
-  color: var(--ds-color-kbd-fg);
-  font-family: var(--ds-font-mono);
-  font-weight: var(--ds-weight-medium);
-  line-height: 1;
-  border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
-  border-bottom-width: 2px;
-  border-radius: var(--ds-radius-xs);
-  white-space: nowrap;
-  vertical-align: middle;
-}
+@layer onersoft.ds {
+  /* Inline shortcut glyph. The previous design impersonated a physical key
+ * cap with a saturated fill and a 2px bottom bevel — distinctly Win95.
+ * Dropped the bevel, replaced the dedicated kbd surface tokens with a
+ * faint tint of fg-default, and switched from mono to UI sans so the
+ * chip reads as "different word category" through a 1px outline and
+ * typography rather than skeuomorphism.
+ *
+ * The kbd surface tokens used to live in tokens.css but only Kbd ever
+ * read them, so they are derived locally now and override cleanly via
+ * the cascade if a host wants to retune just kbd. */
+  .kbd {
+    --ds-color-kbd-bg: color-mix(in oklab, var(--ds-color-fg-default) 6%, transparent);
+    --ds-color-kbd-fg: var(--ds-color-fg-default);
 
-.sm {
-  min-width: 1.25rem;
-  height: 1.25rem;
-  padding: 0 var(--ds-space-1);
-  font-size: var(--ds-text-xs);
-}
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ds-color-kbd-bg);
+    color: var(--ds-color-kbd-fg);
+    font-family: var(--ds-font-sans);
+    font-weight: var(--ds-weight-medium);
+    font-feature-settings:
+      'tnum' 1,
+      'case' 1;
+    letter-spacing: var(--ds-tracking-wide);
+    line-height: 1;
+    border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+    border-radius: var(--ds-radius-xs);
+    white-space: nowrap;
+    vertical-align: baseline;
+  }
 
-.md {
-  min-width: 1.5rem;
-  height: 1.5rem;
-  padding: 0 var(--ds-space-2);
-  font-size: var(--ds-text-xs);
-}
+  /* Sized in `em` so the chip scales with the surrounding text — a kbd in
+ * a small tooltip and a kbd in body copy shouldn't be the same physical
+ * size. min-width keeps single-glyph keys (⌘, K) optically square. */
+  .sm {
+    font-size: 0.75em;
+    padding: 0.15em 0.4em;
+    min-width: 1.4em;
+  }
+
+  .md {
+    font-size: 0.85em;
+    padding: 0.2em 0.5em;
+    min-width: 1.6em;
+  }
 }

@@ -1,50 +1,65 @@
-@layer ds.components {
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ds-space-1);
-  font-family: var(--ds-font-sans);
-  font-weight: var(--ds-weight-medium);
-  letter-spacing: var(--ds-tracking-normal);
-  line-height: 1;
-  border-radius: var(--ds-radius-sm);
-  white-space: nowrap;
-  vertical-align: middle;
-  font-feature-settings: "tnum" 1;
-}
+@layer onersoft.ds {
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ds-space-1);
+    font-family: var(--ds-font-sans);
+    font-weight: var(--ds-weight-medium);
+    letter-spacing: var(--ds-tracking-normal);
+    line-height: 1;
+    border-radius: var(--ds-radius-sm);
+    white-space: nowrap;
+    vertical-align: middle;
+    font-feature-settings: 'tnum' 1;
+  }
 
-.sm {
-  padding: var(--ds-space-px) var(--ds-space-2);
-  font-size: var(--ds-text-xs);
-}
+  .sm {
+    padding: var(--ds-space-px) var(--ds-space-2);
+    font-size: var(--ds-text-xs);
+  }
 
-.md {
-  padding: var(--ds-space-1) var(--ds-space-2);
-  font-size: var(--ds-text-xs);
-}
+  .md {
+    padding: var(--ds-space-1) var(--ds-space-2);
+    font-size: var(--ds-text-xs);
+  }
 
-.neutral {
-  background-color: var(--ds-color-bg-sunken);
-  color: var(--ds-color-fg-muted);
-}
+  .neutral {
+    background-color: var(--ds-color-bg-sunken);
+    color: var(--ds-color-fg-muted);
+  }
 
-.accent {
-  background-color: var(--ds-color-accent-soft);
-  color: var(--ds-color-accent);
-}
+  .accent {
+    background-color: var(--ds-color-accent-soft);
+    color: var(--ds-color-accent);
+  }
 
-.success {
-  background-color: color-mix(in oklab, var(--ds-color-success) 14%, transparent);
-  color: var(--ds-color-success-text);
-}
+  /* Status badges: 14% soft tint of the status color over the page, with a
+ * brighter (dark) / darker (light) shade of the same hue for the label so
+ * it clears WCAG AA on the soft fill. The L offsets are per-status because
+ * each hue has a different perceptual ceiling — warning (yellow) needs a
+ * larger lift than danger (red) in dark mode. light-dark() picks the right
+ * branch from color-scheme, which the theme tokens already set. */
+  .success {
+    background-color: color-mix(in oklab, var(--ds-color-success) 14%, transparent);
+    color: light-dark(
+      oklch(from var(--ds-color-success) 0.42 c h),
+      oklch(from var(--ds-color-success) 0.78 c h)
+    );
+  }
 
-.warning {
-  background-color: color-mix(in oklab, var(--ds-color-warning) 14%, transparent);
-  color: var(--ds-color-warning-text);
-}
+  .warning {
+    background-color: color-mix(in oklab, var(--ds-color-warning) 14%, transparent);
+    color: light-dark(
+      oklch(from var(--ds-color-warning) 0.46 c h),
+      oklch(from var(--ds-color-warning) 0.86 c h)
+    );
+  }
 
-.danger {
-  background-color: color-mix(in oklab, var(--ds-color-danger) 14%, transparent);
-  color: var(--ds-color-danger-text);
-}
+  .danger {
+    background-color: color-mix(in oklab, var(--ds-color-danger) 14%, transparent);
+    color: light-dark(
+      oklch(from var(--ds-color-danger) 0.45 c h),
+      oklch(from var(--ds-color-danger) 0.74 c h)
+    );
+  }
 }

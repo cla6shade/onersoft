@@ -6,7 +6,6 @@ export default [
   plugins.stylistic,
   plugins.importX,
   plugins.node,
-  plugins.typescriptEslint,
   ...airbnb.base.all,
   ...airbnb.react.all,
   ...airbnb.next.all,

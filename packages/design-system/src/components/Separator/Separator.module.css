@@ -1,16 +1,16 @@
-@layer ds.components {
-.root {
-  background-color: var(--ds-color-border-default);
-  flex-shrink: 0;
-}
+@layer onersoft.ds {
+  .root {
+    background-color: var(--ds-color-border-default);
+    flex-shrink: 0;
+  }
 
-.root[data-orientation='horizontal'] {
-  height: 1px;
-  width: 100%;
-}
+  .root[data-orientation='horizontal'] {
+    height: 1px;
+    width: 100%;
+  }
 
-.root[data-orientation='vertical'] {
-  width: 1px;
-  height: 100%;
-}
+  .root[data-orientation='vertical'] {
+    width: 1px;
+    height: 100%;
+  }
 }

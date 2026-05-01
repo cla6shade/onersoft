@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import demo from '../../stories/demo.module.css'
-import { Button } from '../Button'
-import { Toaster, toast } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import demo from '../../stories/demo.module.css';
+import { Button } from '../Button';
+import { Toaster, toast } from '.';
 
 const meta: Meta = {
   title: 'Primitives/Toaster (imperative)',
@@ -10,20 +10,23 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          '`<Toaster />`를 앱 루트에 한 번 마운트하고, 어디서든 `toast()` 함수로 띄웁니다. React context가 아니라 module-level store라 라우트 핸들러·이벤트 리스너·form submit 등 컴포넌트 외부에서도 호출 가능합니다.\n\n```tsx\nimport { Toaster, toast } from \'@onersoft/design-system\'\n\n// app root\n<Toaster />\n\n// 어디서든\ntoast.success(\'저장됨\')\ntoast.error(\'실패\', { description: \'다시 시도해주세요\', duration: 6000 })\ntoast.dismiss(id)\n```',
+          "`<Toaster />`를 앱 루트에 한 번 마운트하고, 어디서든 `toast()` 함수로 띄웁니다. React context가 아니라 module-level store라 라우트 핸들러·이벤트 리스너·form submit 등 컴포넌트 외부에서도 호출 가능합니다.\n\n```tsx\nimport { Toaster, toast } from '@onersoft/design-system'\n\n// app root\n<Toaster />\n\n// 어디서든\ntoast.success('저장됨')\ntoast.error('실패', { description: '다시 시도해주세요', duration: 6000 })\ntoast.dismiss(id)\n```",
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const AllIntents: Story = {
   render: () => (
     <>
       <div className={demo.demoFlexWrap}>
-        <Button variant="ghost" onClick={() => toast('저장됨', { description: '기본 neutral 인텐트.' })}>
+        <Button
+          variant="ghost"
+          onClick={() => toast('저장됨', { description: '기본 neutral 인텐트.' })}
+        >
           Default
         </Button>
         <Button
@@ -37,7 +40,10 @@ export const AllIntents: Story = {
         >
           Success
         </Button>
-        <Button variant="ghost" onClick={() => toast.warning('주의', { description: '연결이 불안정합니다.' })}>
+        <Button
+          variant="ghost"
+          onClick={() => toast.warning('주의', { description: '연결이 불안정합니다.' })}
+        >
           Warning
         </Button>
         <Button
@@ -53,13 +59,14 @@ export const AllIntents: Story = {
       <Toaster />
     </>
   ),
-}
+};
 
 export const WithAction: Story = {
   parameters: {
     docs: {
       description: {
-        story: '`action: { label, onClick }` 옵션으로 Toast 안에 액션 버튼을 둘 수 있습니다. 사용자가 작업 결과를 즉시 되돌리거나 재시도할 수 있게 해주세요.',
+        story:
+          '`action: { label, onClick }` 옵션으로 Toast 안에 액션 버튼을 둘 수 있습니다. 사용자가 작업 결과를 즉시 되돌리거나 재시도할 수 있게 해주세요.',
       },
     },
   },
@@ -78,37 +85,39 @@ export const WithAction: Story = {
       <Toaster />
     </>
   ),
-}
+};
 
 export const UpdateInPlace: Story = {
   parameters: {
     docs: {
       description: {
-        story: '같은 `id`를 재사용하면 기존 toast를 in-place로 업데이트합니다. "저장 중…" → "저장됨" 같은 상태 전이에 유용합니다.',
+        story:
+          '같은 `id`를 재사용하면 기존 toast를 in-place로 업데이트합니다. "저장 중…" → "저장됨" 같은 상태 전이에 유용합니다.',
       },
     },
   },
   render: () => {
     const startSave = () => {
-      const id = toast('저장 중…', { duration: Infinity })
+      const id = toast('저장 중…', { duration: Infinity });
       setTimeout(() => {
-        toast.success('저장됨', { id, description: '변경 사항이 안전하게 저장되었습니다.' })
-      }, 1500)
-    }
+        toast.success('저장됨', { id, description: '변경 사항이 안전하게 저장되었습니다.' });
+      }, 1500);
+    };
     return (
       <>
         <Button onClick={startSave}>저장 시작</Button>
         <Toaster />
       </>
-    )
+    );
   },
-}
+};
 
 export const Stacking: Story = {
   parameters: {
     docs: {
       description: {
-        story: '여러 toast가 동시에 viewport에 쌓일 수 있습니다. `toast.dismissAll()` 로 한 번에 정리.',
+        story:
+          '여러 toast가 동시에 viewport에 쌓일 수 있습니다. `toast.dismissAll()` 로 한 번에 정리.',
       },
     },
   },
@@ -117,9 +126,9 @@ export const Stacking: Story = {
       <div className={demo.demoFlexWrap}>
         <Button
           onClick={() => {
-            toast('첫 번째')
-            toast.success('두 번째')
-            toast.warning('세 번째')
+            toast('첫 번째');
+            toast.success('두 번째');
+            toast.warning('세 번째');
           }}
         >
           3개 띄우기
@@ -131,4 +140,4 @@ export const Stacking: Story = {
       <Toaster />
     </>
   ),
-}
+};

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Menubar } from '.'
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Menubar } from '.';
 
 const meta: Meta = {
   title: 'Navigation/Menubar',
@@ -12,10 +12,10 @@ const meta: Meta = {
       },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj
+export default meta;
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -86,4 +86,4 @@ export const Default: Story = {
       </Menubar.Menu>
     </Menubar.Root>
   ),
-}
+};

@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Avatar } from '@onersoft/design-system'
+import { Avatar } from '@onersoft/design-system';
 
 export function AvatarDemo() {
   return (
@@ -17,5 +17,5 @@ export function AvatarDemo() {
         <Avatar.Fallback>SK</Avatar.Fallback>
       </Avatar.Root>
     </>
-  )
+  );
 }
