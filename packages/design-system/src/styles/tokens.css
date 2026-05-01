@@ -178,6 +178,10 @@
    * washed-out gray. Separation from the page comes from the border and
    * shadow, not a brighter fill. */
     --ds-color-bg-overlay: var(--color-surface-base);
+    /* Subtle tier — sits a hair above surface in dark mode for control
+   * tracks (ToggleGroup, segmented controls) and faint inline fills.
+   * Keeps separation without crossing into elevated. */
+    --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, white);
     --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 94%, black);
 
     --ds-color-fg-default: oklch(0.97 0.006 var(--ds-brand-hue));
@@ -269,6 +273,7 @@
     --ds-color-bg-surface: var(--color-surface-base);
     --ds-color-bg-elevated: oklch(0.99 0.004 var(--ds-brand-hue));
     --ds-color-bg-overlay: oklch(0.995 0.003 var(--ds-brand-hue));
+    --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, black);
     --ds-color-bg-sunken: oklch(0.94 0.008 var(--ds-brand-hue));
 
     --ds-color-fg-default: oklch(0.17 0.015 var(--ds-brand-hue));
