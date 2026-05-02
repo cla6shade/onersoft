@@ -2,7 +2,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import storybook from 'eslint-plugin-storybook';
 import reactConfig from '@onersoft/eslint-config/react';
 
-const configFiles = ['eslint.config.js', 'vite.config.ts', 'vitest.shims.d.ts'];
+const configFiles = ['eslint.config.js', 'vite.config.ts'];
 
 export default defineConfig([
   globalIgnores(['dist', 'storybook-static', 'coverage']),
@@ -16,7 +16,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['**/*.{test,stories}.{ts,tsx}', 'src/test/**/*.{ts,tsx}', 'vitest.{config,setup}.ts'],
+    files: ['**/*.{test,stories}.{ts,tsx}', 'src/test/**/*.{ts,tsx}', 'vitest.*.ts'],
     rules: {
       'import-x/no-extraneous-dependencies': 'off',
     },
