@@ -3,7 +3,15 @@ import { useForm } from 'react-hook-form';
 
 import { componentMatrix } from '../../test/utils';
 import { runComponentMatrix } from '../../test/e2eMatrix';
-import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from './Form';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+} from './Form';
 import { Input } from '../Input';
 
 function Harness({ descriptionClassName }: { descriptionClassName?: string }) {
@@ -22,9 +30,7 @@ function Harness({ descriptionClassName }: { descriptionClassName?: string }) {
             <FormControl>
               <Input type="email" {...field} />
             </FormControl>
-            <FormDescription className={descriptionClassName}>
-              Use your work email.
-            </FormDescription>
+            <FormDescription className={descriptionClassName}>Use your work email.</FormDescription>
             <FormMessage />
           </FormItem>
         )}

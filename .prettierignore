@@ -9,3 +9,7 @@ storybook-static
 pnpm-lock.yaml
 *.min.js
 *.min.css
+
+# generated files
+**/next-env.d.ts
+packages/design-system/src/test/fixtures/tailwind.css
