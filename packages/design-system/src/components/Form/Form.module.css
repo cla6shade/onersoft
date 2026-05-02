@@ -17,14 +17,23 @@
     line-height: var(--ds-leading-normal);
   }
 
+  /* Error/invalid foreground lifts danger to clear WCAG AA against the
+   * page surface — the raw `--ds-color-danger` is tuned for fills, not
+   * small body text on the surface. Mirrors Badge's status-color pattern. */
   .error {
     margin: 0;
-    color: var(--ds-color-danger);
+    color: light-dark(
+      oklch(from var(--ds-color-danger) 0.45 c h),
+      oklch(from var(--ds-color-danger) 0.74 c h)
+    );
     font-size: var(--ds-text-xs);
     line-height: var(--ds-leading-normal);
   }
 
   .labelInvalid {
-    color: var(--ds-color-danger);
+    color: light-dark(
+      oklch(from var(--ds-color-danger) 0.45 c h),
+      oklch(from var(--ds-color-danger) 0.74 c h)
+    );
   }
 }
