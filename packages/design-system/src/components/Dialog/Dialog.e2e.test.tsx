@@ -1,5 +1,4 @@
 import { describe } from 'vitest';
-import { render } from '@testing-library/react';
 import { componentMatrix } from '../../test/utils';
 import { runComponentMatrix } from '../../test/e2eMatrix';
 import { Dialog } from '.';
