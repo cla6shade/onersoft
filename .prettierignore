@@ -12,4 +12,4 @@ pnpm-lock.yaml
 
 # generated files
 **/next-env.d.ts
-packages/design-system/src/test/fixtures/tailwind.css
+packages/ui/src/test/fixtures/tailwind.css
