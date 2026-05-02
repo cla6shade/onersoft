@@ -1,0 +1,21 @@
+/* Host-side override fixtures. These live OUTSIDE the `onersoft.ds`
+ * cascade layer so they win over the design system through the layer
+ * mechanism alone — no `!important` is used. If these tests ever pass
+ * only with `!important`, the cascade-layer contract is broken. */
+
+.test-custom-bg {
+  background-color: rgb(0, 200, 0);
+}
+
+.test-custom-fg {
+  color: rgb(0, 200, 0);
+}
+
+.test-custom-border-color {
+  border-color: rgb(0, 200, 0);
+}
+
+/* Per-test data-slot overrides are injected via <style> tags inside
+ * each test (see `injectStyle` in test/utils.tsx) so the slot
+ * targeted is colocated with the assertion. Those rules also avoid
+ * `!important` for the same reason. */

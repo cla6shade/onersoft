@@ -14,7 +14,31 @@ export default defineConfig({
           globals: true,
           setupFiles: ['./vitest.setup.ts'],
           include: ['src/**/*.test.{ts,tsx}'],
-          exclude: ['src/**/*.a11y.test.{ts,tsx}', 'node_modules/**', 'dist/**'],
+          exclude: [
+            'src/**/*.a11y.test.{ts,tsx}',
+            'src/**/*.e2e.test.{ts,tsx}',
+            'node_modules/**',
+            'dist/**',
+          ],
+          css: {
+            modules: { classNameStrategy: 'non-scoped' },
+          },
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: 'e2e',
+          setupFiles: ['./vitest.setup.browser.ts'],
+          include: ['src/**/*.e2e.test.{ts,tsx}'],
+          exclude: ['node_modules/**', 'dist/**'],
+          browser: {
+            enabled: true,
+            headless: true,
+            // @ts-ignore — provider typing
+            provider: playwright({}),
+            instances: [{ browser: 'chromium' }],
+          },
           css: {
             modules: { classNameStrategy: 'non-scoped' },
           },
