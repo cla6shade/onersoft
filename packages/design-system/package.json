@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc --noEmit && vite build",
+    "prepublishOnly": "pnpm build",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
