@@ -9,14 +9,18 @@
     "type-check": "turbo run type-check",
     "format": "prettier --write \"**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,css}\"",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=@onersoft/design-system && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@types/node": "catalog:",
+    "prettier": "^3.8.3",
     "turbo": "^2.9.6",
     "typescript": "catalog:",
-    "@types/node": "catalog:",
-    "vitest": "^4.1.5",
-    "prettier": "^3.8.3"
+    "vitest": "^4.1.5"
   },
   "packageManager": "pnpm@10.33.2",
   "engines": {
