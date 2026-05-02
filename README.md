@@ -1,4 +1,4 @@
-# onersoft-web
+# onersoft
 
 `@onersoft` 프로덕트 웹 모노레포. 디자인 시스템과 그 위에서 동작하는 앱들을 한 저장소에서 관리합니다.
 
@@ -9,7 +9,7 @@
 ## 구성
 
 ```
-onersoft-web/
+onersoft/
 ├── apps/
 │   ├── landing/         # 마케팅 / 제품 랜딩 (Next.js 16)
 │   └── design-docs/     # 디자인 시스템 문서 사이트 (Next.js 16 + fumadocs)
