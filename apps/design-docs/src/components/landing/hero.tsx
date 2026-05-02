@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@onersoft/design-system';
+import { Button } from '@onersoft/ui';
 import { InstallCommand } from './install-command';
 import { Eyebrow, Section } from './primitives';
 

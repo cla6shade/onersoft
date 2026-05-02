@@ -1,0 +1,11 @@
+{
+  "extends": "@onersoft/typescript-config/react-library.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.tsbuildinfo",
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
+    "declarationMap": false,
+    "sourceMap": false
+  },
+  "include": ["src", "vitest.*.ts", ".storybook/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

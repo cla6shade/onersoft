@@ -26,6 +26,10 @@
       "dependsOn": ["^build"],
       "outputs": []
     },
+    "//#format:check": {
+      "inputs": ["**/*.{ts,tsx,css}", ".prettierrc*", ".prettierignore"],
+      "outputs": []
+    },
     "clean": {
       "cache": false
     }

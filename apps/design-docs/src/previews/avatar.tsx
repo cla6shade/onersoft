@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar } from '@onersoft/design-system';
+import { Avatar } from '@onersoft/ui';
 
 export function AvatarDemo() {
   return (

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Toaster, toast } from '@onersoft/design-system';
+import { Button, Toaster, toast } from '@onersoft/ui';
 
 export function ToastTriggers() {
   return (

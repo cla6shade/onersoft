@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertDialog, Button } from '@onersoft/design-system';
+import { AlertDialog, Button } from '@onersoft/ui';
 
 export function AlertDialogDefault() {
   return (

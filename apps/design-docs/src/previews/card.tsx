@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, Button } from '@onersoft/design-system';
+import { Card, Button } from '@onersoft/ui';
 
 export function CardDefault() {
   return (

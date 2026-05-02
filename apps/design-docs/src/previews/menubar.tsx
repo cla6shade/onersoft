@@ -1,6 +1,6 @@
 'use client';
 
-import { Menubar } from '@onersoft/design-system';
+import { Menubar } from '@onersoft/ui';
 
 export function MenubarDefault() {
   return (

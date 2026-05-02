@@ -1,6 +1,6 @@
 'use client';
 
-import { NavigationMenu } from '@onersoft/design-system';
+import { NavigationMenu } from '@onersoft/ui';
 
 export function NavigationMenuDefault() {
   return (

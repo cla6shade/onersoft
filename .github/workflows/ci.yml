@@ -37,11 +37,11 @@ jobs:
 
       - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm --filter @onersoft/design-system exec playwright install --with-deps chromium firefox webkit
+        run: pnpm --filter @onersoft/ui exec playwright install --with-deps chromium firefox webkit
 
       - name: Install Playwright system deps
         if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: pnpm --filter @onersoft/design-system exec playwright install-deps chromium firefox webkit
+        run: pnpm --filter @onersoft/ui exec playwright install-deps chromium firefox webkit
 
       - run: pnpm format:check
 

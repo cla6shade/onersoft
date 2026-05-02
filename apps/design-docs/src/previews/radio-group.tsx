@@ -1,6 +1,6 @@
 'use client';
 
-import { RadioGroup, Label } from '@onersoft/design-system';
+import { RadioGroup, Label } from '@onersoft/ui';
 
 const options = [
   { value: 'efficient', label: 'Efficient' },

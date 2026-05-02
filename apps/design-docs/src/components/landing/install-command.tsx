@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const COMMAND = 'pnpm add @onersoft/design-system';
+const COMMAND = 'pnpm add @onersoft/ui';
 const RESET_MS = 1600;
 
 export function InstallCommand() {

@@ -1,1 +1,1 @@
-export * from '@onersoft/design-system';
+export * from '@onersoft/ui';

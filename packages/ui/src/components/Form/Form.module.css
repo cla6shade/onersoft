@@ -1,0 +1,39 @@
+@layer onersoft.ds {
+  .root {
+    display: grid;
+    gap: var(--ds-space-2);
+    font-family: var(--ds-font-sans);
+  }
+
+  .description {
+    /* Description is rendered after error in the DOM (so screen readers
+   * read description → error via aria-describedby), but visually we
+   * want the error to surface immediately under the control. CSS `order`
+   * pushes the description below the error without touching DOM order. */
+    order: 1;
+    margin: 0;
+    color: var(--ds-color-fg-muted);
+    font-size: var(--ds-text-xs);
+    line-height: var(--ds-leading-normal);
+  }
+
+  /* Error/invalid foreground lifts danger to clear WCAG AA against the
+   * page surface — the raw `--ds-color-danger` is tuned for fills, not
+   * small body text on the surface. Mirrors Badge's status-color pattern. */
+  .error {
+    margin: 0;
+    color: light-dark(
+      oklch(from var(--ds-color-danger) 0.45 c h),
+      oklch(from var(--ds-color-danger) 0.74 c h)
+    );
+    font-size: var(--ds-text-xs);
+    line-height: var(--ds-leading-normal);
+  }
+
+  .labelInvalid {
+    color: light-dark(
+      oklch(from var(--ds-color-danger) 0.45 c h),
+      oklch(from var(--ds-color-danger) 0.74 c h)
+    );
+  }
+}
