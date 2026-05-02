@@ -38,6 +38,11 @@ jobs:
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
+      # Trusted Publishing requires npm >= 11.5.1; Node 20 ships with
+      # npm 10.x, so upgrade explicitly. Pin via @latest because npm
+      # bumps the minimum supported version periodically.
+      - run: npm install -g npm@latest
+
       - run: pnpm install --frozen-lockfile
 
       - name: Create Release PR or publish
@@ -49,5 +54,3 @@ jobs:
           title: 'chore(release): version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
