@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'apps/design-docs/**'
-      - 'packages/design-system/**'
+      - 'packages/ui/**'
       - 'packages/eslint-config/**'
       - 'packages/typescript-config/**'
       - 'pnpm-lock.yaml'
@@ -39,7 +39,7 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm --filter @onersoft/design-system build
+      - run: pnpm --filter @onersoft/ui build
 
       - run: pnpm --filter @onersoft/design-docs build
 

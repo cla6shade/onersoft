@@ -1,7 +1,7 @@
 'use client';
 
 import type { CSSProperties, ReactNode } from 'react';
-import { Slider } from '@onersoft/design-system';
+import { Slider } from '@onersoft/ui';
 
 interface KnobAxisProps {
   id: string;

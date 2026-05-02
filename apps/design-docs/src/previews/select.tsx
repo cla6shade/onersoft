@@ -1,6 +1,6 @@
 'use client';
 
-import { Select } from '@onersoft/design-system';
+import { Select } from '@onersoft/ui';
 
 export function SelectDefault() {
   return (

@@ -1,6 +1,6 @@
 'use client';
 
-import { EmptyState, Button } from '@onersoft/design-system';
+import { EmptyState, Button } from '@onersoft/ui';
 
 export function EmptyStateDefault() {
   return (

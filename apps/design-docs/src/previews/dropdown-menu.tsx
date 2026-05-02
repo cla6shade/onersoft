@@ -1,6 +1,6 @@
 'use client';
 
-import { DropdownMenu, Button } from '@onersoft/design-system';
+import { DropdownMenu, Button } from '@onersoft/ui';
 
 export function DropdownMenuDefault() {
   return (

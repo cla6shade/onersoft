@@ -1,6 +1,6 @@
 'use client';
 
-import { Accordion } from '@onersoft/design-system';
+import { Accordion } from '@onersoft/ui';
 
 export function AccordionSingle() {
   return (

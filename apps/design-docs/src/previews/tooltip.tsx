@@ -1,6 +1,6 @@
 'use client';
 
-import { Tooltip, Button } from '@onersoft/design-system';
+import { Tooltip, Button } from '@onersoft/ui';
 
 export function TooltipDefault() {
   return (

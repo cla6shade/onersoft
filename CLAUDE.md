@@ -7,8 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 pnpm + turbo monorepo. Two apps consume one design system:
 
 - `apps/landing` — Next.js 16 marketing site
-- `apps/design-docs` — Next.js 16 + fumadocs design-system documentation site
-- `packages/design-system` (`@onersoft/design-system`) — Radix-based React 19 component library, OKLCH token system, the single source of truth for all UI
+- `apps/design-docs` — Next.js 16 + fumadocs design system documentation site
+- `packages/ui` (`@onersoft/ui`) — Radix-based React 19 component library, OKLCH token system, the single source of truth for all UI
 - `packages/eslint-config`, `packages/typescript-config` — shared base configs
 
 Workspace catalog (`pnpm-workspace.yaml`) pins shared versions; reference with `"typescript": "catalog:"`. Library packages under `packages/*` declare runtime libs (React, Radix) as **peer dependencies** so the host app provides single instances. Apps reference workspace packages with `"workspace:*"`.
@@ -33,15 +33,15 @@ pnpm format:check
 Scope to one package:
 
 ```bash
-pnpm --filter @onersoft/design-system dev          # vite build --watch
-pnpm --filter @onersoft/design-system storybook    # port 6006
+pnpm --filter @onersoft/ui dev          # vite build --watch
+pnpm --filter @onersoft/ui storybook    # port 6006
 pnpm --filter @onersoft/landing dev
 pnpm --filter @onersoft/design-docs dev
 ```
 
 ### Tests
 
-Root `vitest.config.ts` aggregates `packages/*` and `apps/*` projects. The design-system runs **three vitest projects** (`packages/design-system/vitest.config.ts`):
+Root `vitest.config.ts` aggregates `packages/*` and `apps/*` projects. The `@onersoft/ui` package runs **three vitest projects** (`packages/ui/vitest.config.ts`):
 
 - **`unit`** — jsdom + Testing Library. Files: `*.test.{ts,tsx}` (excludes `*.a11y.test.*` and `*.e2e.test.*`).
 - **`a11y`** — `@vitest/browser` + Playwright on chromium/firefox/webkit, axe-core, zero violations. Files: `*.a11y.test.{ts,tsx}`.
@@ -50,24 +50,24 @@ Root `vitest.config.ts` aggregates `packages/*` and `apps/*` projects. The desig
 Run a single project / file:
 
 ```bash
-pnpm --filter @onersoft/design-system test --project unit
-pnpm --filter @onersoft/design-system test --project e2e
-pnpm --filter @onersoft/design-system test src/components/Button/Button.test.tsx
-pnpm --filter @onersoft/design-system test -t "renders primary"   # filter by test name
+pnpm --filter @onersoft/ui test --project unit
+pnpm --filter @onersoft/ui test --project e2e
+pnpm --filter @onersoft/ui test src/components/Button/Button.test.tsx
+pnpm --filter @onersoft/ui test -t "renders primary"   # filter by test name
 ```
 
 Update e2e screenshots with vitest's `--update` flag (or whatever matches the matrix helper's snapshot setup — check `e2eMatrix.tsx` before assuming).
 
-## Design-system architecture
+## UI package architecture
 
-Read `packages/design-system/README.md` for the full contract. Critical invariants:
+Read `packages/ui/README.md` for the full contract. Critical invariants:
 
-- **Token-first.** Hosts customize by overriding `--ds-*` tokens (and raw color tokens) — never by reaching into component class names. Token source: [packages/design-system/src/styles/tokens.css](packages/design-system/src/styles/tokens.css).
+- **Token-first.** Hosts customize by overriding `--ds-*` tokens (and raw color tokens) — never by reaching into component class names. Token source: [packages/ui/src/styles/tokens.css](packages/ui/src/styles/tokens.css).
 - **Cascade layer `@layer onersoft.ds`.** All DS CSS lives inside this layer so host unlayered CSS wins without specificity wars. Don't move styles out of the layer.
 - **`data-slot` attributes are the stable styling API.** CSS Module class names are hashed; consumers (and tests) target `data-slot="..."` to bypass the hash. Treat slot names as a public contract.
 - **Theme switching via `<html data-theme="light|dark">`.** The DS does **not** export a ThemeProvider — the host wires one (e.g. `next-themes` with `attribute="data-theme"`). Tokens branch on this attribute.
-- **Per-component entry points.** Importing the barrel (`@onersoft/design-system`) auto-injects `tokens.css` via `sideEffects: ["**/*.css"]`. Importing only a subpath (`@onersoft/design-system/Button`) does **not** — those callers must `import '@onersoft/design-system/tokens.css'` themselves.
-- **Peer-dep Radix packages are optional.** Adding a component that uses a new Radix primitive means: add to `peerDependencies` *and* `peerDependenciesMeta` (mark optional), and add to the design-system's own `devDependencies` if needed for build/test.
+- **Per-component entry points.** Importing the barrel (`@onersoft/ui`) auto-injects `tokens.css` via `sideEffects: ["**/*.css"]`. Importing only a subpath (`@onersoft/ui/Button`) does **not** — those callers must `import '@onersoft/ui/tokens.css'` themselves.
+- **Radix primitives are runtime `dependencies`** of `@onersoft/ui` — adding a component that uses a new Radix primitive means adding it under `dependencies` in `packages/ui/package.json`. The only peer deps are `react`, `react-dom`, and optional `react-hook-form`.
 
 ### Adding a component
 

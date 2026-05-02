@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs } from '@onersoft/design-system';
+import { Tabs } from '@onersoft/ui';
 
 export function TabsDefault() {
   return (

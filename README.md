@@ -14,14 +14,14 @@ onersoft/
 │   ├── landing/         # 마케팅 / 제품 랜딩 (Next.js 16)
 │   └── design-docs/     # 디자인 시스템 문서 사이트 (Next.js 16 + fumadocs)
 └── packages/
-    ├── design-system/   # @onersoft/design-system — React 컴포넌트 + OKLCH 토큰
+    ├── ui/              # @onersoft/ui — React 컴포넌트 + OKLCH 토큰
     ├── eslint-config/   # @onersoft/eslint-config
     └── typescript-config/  # @onersoft/typescript-config
 ```
 
 | 패키지 | 역할 |
 | --- | --- |
-| [`@onersoft/design-system`](./packages/design-system) | Radix 기반 React 컴포넌트 라이브러리. cascade layer 토큰 + `data-slot` 스타일 hook |
+| [`@onersoft/ui`](./packages/ui) | Radix 기반 React 컴포넌트 라이브러리. cascade layer 토큰 + `data-slot` 스타일 hook |
 | [`@onersoft/landing`](./apps/landing) | 제품 랜딩 페이지 |
 | [`@onersoft/design-docs`](./apps/design-docs) | 토큰·컴포넌트 문서, Storybook을 보완하는 서사 문서 |
 | `@onersoft/eslint-config` | 공유 ESLint flat config |
@@ -52,9 +52,9 @@ pnpm format             # prettier --write
 특정 패키지만 작업할 때:
 
 ```bash
-pnpm --filter @onersoft/design-system dev
+pnpm --filter @onersoft/ui dev
 pnpm --filter @onersoft/landing dev
-pnpm --filter @onersoft/design-docs storybook   # (design-system이 노출)
+pnpm --filter @onersoft/design-docs storybook   # (@onersoft/ui가 노출)
 ```
 
 Turbo가 task graph(`^build`)를 따라 의존성을 먼저 빌드하므로, 앱 dev 전에 별도 라이브러리 빌드를 실행할 필요는 없습니다.
@@ -80,7 +80,7 @@ Turbo가 task graph(`^build`)를 따라 의존성을 먼저 빌드하므로, 앱
 
 ## 디자인 시스템
 
-`packages/design-system`이 모든 UI의 단일 출처입니다. 토큰·테마·컴포넌트·슬롯 hook 사용법은 [packages/design-system/README.md](./packages/design-system/README.md) 참조.
+`packages/ui`이 모든 UI의 단일 출처입니다. 토큰·테마·컴포넌트·슬롯 hook 사용법은 [packages/ui/README.md](./packages/ui/README.md) 참조.
 
 핵심 약속:
 
@@ -95,8 +95,8 @@ Turbo가 task graph(`^build`)를 따라 의존성을 먼저 빌드하므로, 앱
 
 | 작업 | 시작 지점 |
 | --- | --- |
-| 새 컴포넌트 추가 | [packages/design-system/src/components](./packages/design-system/src/components) — 기존 컴포넌트(예: `Button`)의 5-파일 구조(`*.tsx` / `*.module.css` / `*.stories.tsx` / `*.test.tsx` / `*.a11y.test.tsx` + `*.e2e.test.tsx`)를 따르세요 |
-| 토큰 변경 | [packages/design-system/src/styles/tokens.css](./packages/design-system/src/styles/tokens.css) |
+| 새 컴포넌트 추가 | [packages/ui/src/components](./packages/ui/src/components) — 기존 컴포넌트(예: `Button`)의 5-파일 구조(`*.tsx` / `*.module.css` / `*.stories.tsx` / `*.test.tsx` / `*.a11y.test.tsx` + `*.e2e.test.tsx`)를 따르세요 |
+| 토큰 변경 | [packages/ui/src/styles/tokens.css](./packages/ui/src/styles/tokens.css) |
 | 디자인 가이드 문서 | [apps/design-docs/content](./apps/design-docs) |
 | 랜딩 카피·페이지 | [apps/landing/src](./apps/landing) |
 

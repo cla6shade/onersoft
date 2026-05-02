@@ -1,6 +1,6 @@
 # Changesets
 
-This directory holds [changeset](https://github.com/changesets/changesets) entries — one Markdown file per change that should appear in a published version of `@onersoft/design-system`.
+This directory holds [changeset](https://github.com/changesets/changesets) entries — one Markdown file per change that should appear in a published version of `@onersoft/ui`.
 
 ## Adding a changeset
 
@@ -21,4 +21,4 @@ So the order is: changeset PR → merge to main → bot opens Version Packages P
 
 ## Scope
 
-Only `@onersoft/design-system` is published. Apps and internal config packages are listed in `ignore` in `config.json` and won't appear in the version PR.
+Only `@onersoft/ui` is published. Apps and internal config packages are listed in `ignore` in `config.json` and won't appear in the version PR.

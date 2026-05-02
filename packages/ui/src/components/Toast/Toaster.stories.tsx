@@ -10,7 +10,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "`<Toaster />`를 앱 루트에 한 번 마운트하고, 어디서든 `toast()` 함수로 띄웁니다. React context가 아니라 module-level store라 라우트 핸들러·이벤트 리스너·form submit 등 컴포넌트 외부에서도 호출 가능합니다.\n\n```tsx\nimport { Toaster, toast } from '@onersoft/design-system'\n\n// app root\n<Toaster />\n\n// 어디서든\ntoast.success('저장됨')\ntoast.error('실패', { description: '다시 시도해주세요', duration: 6000 })\ntoast.dismiss(id)\n```",
+          "`<Toaster />`를 앱 루트에 한 번 마운트하고, 어디서든 `toast()` 함수로 띄웁니다. React context가 아니라 module-level store라 라우트 핸들러·이벤트 리스너·form submit 등 컴포넌트 외부에서도 호출 가능합니다.\n\n```tsx\nimport { Toaster, toast } from '@onersoft/ui'\n\n// app root\n<Toaster />\n\n// 어디서든\ntoast.success('저장됨')\ntoast.error('실패', { description: '다시 시도해주세요', duration: 6000 })\ntoast.dismiss(id)\n```",
       },
     },
   },

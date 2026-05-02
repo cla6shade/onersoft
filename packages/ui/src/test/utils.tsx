@@ -18,7 +18,7 @@ export function mountWithOverrides(
 ): RenderResult & { wrapper: HTMLDivElement } {
   const wrapper = document.createElement('div');
   /* Mirror a real consumer page so axe color-contrast checks see the
-   * design-system surface tokens instead of the bare browser white. */
+   * design system surface tokens instead of the bare browser white. */
   wrapper.style.backgroundColor = 'var(--ds-color-bg-surface)';
   wrapper.style.color = 'var(--ds-color-fg-default)';
   wrapper.style.padding = '16px';

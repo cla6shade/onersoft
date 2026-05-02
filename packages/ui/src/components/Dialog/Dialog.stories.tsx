@@ -29,7 +29,7 @@ export const Default: Story = {
         <Dialog.Content>
           <Dialog.Title>Confirm action</Dialog.Title>
           <Dialog.Description>
-            This dialog uses Radix primitives wrapped with design-system tokens.
+            This dialog uses Radix primitives wrapped with design system tokens.
           </Dialog.Description>
           <Dialog.Footer>
             <Dialog.Close asChild>

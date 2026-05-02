@@ -1,6 +1,6 @@
 'use client';
 
-import { ToggleGroup } from '@onersoft/design-system';
+import { ToggleGroup } from '@onersoft/ui';
 
 export function ToggleGroupSingle() {
   return (

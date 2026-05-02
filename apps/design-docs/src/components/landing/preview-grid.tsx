@@ -1,6 +1,6 @@
 'use client';
 
-import { Badge, Button, Card, Input, Label, Switch } from '@onersoft/design-system';
+import { Badge, Button, Card, Input, Label, Switch } from '@onersoft/ui';
 
 export function PreviewGrid() {
   return (

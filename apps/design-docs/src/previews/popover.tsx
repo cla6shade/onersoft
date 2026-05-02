@@ -1,6 +1,6 @@
 'use client';
 
-import { Popover, Button, Input, Label } from '@onersoft/design-system';
+import { Popover, Button, Input, Label } from '@onersoft/ui';
 
 export function PopoverDefault() {
   return (

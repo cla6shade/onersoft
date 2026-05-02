@@ -11,7 +11,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@onersoft/design-system": "workspace:*",
+    "@onersoft/ui": "workspace:*",
     "fumadocs-core": "16.8.5",
     "fumadocs-mdx": "14.3.2",
     "fumadocs-ui": "16.8.5",
