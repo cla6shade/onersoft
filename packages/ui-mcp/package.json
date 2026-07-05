@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "generate": "tsx src/generate/index.ts",
-    "build": "pnpm generate && tsdown",
+    "build": "pnpm generate && tsdown src/server.ts --no-config --target node20 --clean",
     "dev": "tsx src/server.ts",
     "prepublishOnly": "pnpm build",
     "lint": "eslint .",
