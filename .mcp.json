@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "onersoft-ui": {
+      "command": "node",
+      "args": ["./packages/ui-mcp/dist/server.mjs"]
+    }
+  }
+}

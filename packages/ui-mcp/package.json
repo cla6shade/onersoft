@@ -1,0 +1,40 @@
+{
+  "name": "@onersoft/ui-mcp",
+  "version": "0.0.1",
+  "description": "Model Context Protocol server exposing @onersoft/ui components, tokens, slots, and usage examples to AI agents.",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "bin": {
+    "onersoft-ui-mcp": "./dist/server.mjs"
+  },
+  "files": [
+    "dist",
+    "manifest.generated.json"
+  ],
+  "scripts": {
+    "generate": "tsx src/generate/index.ts",
+    "build": "pnpm generate && tsdown src/server.ts --no-config --target node20 --clean",
+    "dev": "tsx src/server.ts",
+    "prepublishOnly": "pnpm build",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@onersoft/eslint-config": "workspace:*",
+    "@onersoft/typescript-config": "workspace:*",
+    "@onersoft/ui": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "^9.39.4",
+    "ts-morph": "^28.0.0",
+    "tsdown": "^0.22.3",
+    "tsx": "^4.23.0",
+    "typescript": "catalog:"
+  }
+}
