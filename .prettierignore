@@ -13,3 +13,4 @@ pnpm-lock.yaml
 # generated files
 **/next-env.d.ts
 packages/ui/src/test/fixtures/tailwind.css
+packages/ui-mcp/manifest.generated.json
