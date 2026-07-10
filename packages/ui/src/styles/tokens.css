@@ -117,7 +117,7 @@
     --ds-color-bg-surface: var(--color-surface-base);
     --ds-color-bg-elevated: oklch(0.25 0.02 var(--ds-brand-hue));
     --ds-color-bg-overlay: var(--color-surface-base);
-    --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, white);
+    --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, black);
     --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 94%, black);
     --ds-color-surface-hover: color-mix(in oklab, var(--ds-color-bg-surface) 88%, white);
     --ds-color-surface-pressed: color-mix(in oklab, var(--ds-color-bg-surface) 78%, white);
@@ -191,9 +191,9 @@
     --ds-color-bg-elevated: color-mix(in oklab, var(--color-surface-base) 50%, white);
     --ds-color-bg-overlay: color-mix(in oklab, var(--color-surface-base) 30%, white);
     --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, black);
-    --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 92%, black);
-    --ds-color-surface-hover: color-mix(in oklab, var(--ds-color-bg-surface) 88%, black);
-    --ds-color-surface-pressed: color-mix(in oklab, var(--ds-color-bg-surface) 80%, black);
+    --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 95%, black);
+    --ds-color-surface-hover: color-mix(in oklab, var(--ds-color-bg-surface) 96%, black);
+    --ds-color-surface-pressed: color-mix(in oklab, var(--ds-color-bg-surface) 88%, black);
     --ds-color-elevated-hover: color-mix(in oklab, var(--ds-color-bg-elevated) 95%, black);
     --ds-ring-offset-color: var(--ds-color-bg-surface);
 
