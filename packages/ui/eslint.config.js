@@ -2,7 +2,9 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import storybook from 'eslint-plugin-storybook';
 import reactConfig from '@onersoft/eslint-config/react';
 
-const configFiles = ['eslint.config.js', 'vite.config.ts'];
+// scripts/tokens-codegen.ts is reached through vitest.config.ts (part of the
+// tsconfig project already); only the CLI entry needs the default project.
+const configFiles = ['eslint.config.js', 'vite.config.ts', 'scripts/generate-tokens.ts'];
 
 export default defineConfig([
   globalIgnores(['dist', 'storybook-static', 'coverage']),
