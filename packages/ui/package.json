@@ -14,7 +14,6 @@
     "lint": "pnpm gen:token && eslint .",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
-    "generate:tailwind-fixture": "tailwindcss -i src/test/fixtures/tailwind.input.css -o src/test/fixtures/tailwind.css",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
