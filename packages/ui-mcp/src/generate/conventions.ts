@@ -9,6 +9,11 @@ export const CONVENTIONS = `# @onersoft/ui — how to use it correctly
 Customize by overriding \`--ds-*\` tokens (and raw \`--color-*\` tokens) — never by
 reaching into component class names. Do not hardcode colors, spacing, radii, or
 shadows; reference the tokens from \`get_theme\` instead.
+Color tokens follow \`--ds-color-{category}-{role}-{variant}-{state}\`
+(category: bg | fg | border; state: hover | pressed; the neutral role is
+elided when a variant is present, e.g. \`fg-muted\`). \`--ds-color-*\` is
+reserved for the published theme API — component-local variables use
+unprefixed names.
 
 ## Cascade layer
 All DS CSS lives inside \`@layer onersoft.ds\`, so host *unlayered* CSS wins

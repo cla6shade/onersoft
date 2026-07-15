@@ -29,8 +29,8 @@
   }
 
   .accent {
-    background-color: var(--ds-color-accent-soft);
-    color: var(--ds-color-accent);
+    background-color: var(--ds-color-bg-accent-soft);
+    color: var(--ds-color-fg-accent);
   }
 
   /* Status badges: 14% soft tint of the status color over the page, with a
@@ -40,26 +40,26 @@
  * larger lift than danger (red) in dark mode. light-dark() picks the right
  * branch from color-scheme, which the theme tokens already set. */
   .success {
-    background-color: color-mix(in oklab, var(--ds-color-success) 14%, transparent);
+    background-color: color-mix(in oklab, var(--ds-color-bg-success) 14%, transparent);
     color: light-dark(
-      oklch(from var(--ds-color-success) 0.42 c h),
-      oklch(from var(--ds-color-success) 0.78 c h)
+      oklch(from var(--ds-color-bg-success) 0.42 c h),
+      oklch(from var(--ds-color-bg-success) 0.78 c h)
     );
   }
 
   .warning {
-    background-color: color-mix(in oklab, var(--ds-color-warning) 14%, transparent);
+    background-color: color-mix(in oklab, var(--ds-color-bg-warning) 14%, transparent);
     color: light-dark(
-      oklch(from var(--ds-color-warning) 0.46 c h),
-      oklch(from var(--ds-color-warning) 0.86 c h)
+      oklch(from var(--ds-color-bg-warning) 0.46 c h),
+      oklch(from var(--ds-color-bg-warning) 0.86 c h)
     );
   }
 
   .danger {
-    background-color: color-mix(in oklab, var(--ds-color-danger) 14%, transparent);
+    background-color: color-mix(in oklab, var(--ds-color-bg-danger) 14%, transparent);
     color: light-dark(
-      oklch(from var(--ds-color-danger) 0.45 c h),
-      oklch(from var(--ds-color-danger) 0.74 c h)
+      oklch(from var(--ds-color-bg-danger) 0.45 c h),
+      oklch(from var(--ds-color-bg-danger) 0.74 c h)
     );
   }
 }

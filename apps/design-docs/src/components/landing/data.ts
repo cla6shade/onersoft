@@ -65,6 +65,6 @@ export const SWATCHES: Swatch[] = [
   { name: 'fg-default', token: '--ds-color-fg-default' },
   { name: 'fg-muted', token: '--ds-color-fg-muted' },
   { name: 'border', token: '--ds-color-border-strong' },
-  { name: 'accent', token: '--ds-color-accent' },
-  { name: 'accent-soft', token: '--ds-color-accent-soft' },
+  { name: 'bg-accent', token: '--ds-color-bg-accent' },
+  { name: 'bg-accent-soft', token: '--ds-color-bg-accent-soft' },
 ];

@@ -10,7 +10,7 @@
     background-color: var(--ds-color-bg-sunken);
     border: var(--ds-border-width-thin) solid var(--ds-color-border-strong);
     border-radius: var(--ds-radius-xs);
-    color: var(--ds-color-accent-fg);
+    color: var(--ds-color-fg-on-accent);
     cursor: pointer;
     transition:
       background-color var(--ds-duration-fast) var(--ds-ease-standard),
@@ -19,13 +19,13 @@
   }
 
   .root:hover:not(:disabled) {
-    border-color: var(--ds-color-border-accent);
+    border-color: var(--ds-color-border-accent-subtle);
   }
 
   .root[data-state='checked'],
   .root[data-state='indeterminate'] {
-    background-color: var(--ds-color-accent);
-    border-color: var(--ds-color-accent);
+    background-color: var(--ds-color-bg-accent);
+    border-color: var(--ds-color-border-accent);
   }
 
   .root:focus-visible {

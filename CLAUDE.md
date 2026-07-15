@@ -13,7 +13,7 @@ pnpm + turbo monorepo. Two apps consume one design system:
 
 Workspace catalog (`pnpm-workspace.yaml`) pins shared versions; reference with `"typescript": "catalog:"`. Library packages under `packages/*` declare runtime libs (React, Radix) as **peer dependencies** so the host app provides single instances. Apps reference workspace packages with `"workspace:*"`.
 
-Requires Node ≥ 20.18, pnpm 10.33+ (pinned via `packageManager`). Targets modern browsers only — `oklch()`, `color-mix()`, cascade layers (Chrome/Edge 111+, Safari 16.2+, Firefox 113+).
+Requires Node ≥ 20.18, pnpm 10.33+ (pinned via `packageManager`). Targets modern browsers only — `oklch()` incl. relative color syntax, `color-mix()`, cascade layers (Chrome/Edge 119+, Safari 16.4+, Firefox 128+).
 
 ## Commands
 

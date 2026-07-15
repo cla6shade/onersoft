@@ -84,16 +84,14 @@ Tokens live under `--ds-*` and can be overridden anywhere downstream — globall
 }
 ```
 
-For brand colors, override the **raw** color tokens instead of the `--ds-color-*` aliases — the aliases are derived from raw tokens via `var()` or `color-mix()`, so everything downstream stays consistent.
+For brand colors, override the **raw** color tokens instead of the `--ds-color-*` tokens — the `--ds-color-*` tier is derived from raw tokens via `var()` or `color-mix()`, so everything downstream stays consistent. Color tokens are named `--ds-color-{category}-{role}-{variant}-{state}`; the full grammar and every derivation formula are documented on the [Color tokens](/docs/tokens) page.
 
 | Raw token | What it drives |
 | --- | --- |
-| `--color-brand-primary` | accent and all hover/pressed/disabled/soft variants, border-accent, ring-color |
-| `--color-brand-primary-muted` | accent-muted |
-| `--color-surface-base` | every surface tier (surface/elevated/overlay/sunken), surface-hover/pressed, elevated-hover, ring-offset, fg-subtle |
-| `--color-text-base` | body text (`fg-default`), border-default/strong |
-| `--color-text-muted` | secondary text (`fg-muted`, `fg-subtle`) |
-| `--color-accent-fg` | text and icons rendered on top of accent surfaces |
+| `--color-brand-primary` | `bg-accent` and its hover/pressed/soft variants, `fg-accent`, `border-accent(-subtle)`, ring color |
+| `--color-surface-base` | every surface level (`bg-surface/elevated/overlay/subtle/sunken`) and their hover/pressed states, ring offset, `fg-subtle` |
+| `--color-text-base` | body text (`fg-default`), `border-default/strong` |
+| `--color-accent-fg` | `fg-on-accent` — text and icons rendered on top of accent fills |
 
 ```css
 :root {
@@ -108,6 +106,8 @@ For brand colors, override the **raw** color tokens instead of the `--ds-color-*
 ```
 
 `--color-text-base` and `--color-accent-fg` are inverse-luminance pairs (text on surface vs text on accent). They are not derived from each other, so override them together when retheming if you change the surface or accent lightness.
+
+Every derived token is computed from the raw colors plus a handful of knobs (`--ds-elevate-lift`, `--ds-state-tint`, `--ds-state-mix`, `--ds-scrim-mix`, `--ds-muted-mix`) — the only per-theme colors besides the raw tier are the four status bases. To retune intensities (hover strength, muted-text contrast, backdrop opacity), turn the knob instead of overriding token formulas; both themes follow. One guard: if your custom light surface is brighter than `L ≈ 0.985`, shrink the light-theme `--ds-elevate-lift` so `bg-elevated` doesn't clip to pure white. See [Color tokens](/docs/tokens) for every formula.
 
 ## Cascade layer
 

@@ -21,11 +21,11 @@
   }
 
   .item:hover:not(:disabled) {
-    border-color: var(--ds-color-border-accent);
+    border-color: var(--ds-color-border-accent-subtle);
   }
 
   .item[data-state='checked'] {
-    border-color: var(--ds-color-accent);
+    border-color: var(--ds-color-border-accent);
   }
 
   .item:focus-visible {
@@ -53,7 +53,7 @@
     width: 0.55rem;
     height: 0.55rem;
     transform: translate(-50%, -50%);
-    background-color: var(--ds-color-accent);
+    background-color: var(--ds-color-bg-accent);
     border-radius: var(--ds-radius-full);
   }
 }

@@ -12,11 +12,11 @@ export function NavigationMenuDefault() {
             <div style={{ padding: 16, minWidth: 280, display: 'grid', gap: 8 }}>
               <NavigationMenu.Link href="#cloud">
                 <strong>Cloud</strong>
-                <div style={{ color: 'var(--ds-color-text-muted)' }}>Managed hosting</div>
+                <div style={{ color: 'var(--ds-color-fg-muted)' }}>Managed hosting</div>
               </NavigationMenu.Link>
               <NavigationMenu.Link href="#observe">
                 <strong>Observe</strong>
-                <div style={{ color: 'var(--ds-color-text-muted)' }}>
+                <div style={{ color: 'var(--ds-color-fg-muted)' }}>
                   Distributed tracing and logs
                 </div>
               </NavigationMenu.Link>

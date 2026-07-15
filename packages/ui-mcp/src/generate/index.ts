@@ -7,7 +7,7 @@ import { CONVENTIONS } from './conventions.js';
 import { parseComponentTypes } from './parseComponents.js';
 import { parseSlots } from './parseSlots.js';
 import { parseStories } from './parseStories.js';
-import { parseTokens } from './parseTokens.js';
+import { loadTokens } from './loadTokens.js';
 
 const pkgRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 // @onersoft/ui lives alongside this package in the monorepo. Generation only
@@ -55,7 +55,7 @@ function buildComponent(project: Project, name: string): ComponentEntry {
   };
 }
 
-function main(): void {
+async function main(): Promise<void> {
   const project = new Project({
     skipAddingFilesFromTsConfig: true,
     compilerOptions: { allowJs: false, jsx: 4 /* ReactJSX */ },
@@ -69,7 +69,7 @@ function main(): void {
     uiVersion: readUiVersion(),
     sharedTypes: parseSharedTypes(project),
     components: componentNames.map((name) => buildComponent(project, name)),
-    tokens: parseTokens(join(uiSrc, 'styles', 'tokens.css')),
+    tokens: await loadTokens(uiSrc),
     conventions: CONVENTIONS,
   };
 
@@ -82,4 +82,4 @@ function main(): void {
   );
 }
 
-main();
+await main();

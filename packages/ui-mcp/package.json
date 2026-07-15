@@ -1,6 +1,6 @@
 {
   "name": "@onersoft/ui-mcp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Model Context Protocol server exposing @onersoft/ui components, tokens, slots, and usage examples to AI agents.",
   "type": "module",
   "publishConfig": {

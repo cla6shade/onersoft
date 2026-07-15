@@ -38,7 +38,7 @@
   }
 
   .trigger:hover {
-    color: var(--ds-color-accent);
+    color: var(--ds-color-fg-accent);
   }
 
   .trigger:focus-visible {

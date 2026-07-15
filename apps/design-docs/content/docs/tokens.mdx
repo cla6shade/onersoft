@@ -1,0 +1,150 @@
+---
+title: Color tokens
+description: How every `--ds-color-*` value is named, derived, and computed — the canonical reference for the token system.
+---
+
+## Three tiers
+
+Every color in the design system is produced by a three-tier pipeline. Each tier is overridable, and overriding higher up cascades further down.
+
+1. **Knobs** — numbers, not colors. Two brand knobs reshape the palette; four derivation knobs set per-theme intensities for the formulas below.
+2. **Raw colors** — four per-theme `--color-*` tokens built from the brand knobs. Override these to replace a whole color family while keeping every derived shade consistent.
+3. **Derived tokens** — the `--ds-color-*` API that components actually consume. **Defined once**, computed from raw colors and knobs via `color-mix()` and relative color syntax (`oklch(from …)`). The light theme never redefines a derived formula — it only swaps the inputs. Override a derived token only for a surgical single-slot fix.
+
+Rule of thumb: knobs for "same design, different intensity or brand color", raw for "different palette", derived for "surgical fix". The only per-theme colors outside the raw tier are the four status bases (see below).
+
+### Knobs
+
+A **knob** is a dial you turn — a small per-theme input (five numbers and one color) that the derived formulas read. Because every formula references knobs through `var()`, turning one recomputes **every color that depends on it, in both themes at once**:
+
+- `--ds-brand-hue: 200` → the entire palette (surfaces, text, accent, borders) swings to teal.
+- `--ds-state-mix: 8%` → every neutral surface's hover/pressed shade becomes subtler.
+- `--ds-muted-mix: 68%` → secondary text gains contrast everywhere, and `fg-subtle` follows because it is mixed from `fg-muted`.
+
+This is the highest-leverage tier: one line in host CSS, no color math, no per-theme duplication.
+
+| Knob | Dark (default) | Light | What it drives |
+| --- | --- | --- | --- |
+| `--ds-brand-hue` | `232` | same | the hue of every raw color, `bg-info`, and the light-theme shadows |
+| `--ds-brand-chroma` | `0.06` | `0.07` | chroma of `--color-brand-primary` (and `bg-accent-muted` via its formula) |
+| `--ds-elevate-lift` | `0.06` | `0.015` | lightness lift from `bg-surface` to `bg-elevated` (and its alias `bg-overlay`) |
+| `--ds-state-tint` | `white` | `black` | the color hover/pressed states blend toward — surfaces step lighter in dark, darker in light |
+| `--ds-state-mix` | `12%` | `5%` | how much of the state tint the neutral hover blends in (`bg-surface-hover`, `bg-elevated-hover`); pressed adds `10%`. Accent states use fixed strengths — see below |
+| `--ds-scrim-mix` | `60%` | `40%` | `bg-scrim` backdrop alpha; `bg-scrim-subtle` is `−20%` |
+| `--ds-muted-mix` | `60%` | same | `fg-muted`'s position between `surface-base` and `text-base`; raised to `78%` under `prefers-contrast: more` |
+
+Knobs are part of the published `--ds-*` API — override them in host CSS like any token, and every formula that consumes them recomputes in both themes.
+
+### Raw colors
+
+<TokenFamily family="raw" />
+
+Swatches on this page render the live token, so they always show the theme you are currently viewing — flip the theme toggle and every swatch updates.
+
+## Naming grammar
+
+```
+--ds-color-{category}-{role}-{variant}-{state}
+```
+
+| Slot | Values | Notes |
+| --- | --- | --- |
+| `category` | `bg` · `fg` · `border` | what CSS property the token is for |
+| `role` | `surface`, `elevated`, `overlay`, `subtle`, `sunken`, `scrim`, `accent`, `on-accent`, `danger`, `success`, `warning`, `info`, `default` | for `bg`, each surface level is its own role |
+| `variant` | `muted` · `subtle` · `soft` · `strong` | emphasis level, **not** interaction |
+| `state` | `hover` · `pressed` | interaction states only |
+
+Empty slots are omitted. The neutral role (`default` for fg/border, `surface` for bg) is spelled out when the token has no variant — `--ds-color-fg-default`, `--ds-color-bg-surface` — and elided when a variant distinguishes it: `--ds-color-fg-muted`, `--ds-color-border-strong`.
+
+Two roles that look similar but aren't:
+
+- `bg-overlay` — the surface of floating elements (popovers, dropdowns, tooltips).
+- `bg-scrim` — the translucent backdrop behind modals.
+
+The `--ds-color-*` namespace is reserved for this published API. Component-local variables inside the library use unprefixed names (`--switch-border`, `--kbd-bg`) and are not a contract.
+
+## Derivation rules
+
+Every derived color is produced by one of three operations on its parent color:
+
+1. **Blend** — `color-mix(in oklab, A n%, B)`: take n% of color A and (100−n)% of color B. Used for hover/pressed shades, muted text, and the subtle/sunken surfaces.
+2. **Fade** — the same `color-mix`, but the second color is `transparent`: the parent color kept at n% opacity. Used for soft fills, neutral borders, and scrims.
+3. **Channel shift** — `oklch(from parent calc(l ± n) calc(c ± n) h)`: edit the lightness or chroma channel directly, leaving the others alone. Used when blending would drag a channel the wrong way (see below).
+
+### How a hover shade is made
+
+A hover shade is the base surface with a little of the **state tint** blended in. Two knobs control it:
+
+- `--ds-state-tint` — *which way* the shade moves: `white` in dark (surfaces step lighter), `black` in light (surfaces step darker).
+- `--ds-state-mix` — *how far*: `12%` in dark, `5%` in light.
+
+So in dark, `bg-surface` `L 0.19` + 12% white → hover `L 0.29`; in light, `bg-surface` `L 0.97` + 5% black → hover `L 0.92`. `pressed` is the identical blend, 10 percentage points stronger (`--ds-state-mix + 10%`).
+
+**Exception — accent states.** `bg-accent-hover` blends a fixed `12%` of the state tint (accent fills sit at mid-lightness, so both themes want the same strength), and `bg-accent-pressed` blends `20%` of **black** in both themes — a pressed button always gets darker, never lighter.
+
+### When blending isn't enough
+
+Blending moves *every* channel toward the other color at once. Sometimes that's wrong:
+
+- `bg-elevated` must be **lighter and slightly more colorful** than `bg-surface`. Blending white in would lighten it but wash the brand tint out. So it channel-shifts instead: `L + 0.06` (dark) / `+ 0.015` (light), `C + 0.005`.
+- `bg-accent-muted` needs `L − 0.06` but only `C − 0.01`. Blending black in would cut chroma far more than that.
+- `fg-muted` starts as a blend (60% text, 40% surface — the `--ds-muted-mix` knob), but the blend lands slightly greyer than intended, so a channel shift adds the lost chroma back (`C + 0.008`).
+
+### Derivation graph
+
+Every token traces back to one of the four raw colors or `black` (backdrops) — except the four status bases, which are per-theme literals with their own subtree. Each edge label is the operation that produces the child from its parent:
+
+<TokenTree />
+
+The tables below show the same formulas per family, with the current knob value substituted per theme.
+
+### Background family
+
+<TokenFamily family="bg" />
+
+`soft` variants are translucent in both themes, so they tint whatever surface they sit on. `bg-overlay` is an alias of `bg-elevated` — floating elements sit at the same elevation step as cards.
+
+### Foreground family
+
+Previewed as `Ag` text on a `bg-surface` tile (`fg-on-accent` sits on a `bg-accent` fill, since that is the only place it is used).
+
+<TokenFamily family="fg" />
+
+The four status inks (`fg-danger` … `fg-info`) alias their matching `bg-*` status token — one base value per status, mapped per category.
+
+### Border family
+
+<TokenFamily family="border" />
+
+The focus ring reuses this family: `--ds-ring-color` is `var(--ds-color-border-accent)` and `--ds-shadow-focus-field` is a 3px spread of `bg-accent-soft`.
+
+## Direct values (not derived)
+
+Exactly one group of tokens is per-theme rather than derived: the **status bases** (`bg-danger` / `bg-success` / `bg-warning` / `bg-info`). They are independent hues with no parent color to derive from, and each theme's value is tuned by hand so fills pass contrast against their inks and against the page. Every other color token — including `fg-muted`, `bg-accent-muted`, and `bg-elevated` — is computed from the raw colors and knobs by the single formulas above.
+
+This relies on relative color syntax (`oklch(from …)`), which sets the library's browser floor: **Chrome/Edge 119+, Safari/iOS 16.4+, Firefox 128+, Opera 105+**.
+
+## Preference media queries
+
+- **`prefers-contrast: more`** bumps `border-default`/`border-strong` to 24%/40% mixes and turns the `--ds-muted-mix` knob from `60%` to `78%`, pushing `fg-muted` further toward the text color in both themes at once. Because `fg-subtle` is mixed *from* `fg-muted`, it inherits the bump automatically — one `:root` block covers both themes.
+- **`prefers-reduced-motion: reduce`** zeroes all `--ds-duration-*` tokens (not color, listed here for completeness).
+
+## Overriding
+
+See [Theming](/docs/theming) for the override mechanics (`data-theme`, cascade layer, which tier to touch). Quick reference:
+
+```css
+/* rebrand: brand knobs */
+:root {
+  --ds-brand-hue: 200;
+  --ds-brand-chroma: 0.08;
+}
+
+/* retune an intensity: derivation knobs (both themes follow) */
+:root {
+  --ds-muted-mix: 68%; /* stronger secondary text */
+  --ds-state-mix: 8%; /* subtler hover on neutral surfaces */
+}
+```
+
+One clipping guard: `bg-elevated` lifts the surface lightness by `--ds-elevate-lift`. If you retheme with a light surface brighter than `L ≈ 0.985`, shrink the light-theme `--ds-elevate-lift` so elevated surfaces don't clip to pure white.

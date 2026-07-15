@@ -31,6 +31,6 @@
     font-weight: var(--ds-weight-semibold);
     letter-spacing: var(--ds-tracking-wide);
     text-transform: uppercase;
-    background-color: var(--ds-color-accent-soft);
+    background-color: var(--ds-color-bg-accent-soft);
   }
 }

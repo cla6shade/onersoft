@@ -29,7 +29,7 @@
 
   .trigger:focus-visible {
     outline: none;
-    border-color: var(--ds-color-accent);
+    border-color: var(--ds-color-border-accent);
     box-shadow: var(--ds-shadow-focus-field);
   }
 
@@ -89,7 +89,7 @@
   }
 
   .item[data-highlighted] {
-    background-color: var(--ds-color-accent-soft);
+    background-color: var(--ds-color-bg-accent-soft);
   }
 
   .item[data-state='checked'] {
@@ -109,7 +109,7 @@
     align-items: center;
     justify-content: center;
     width: 1rem;
-    color: var(--ds-color-accent);
+    color: var(--ds-color-fg-accent);
   }
 
   .label {

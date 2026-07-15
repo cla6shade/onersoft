@@ -26,12 +26,12 @@
   }
 
   .textarea:focus-visible {
-    border-color: var(--ds-color-accent);
+    border-color: var(--ds-color-border-accent);
     box-shadow: var(--ds-shadow-focus-field);
   }
 
   .textarea[data-invalid] {
-    border-color: var(--ds-color-danger);
+    border-color: var(--ds-color-border-danger);
   }
 
   .textarea[data-invalid]:focus-visible {

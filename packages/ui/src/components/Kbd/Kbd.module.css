@@ -10,14 +10,14 @@
  * read them, so they are derived locally now and override cleanly via
  * the cascade if a host wants to retune just kbd. */
   .kbd {
-    --ds-color-kbd-bg: color-mix(in oklab, var(--ds-color-fg-default) 6%, transparent);
-    --ds-color-kbd-fg: var(--ds-color-fg-default);
+    --kbd-bg: color-mix(in oklab, var(--ds-color-fg-default) 6%, transparent);
+    --kbd-fg: var(--ds-color-fg-default);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--ds-color-kbd-bg);
-    color: var(--ds-color-kbd-fg);
+    background-color: var(--kbd-bg);
+    color: var(--kbd-fg);
     font-family: var(--ds-font-sans);
     font-weight: var(--ds-weight-medium);
     font-feature-settings:

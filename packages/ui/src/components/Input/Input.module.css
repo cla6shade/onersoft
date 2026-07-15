@@ -24,12 +24,12 @@
   }
 
   .input:focus-visible {
-    border-color: var(--ds-color-accent);
+    border-color: var(--ds-color-border-accent);
     box-shadow: var(--ds-shadow-focus-field);
   }
 
   .input[data-invalid] {
-    border-color: var(--ds-color-danger);
+    border-color: var(--ds-color-border-danger);
   }
 
   .input[data-invalid]:focus-visible {

@@ -47,7 +47,7 @@
   .trigger[data-state='open'],
   .link[data-active] {
     color: var(--ds-color-fg-default);
-    background-color: var(--ds-color-surface-hover);
+    background-color: var(--ds-color-bg-surface-hover);
   }
 
   .trigger:focus-visible,

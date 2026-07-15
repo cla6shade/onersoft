@@ -21,3 +21,6 @@ pnpm-debug.log*
 !.vscode/settings.json
 !.vscode/extensions.json
 .idea
+
+# generated from packages/ui/src/tokens/
+packages/ui/src/styles/tokens.css

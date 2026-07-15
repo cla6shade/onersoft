@@ -26,13 +26,13 @@
   }
 
   .root[data-state='on'] {
-    background-color: var(--ds-color-accent-soft);
+    background-color: var(--ds-color-bg-accent-soft);
     color: var(--ds-color-fg-default);
-    border-color: var(--ds-color-border-accent);
+    border-color: var(--ds-color-border-accent-subtle);
   }
 
   .root[data-state='on']:hover:not(:disabled) {
-    background-color: var(--ds-color-accent-soft-hover);
+    background-color: var(--ds-color-bg-accent-soft-hover);
   }
 
   .root:focus-visible {

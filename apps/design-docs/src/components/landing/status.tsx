@@ -100,7 +100,7 @@ function SpecRowItem({ row, divider }: { row: SpecRow; divider: boolean }) {
         <span
           className="text-[0.95rem]"
           style={{
-            color: isWarn ? 'var(--ds-color-accent)' : 'var(--ds-color-fg-default)',
+            color: isWarn ? 'var(--ds-color-fg-accent)' : 'var(--ds-color-fg-default)',
             fontWeight: isWarn ? 500 : 400,
             fontFamily: isWarn ? 'var(--ds-font-mono)' : undefined,
           }}

@@ -23,7 +23,7 @@ export function InstallCommand() {
       type="button"
       onClick={onClick}
       aria-label={`Copy install command: ${COMMAND}`}
-      className="group inline-flex items-center gap-3 rounded-[var(--ds-radius-md)] border h-[var(--ds-control-height-lg)] px-4 bg-[color:var(--ds-color-bg-elevated)] hover:bg-[color:var(--ds-color-elevated-hover)] transition-colors"
+      className="group inline-flex items-center gap-3 rounded-[var(--ds-radius-md)] border h-[var(--ds-control-height-lg)] px-4 bg-[color:var(--ds-color-bg-elevated)] hover:bg-[color:var(--ds-color-bg-elevated-hover)] transition-colors"
       style={{
         borderColor: 'var(--ds-color-border-strong)',
         fontFamily: 'var(--ds-font-mono)',
@@ -39,7 +39,7 @@ export function InstallCommand() {
         aria-live="polite"
         className="ml-1 text-[10px] uppercase tracking-[0.14em]"
         style={{
-          color: copied ? 'var(--ds-color-accent)' : 'var(--ds-color-fg-subtle)',
+          color: copied ? 'var(--ds-color-fg-accent)' : 'var(--ds-color-fg-subtle)',
           transition: 'color var(--ds-duration-fast) var(--ds-ease-standard)',
         }}
       >
