@@ -58,7 +58,7 @@ export function BrandKnob() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="h-6 w-6 grid place-items-center rounded-[var(--ds-radius-sm)] hover:bg-[color:var(--ds-color-surface-hover)]"
+              className="h-6 w-6 grid place-items-center rounded-[var(--ds-radius-sm)] hover:bg-[color:var(--ds-color-bg-surface-hover)]"
               style={{ color: 'var(--ds-color-fg-muted)' }}
               aria-label="Close brand knob"
             >

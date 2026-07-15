@@ -31,7 +31,7 @@ export function Eyebrow({ children, accent = false, className = '' }: EyebrowPro
       className={`text-[11px] uppercase tracking-[0.18em] ${className}`}
       style={{
         fontFamily: 'var(--ds-font-mono)',
-        color: accent ? 'var(--ds-color-accent)' : 'var(--ds-color-fg-muted)',
+        color: accent ? 'var(--ds-color-fg-accent)' : 'var(--ds-color-fg-muted)',
       }}
     >
       {children}
@@ -49,7 +49,7 @@ const TONE_COLOR: Record<NonNullable<MonoLabelProps['tone']>, string> = {
   default: 'var(--ds-color-fg-default)',
   muted: 'var(--ds-color-fg-muted)',
   subtle: 'var(--ds-color-fg-subtle)',
-  accent: 'var(--ds-color-accent)',
+  accent: 'var(--ds-color-fg-accent)',
 };
 
 export function MonoLabel({ children, tone = 'muted', className = '' }: MonoLabelProps) {

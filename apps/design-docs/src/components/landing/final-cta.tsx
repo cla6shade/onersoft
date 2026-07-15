@@ -14,7 +14,7 @@ export function FinalCta() {
         </h2>
         <span
           className="text-3xl sm:text-4xl leading-[1.15] transition-transform duration-[var(--ds-duration-medium)] ease-[var(--ds-ease-standard)] group-hover:translate-x-1.5"
-          style={{ color: 'var(--ds-color-accent)' }}
+          style={{ color: 'var(--ds-color-fg-accent)' }}
           aria-hidden
         >
           →

@@ -13,7 +13,8 @@ export function Hero() {
       >
         Tiny Radix wrapper
         <br />
-        with a <span style={{ color: 'var(--ds-color-accent)' }}>human-friendly</span> color space.
+        with a <span style={{ color: 'var(--ds-color-fg-accent)' }}>human-friendly</span> color
+        space.
       </h1>
       <p
         className="mt-7 max-w-[60ch] text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.65]"

@@ -13,10 +13,10 @@ const AXIS_INSET = 'ml-[7.5rem] sm:ml-[8.5rem] mr-[4rem]';
 
 const BASELINE_COLOR = 'var(--ds-color-border-strong)';
 const BASELINE_COLOR_ACCENT =
-  'color-mix(in oklab, var(--ds-color-accent) 35%, var(--ds-color-border-strong))';
+  'color-mix(in oklab, var(--ds-color-bg-accent) 35%, var(--ds-color-border-strong))';
 const DELTA_COLOR = 'var(--ds-color-fg-muted)';
-const ACCENT_COLOR = 'var(--ds-color-accent)';
-const ROW_HIGHLIGHT_BG = 'color-mix(in oklab, var(--ds-color-accent) 6%, transparent)';
+const ACCENT_COLOR = 'var(--ds-color-bg-accent)';
+const ROW_HIGHLIGHT_BG = 'color-mix(in oklab, var(--ds-color-bg-accent) 6%, transparent)';
 
 export function BarChart() {
   return (

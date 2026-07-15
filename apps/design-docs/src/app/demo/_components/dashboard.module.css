@@ -92,7 +92,7 @@
 }
 
 .navItem:hover {
-  background: var(--ds-color-surface-hover);
+  background: var(--ds-color-bg-surface-hover);
   color: var(--ds-color-fg-default);
 }
 
@@ -103,7 +103,7 @@
 
 .navItemActive,
 .navItemActive:hover {
-  background: var(--ds-color-accent-soft);
+  background: var(--ds-color-bg-accent-soft);
   color: var(--ds-color-fg-default);
   font-weight: var(--ds-weight-medium);
 }
@@ -115,7 +115,7 @@
 }
 
 .navItemActive .navIcon {
-  color: var(--ds-color-accent);
+  color: var(--ds-color-fg-accent);
 }
 
 .navCount {
@@ -258,8 +258,8 @@
   width: var(--ds-space-4);
   height: var(--ds-space-4);
   border-radius: var(--ds-radius-xs);
-  border: var(--ds-border-width-thin, 1px) solid var(--ds-color-border-accent);
-  background: var(--ds-color-accent-soft);
+  border: var(--ds-border-width-thin, 1px) solid var(--ds-color-border-accent-subtle);
+  background: var(--ds-color-bg-accent-soft);
   display: grid;
   place-items: center;
 }
@@ -268,7 +268,7 @@
   width: var(--ds-space-1);
   height: var(--ds-space-1);
   border-radius: var(--ds-radius-full);
-  background: var(--ds-color-accent);
+  background: var(--ds-color-bg-accent);
 }
 
 .toolbarSpacer {
@@ -285,8 +285,8 @@
   width: var(--ds-space-2);
   height: var(--ds-space-2);
   border-radius: var(--ds-radius-full);
-  background: var(--ds-color-success);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ds-color-success) 22%, transparent);
+  background: var(--ds-color-bg-success);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ds-color-bg-success) 22%, transparent);
   animation: pulse 2.4s ease-out infinite;
 }
 
@@ -298,13 +298,13 @@
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--ds-color-success) 30%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--ds-color-bg-success) 30%, transparent);
   }
   70% {
-    box-shadow: 0 0 0 6px color-mix(in oklab, var(--ds-color-success) 0%, transparent);
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--ds-color-bg-success) 0%, transparent);
   }
   100% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--ds-color-success) 0%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--ds-color-bg-success) 0%, transparent);
   }
 }
 
@@ -338,7 +338,7 @@
 }
 
 .tile:hover {
-  background: var(--ds-color-surface-hover);
+  background: var(--ds-color-bg-surface-hover);
 }
 
 .tileHead {
@@ -395,11 +395,11 @@
 }
 
 .tile:hover .sparkLast {
-  background: var(--ds-color-accent);
+  background: var(--ds-color-bg-accent);
 }
 
 .sparkLast {
-  background: var(--ds-color-accent-muted);
+  background: var(--ds-color-bg-accent-muted);
 }
 
 /* ---- Tabs & sections ---------------------------------------------------- */
@@ -486,7 +486,7 @@
 }
 
 .row:hover {
-  background: var(--ds-color-surface-hover);
+  background: var(--ds-color-bg-surface-hover);
 }
 
 .rowMain {
@@ -610,13 +610,13 @@
 }
 
 .dotUp {
-  background: var(--ds-color-success);
+  background: var(--ds-color-bg-success);
 }
 .dotDegraded {
-  background: var(--ds-color-warning);
+  background: var(--ds-color-bg-warning);
 }
 .dotDown {
-  background: var(--ds-color-danger);
+  background: var(--ds-color-bg-danger);
 }
 
 .segRow {
@@ -634,7 +634,7 @@
 .segFill {
   height: 100%;
   border-radius: var(--ds-radius-full);
-  background: var(--ds-color-accent-muted);
+  background: var(--ds-color-bg-accent-muted);
 }
 
 .segLine {
