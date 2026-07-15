@@ -34,14 +34,15 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
-      # Trusted Publishing requires npm >= 11.5.1; Node 20 ships with
-      # npm 10.x, so upgrade explicitly. Pin via @latest because npm
-      # bumps the minimum supported version periodically.
-      - run: npm install -g npm@latest
+      # Trusted Publishing requires npm >= 11.5.1. Pin the npm major
+      # explicitly instead of @latest so a future major that drops the
+      # runner's Node version can't break this step. npm 12 requires
+      # Node ^24.15.0, satisfied by the latest 24.x setup-node installs.
+      - run: npm install -g npm@12
 
       - run: pnpm install --frozen-lockfile
 
