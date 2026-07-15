@@ -3,6 +3,11 @@
   "version": "0.0.2",
   "description": "Model Context Protocol server exposing @onersoft/ui components, tokens, slots, and usage examples to AI agents.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cla6shade/onersoft.git",
+    "directory": "packages/ui-mcp"
+  },
   "publishConfig": {
     "access": "public",
     "provenance": true
