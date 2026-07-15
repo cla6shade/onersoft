@@ -1,6 +1,11 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
+import { writeTokensCss } from './scripts/tokens-codegen';
+
+// tokens.css is generated from src/tokens/ — the setup files import it, so
+// make sure it exists before any test project boots.
+writeTokensCss();
 
 export default defineConfig({
   plugins: [react()],

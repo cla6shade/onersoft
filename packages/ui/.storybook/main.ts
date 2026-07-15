@@ -4,6 +4,12 @@ import { dirname } from 'path';
 
 import { fileURLToPath } from 'url';
 
+import { writeTokensCss } from '../scripts/tokens-codegen';
+
+// tokens.css is generated from src/tokens/ — make sure it exists before the
+// preview (which imports it) boots.
+writeTokensCss();
+
 /**
  * This function is used to resolve the absolute path of a package.
  * It is needed in projects that use Yarn PnP or are set up within a monorepo.

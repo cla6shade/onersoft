@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import preserveDirectives from 'rollup-preserve-directives';
+import { tokensPlugin } from './scripts/tokens-codegen';
 
 const componentsDir = resolve(__dirname, 'src/components');
 const components = readdirSync(componentsDir).filter((name) => {
@@ -14,6 +15,7 @@ const components = readdirSync(componentsDir).filter((name) => {
 
 const entry: Record<string, string> = {
   index: resolve(__dirname, 'src/index.ts'),
+  tokens: resolve(__dirname, 'src/tokens/index.ts'),
 };
 for (const c of components) {
   entry[c] = resolve(componentsDir, c, 'index.ts');
@@ -22,6 +24,7 @@ for (const c of components) {
 // https://ko.vite.dev/guide/build.html#library-mode
 export default defineConfig({
   plugins: [
+    tokensPlugin(),
     react(),
     libInjectCss(),
     preserveDirectives(),
