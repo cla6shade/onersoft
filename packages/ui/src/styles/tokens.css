@@ -1,19 +1,36 @@
 /* All rules live in the `onersoft.ds` cascade layer so unlayered host CSS
  * can override without specificity battles. */
+
+/* Color tokens follow `--ds-color-{category}-{role}-{variant}-{state}`:
+ *   category: bg | fg | border
+ *   role:     surface, elevated, overlay, subtle, sunken, scrim, accent,
+ *             danger, success, warning, info, on-accent, ...
+ *   variant:  muted | subtle | soft | strong (neutral role is elided when a
+ *             variant is present: fg-muted, border-strong)
+ *   state:    hover | pressed
+ * `--ds-color-*` is reserved for the published theme API — component-local
+ * variables use unprefixed names (e.g. `--switch-border`).
+ *
+ * The derived tier is defined ONCE (in `:root`) and is fully computed from
+ * the raw colors and the knobs. The light theme only overrides raw colors,
+ * knobs, status bases, and elevation shadows — never a derived formula. */
 @layer onersoft.ds {
   :root {
     /* === Brand knobs === */
     --ds-brand-hue: 232;
     --ds-brand-chroma: 0.06;
 
+    /* === Derivation knobs (per-theme dials) === */
+    --ds-elevate-lift: 0.06; /* surface → elevated lightness lift */
+    --ds-state-tint: white; /* what hover/pressed mix toward */
+    --ds-state-mix: 12%; /* hover mix strength; pressed = +10% */
+    --ds-scrim-mix: 60%; /* scrim black alpha; scrim-subtle = −20% */
+    --ds-muted-mix: 60%; /* fg-muted: text → surface mix ratio */
+
     /* === Raw color tokens (override here to retheme) === */
     --color-brand-primary: oklch(0.72 var(--ds-brand-chroma) var(--ds-brand-hue));
-    --color-brand-primary-muted: oklch(
-      0.66 calc(var(--ds-brand-chroma) - 0.01) var(--ds-brand-hue)
-    );
     --color-surface-base: oklch(0.19 0.015 var(--ds-brand-hue));
     --color-text-base: oklch(0.97 0.006 var(--ds-brand-hue));
-    --color-text-muted: oklch(0.64 0.018 var(--ds-brand-hue));
     --color-accent-fg: oklch(0.17 0.015 var(--ds-brand-hue));
 
     /* === Theme-agnostic === */
@@ -110,130 +127,142 @@
     --ds-control-height-md: 2.5rem;
     --ds-control-height-lg: 3rem;
 
-    /* === Dark theme (default) === */
+    /* === Dark theme defaults === */
     color-scheme: dark;
 
-    /* Surface family — from --color-surface-base */
-    --ds-color-bg-surface: var(--color-surface-base);
-    --ds-color-bg-elevated: oklch(0.25 0.02 var(--ds-brand-hue));
-    --ds-color-bg-overlay: var(--color-surface-base);
-    --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, black);
-    --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 94%, black);
-    --ds-color-surface-hover: color-mix(in oklab, var(--ds-color-bg-surface) 88%, white);
-    --ds-color-surface-pressed: color-mix(in oklab, var(--ds-color-bg-surface) 78%, white);
-    --ds-color-elevated-hover: color-mix(in oklab, var(--ds-color-bg-elevated) 90%, white);
-    --ds-ring-offset-color: var(--ds-color-bg-surface);
+    /* === Derived tier — single definitions ===
+     * Interaction states mix toward --ds-state-tint (white in dark,
+     * black in light) at --ds-state-mix strength. */
 
-    /* Foreground family — from --color-text-base / --color-text-muted */
+    /* Background family */
+    --ds-color-bg-surface: var(--color-surface-base);
+    --ds-color-bg-elevated: oklch(
+      from var(--ds-color-bg-surface) calc(l + var(--ds-elevate-lift)) calc(c + 0.005) h
+    );
+    --ds-color-bg-overlay: var(--ds-color-bg-elevated);
+    --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, black);
+    --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 95%, black);
+    --ds-color-bg-surface-hover: color-mix(
+      in oklab,
+      var(--ds-state-tint) var(--ds-state-mix),
+      var(--ds-color-bg-surface)
+    );
+    --ds-color-bg-surface-pressed: color-mix(
+      in oklab,
+      var(--ds-state-tint) calc(var(--ds-state-mix) + 10%),
+      var(--ds-color-bg-surface)
+    );
+    --ds-color-bg-elevated-hover: color-mix(
+      in oklab,
+      var(--ds-state-tint) var(--ds-state-mix),
+      var(--ds-color-bg-elevated)
+    );
+    --ds-color-bg-scrim: color-mix(in oklab, black var(--ds-scrim-mix), transparent);
+    --ds-color-bg-scrim-subtle: color-mix(
+      in oklab,
+      black calc(var(--ds-scrim-mix) - 20%),
+      transparent
+    );
+    --ds-color-bg-accent: var(--color-brand-primary);
+    --ds-color-bg-accent-hover: color-mix(
+      in oklab,
+      var(--ds-state-tint) 12%,
+      var(--ds-color-bg-accent)
+    );
+    --ds-color-bg-accent-pressed: color-mix(in oklab, var(--ds-color-bg-accent) 80%, black);
+    --ds-color-bg-accent-muted: oklch(
+      from var(--ds-color-bg-accent) calc(l - 0.06) calc(c - 0.01) h
+    );
+    --ds-color-bg-accent-soft: color-mix(in oklab, var(--ds-color-bg-accent) 18%, transparent);
+    --ds-color-bg-accent-soft-hover: color-mix(
+      in oklab,
+      var(--ds-color-bg-accent) 28%,
+      transparent
+    );
+
+    /* Status bases — the one per-theme exception: independent hues, tuned
+     * per theme for fill contrast. fg/border status tokens alias these. */
+    --ds-color-bg-danger: oklch(0.61 0.19 20);
+    --ds-color-bg-success: oklch(0.66 0.14 150);
+    --ds-color-bg-warning: oklch(0.78 0.15 75);
+    --ds-color-bg-info: oklch(0.7 0.1 var(--ds-brand-hue));
+
+    /* Foreground family — muted sits --ds-muted-mix of the way from surface
+     * to text; the relative-color wrapper restores the chroma a plain mix
+     * would lose. */
     --ds-color-fg-default: var(--color-text-base);
-    --ds-color-fg-muted: var(--color-text-muted);
+    --ds-color-fg-muted: oklch(
+      from
+        color-mix(in oklab, var(--color-text-base) var(--ds-muted-mix), var(--color-surface-base)) l
+        calc(c + 0.008) h
+    );
     --ds-color-fg-subtle: color-mix(
       in oklab,
-      var(--color-text-muted) 70%,
-      var(--color-surface-base)
+      var(--ds-color-fg-muted) 65%,
+      var(--ds-color-bg-surface)
     );
+    --ds-color-fg-accent: var(--color-brand-primary);
+    --ds-color-fg-on-accent: var(--color-accent-fg);
+    --ds-color-fg-danger: var(--ds-color-bg-danger);
+    --ds-color-fg-success: var(--ds-color-bg-success);
+    --ds-color-fg-warning: var(--ds-color-bg-warning);
+    --ds-color-fg-info: var(--ds-color-bg-info);
+
+    /* Border family — neutral borders are transparent mixes of fg-default
+     * (10% / 18%). */
     --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 10%, transparent);
     --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 18%, transparent);
+    --ds-color-border-accent: var(--color-brand-primary);
+    --ds-color-border-accent-subtle: color-mix(
+      in oklab,
+      var(--ds-color-bg-accent) 60%,
+      transparent
+    );
+    --ds-color-border-danger: var(--ds-color-bg-danger);
 
-    /* Accent family — from --color-brand-primary / -muted, --color-accent-fg */
-    --ds-color-accent: var(--color-brand-primary);
-    --ds-color-accent-muted: var(--color-brand-primary-muted);
-    --ds-color-accent-fg: var(--color-accent-fg);
-    --ds-color-accent-hover: color-mix(in oklab, var(--ds-color-accent) 88%, white);
-    --ds-color-accent-pressed: color-mix(in oklab, var(--ds-color-accent) 80%, black);
-    --ds-color-accent-disabled: color-mix(in oklab, var(--ds-color-accent) 40%, transparent);
-    --ds-color-accent-soft: color-mix(in oklab, var(--ds-color-accent) 18%, transparent);
-    --ds-color-accent-soft-hover: color-mix(in oklab, var(--ds-color-accent) 28%, transparent);
-    --ds-color-border-accent: color-mix(in oklab, var(--ds-color-accent) 60%, transparent);
-    --ds-ring-color: var(--ds-color-accent);
-    --ds-shadow-focus-field: 0 0 0 3px var(--ds-color-accent-soft);
-
-    /* Status — independent */
-    --ds-color-danger: oklch(0.61 0.19 20);
-    --ds-color-success: oklch(0.66 0.14 150);
-    --ds-color-warning: oklch(0.78 0.15 75);
-    --ds-color-info: oklch(0.7 0.1 var(--ds-brand-hue));
+    /* Ring / focus */
+    --ds-ring-color: var(--ds-color-border-accent);
+    --ds-ring-offset-color: var(--ds-color-bg-surface);
+    --ds-shadow-focus-field: 0 0 0 3px var(--ds-color-bg-accent-soft);
     --ds-shadow-focus-field-invalid: 0 0 0 3px
-      color-mix(in oklab, var(--ds-color-danger) 22%, transparent);
+      color-mix(in oklab, var(--ds-color-bg-danger) 22%, transparent);
+    --ds-shadow-focus:
+      0 0 0 var(--ds-ring-offset) var(--ds-ring-offset-color),
+      0 0 0 calc(var(--ds-ring-offset) + var(--ds-ring-width)) var(--ds-ring-color);
 
-    /* Overlay — independent */
-    --ds-color-overlay: color-mix(in oklab, black 60%, transparent);
-    --ds-color-overlay-scrim: color-mix(in oklab, black 40%, transparent);
-
-    /* Shadows — independent */
+    /* Elevation shadows — per-theme (dark) */
     --ds-shadow-xs: 0 1px 2px oklch(0 0 0 / 0.25);
     --ds-shadow-sm: 0 2px 6px oklch(0 0 0 / 0.3);
     --ds-shadow-md: 0 8px 18px oklch(0 0 0 / 0.35);
     --ds-shadow-lg: 0 20px 40px oklch(0 0 0 / 0.45);
-    --ds-shadow-focus:
-      0 0 0 var(--ds-ring-offset) var(--ds-ring-offset-color),
-      0 0 0 calc(var(--ds-ring-offset) + var(--ds-ring-width)) var(--ds-ring-color);
   }
 
-  /* === Light theme === */
+  /* === Light theme — raw colors, knobs, status bases, shadows ONLY.
+   * Every derived formula above recomputes from these. === */
   :root[data-theme='light'] {
     --ds-brand-chroma: 0.07;
 
-    /* Raw color tokens (override here to retheme) */
+    --ds-elevate-lift: 0.015;
+    --ds-state-tint: black;
+    --ds-state-mix: 5%;
+    --ds-scrim-mix: 40%;
+
     --color-brand-primary: oklch(0.5 var(--ds-brand-chroma) var(--ds-brand-hue));
-    --color-brand-primary-muted: oklch(
-      0.44 calc(var(--ds-brand-chroma) - 0.01) var(--ds-brand-hue)
-    );
     --color-surface-base: oklch(0.97 0.006 var(--ds-brand-hue));
     --color-text-base: oklch(0.17 0.015 var(--ds-brand-hue));
-    --color-text-muted: oklch(0.48 0.02 var(--ds-brand-hue));
     --color-accent-fg: oklch(0.98 0.004 var(--ds-brand-hue));
 
     color-scheme: light;
 
-    /* Surface family — from --color-surface-base */
-    --ds-color-bg-surface: var(--color-surface-base);
-    --ds-color-bg-elevated: color-mix(in oklab, var(--color-surface-base) 50%, white);
-    --ds-color-bg-overlay: color-mix(in oklab, var(--color-surface-base) 30%, white);
-    --ds-color-bg-subtle: color-mix(in oklab, var(--color-surface-base) 96%, black);
-    --ds-color-bg-sunken: color-mix(in oklab, var(--color-surface-base) 95%, black);
-    --ds-color-surface-hover: color-mix(in oklab, var(--ds-color-bg-surface) 96%, black);
-    --ds-color-surface-pressed: color-mix(in oklab, var(--ds-color-bg-surface) 88%, black);
-    --ds-color-elevated-hover: color-mix(in oklab, var(--ds-color-bg-elevated) 95%, black);
-    --ds-ring-offset-color: var(--ds-color-bg-surface);
+    --ds-color-bg-danger: oklch(0.55 0.2 20);
+    --ds-color-bg-success: oklch(0.58 0.14 150);
+    --ds-color-bg-warning: oklch(0.72 0.15 70);
+    --ds-color-bg-info: oklch(0.55 0.12 var(--ds-brand-hue));
 
-    /* Foreground family — from --color-text-base / --color-text-muted */
-    --ds-color-fg-default: var(--color-text-base);
-    --ds-color-fg-muted: var(--color-text-muted);
-    --ds-color-fg-subtle: color-mix(in oklab, var(--color-text-muted) 60%, white);
-    --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 10%, transparent);
-    --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 18%, transparent);
-
-    /* Accent family — from --color-brand-primary / -muted, --color-accent-fg */
-    --ds-color-accent: var(--color-brand-primary);
-    --ds-color-accent-muted: var(--color-brand-primary-muted);
-    --ds-color-accent-fg: var(--color-accent-fg);
-    --ds-color-accent-hover: color-mix(in oklab, var(--ds-color-accent) 88%, black);
-    --ds-color-accent-pressed: color-mix(in oklab, var(--ds-color-accent) 80%, black);
-    --ds-color-accent-disabled: color-mix(in oklab, var(--ds-color-accent) 40%, transparent);
-    --ds-color-accent-soft: color-mix(in oklab, var(--ds-color-accent) 18%, white);
-    --ds-color-accent-soft-hover: color-mix(in oklab, var(--ds-color-accent) 28%, white);
-    --ds-color-border-accent: color-mix(in oklab, var(--ds-color-accent) 60%, transparent);
-    --ds-ring-color: var(--ds-color-accent);
-
-    /* Status — independent */
-    --ds-color-danger: oklch(0.55 0.2 20);
-    --ds-color-success: oklch(0.58 0.14 150);
-    --ds-color-warning: oklch(0.72 0.15 70);
-    --ds-color-info: oklch(0.55 0.12 var(--ds-brand-hue));
-
-    /* Overlay — independent */
-    --ds-color-overlay: color-mix(in oklab, black 40%, transparent);
-    --ds-color-overlay-scrim: color-mix(in oklab, black 20%, transparent);
-
-    /* Shadows — independent */
     --ds-shadow-xs: 0 1px 2px oklch(0.17 0.015 var(--ds-brand-hue) / 0.06);
     --ds-shadow-sm: 0 2px 6px oklch(0.17 0.015 var(--ds-brand-hue) / 0.08);
     --ds-shadow-md: 0 8px 18px oklch(0.17 0.015 var(--ds-brand-hue) / 0.1);
     --ds-shadow-lg: 0 20px 40px oklch(0.17 0.015 var(--ds-brand-hue) / 0.14);
-    --ds-shadow-focus:
-      0 0 0 var(--ds-ring-offset) var(--ds-ring-offset-color),
-      0 0 0 calc(var(--ds-ring-offset) + var(--ds-ring-width)) var(--ds-ring-color);
   }
 
   /* === Media query overrides === */
@@ -251,12 +280,7 @@
     :root {
       --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 24%, transparent);
       --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 40%, transparent);
-      --ds-color-fg-muted: oklch(0.78 0.018 var(--ds-brand-hue));
-    }
-    :root[data-theme='light'] {
-      --ds-color-border-default: color-mix(in oklab, var(--ds-color-fg-default) 24%, transparent);
-      --ds-color-border-strong: color-mix(in oklab, var(--ds-color-fg-default) 40%, transparent);
-      --ds-color-fg-muted: oklch(0.34 0.02 var(--ds-brand-hue));
+      --ds-muted-mix: 78%;
     }
   }
 }

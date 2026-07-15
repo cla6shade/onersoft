@@ -18,8 +18,8 @@
   }
 
   .root[data-state='checked'] {
-    background-color: var(--ds-color-accent);
-    --switch-border: inset 0 0 0 1px var(--ds-color-accent);
+    background-color: var(--ds-color-bg-accent);
+    --switch-border: inset 0 0 0 1px var(--ds-color-bg-accent);
   }
 
   .root:focus-visible {
@@ -46,6 +46,6 @@
 
   .thumb[data-state='checked'] {
     transform: translateX(1.1875rem);
-    background-color: var(--ds-color-accent-fg);
+    background-color: var(--ds-color-fg-on-accent);
   }
 }

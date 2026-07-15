@@ -43,6 +43,8 @@ CSS is auto-injected via `sideEffects`. Importing from the barrel also injects t
 }
 ```
 
+Color tokens follow `--ds-color-{category}-{role}-{variant}-{state}` (category `bg`/`fg`/`border`, state `hover`/`pressed`) — see the [tokens page](https://cla6shade.github.io/onersoft/docs/tokens) for how every value is derived.
+
 ### Theme switching
 
 The DS branches on `<html data-theme="light|dark">`. Wire it however you like — [`next-themes`](https://github.com/pacanukeyism/next-themes) with `attribute="data-theme"` works out of the box.

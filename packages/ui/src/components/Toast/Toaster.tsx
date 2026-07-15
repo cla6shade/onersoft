@@ -14,10 +14,10 @@ const EXIT_ANIMATION_MS = 200;
  * custom indicator React node entirely from the outside without
  * fighting attribute-selector specificity. */
 const INTENT_COLOR: Record<Exclude<ToastIntent, 'neutral'>, string> = {
-  success: 'var(--ds-color-success)',
-  warning: 'var(--ds-color-warning)',
-  danger: 'var(--ds-color-danger)',
-  info: 'var(--ds-color-info)',
+  success: 'var(--ds-color-bg-success)',
+  warning: 'var(--ds-color-bg-warning)',
+  danger: 'var(--ds-color-bg-danger)',
+  info: 'var(--ds-color-bg-info)',
 };
 
 export interface ToasterProps {

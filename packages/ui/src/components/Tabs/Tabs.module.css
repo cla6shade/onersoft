@@ -43,7 +43,7 @@
 
   .trigger[data-state='active'] {
     color: var(--ds-color-fg-default);
-    border-bottom-color: var(--ds-color-accent);
+    border-bottom-color: var(--ds-color-border-accent);
   }
 
   .trigger:focus-visible {

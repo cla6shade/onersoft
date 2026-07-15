@@ -86,7 +86,7 @@ export const componentMatrix = {
   Button: {
     slot: 'button',
     property: 'background-color',
-    token: '--ds-color-accent',
+    token: '--ds-color-bg-accent',
   },
   Card: {
     slot: 'card-title',

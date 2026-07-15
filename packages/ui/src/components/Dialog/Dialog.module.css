@@ -3,7 +3,7 @@
     position: fixed;
     inset: 0;
     z-index: var(--ds-z-overlay);
-    background-color: var(--ds-color-overlay);
+    background-color: var(--ds-color-bg-scrim);
     animation: fadeIn var(--ds-duration-medium) var(--ds-ease-enter);
   }
 

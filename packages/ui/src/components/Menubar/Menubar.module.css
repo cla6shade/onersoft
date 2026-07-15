@@ -33,7 +33,7 @@
 
   .trigger[data-state='open'],
   .trigger[data-highlighted] {
-    background-color: var(--ds-color-accent-soft);
+    background-color: var(--ds-color-bg-accent-soft);
   }
 
   .trigger:focus-visible {
@@ -72,7 +72,7 @@
   }
 
   .item[data-highlighted] {
-    background-color: var(--ds-color-accent-soft);
+    background-color: var(--ds-color-bg-accent-soft);
   }
 
   .item[data-disabled] {

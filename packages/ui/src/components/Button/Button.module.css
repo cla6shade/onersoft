@@ -33,8 +33,8 @@
   }
 
   .primary {
-    background-color: var(--ds-color-accent);
-    color: var(--ds-color-accent-fg);
+    background-color: var(--ds-color-bg-accent);
+    color: var(--ds-color-fg-on-accent);
   }
 
   .primary:disabled,
@@ -47,11 +47,11 @@
   }
 
   .primary:hover:not(:disabled) {
-    background-color: var(--ds-color-accent-hover);
+    background-color: var(--ds-color-bg-accent-hover);
   }
 
   .primary:active:not(:disabled) {
-    background-color: var(--ds-color-accent-pressed);
+    background-color: var(--ds-color-bg-accent-pressed);
   }
 
   .secondary {
@@ -60,11 +60,11 @@
   }
 
   .secondary:hover:not(:disabled) {
-    background-color: var(--ds-color-elevated-hover);
+    background-color: var(--ds-color-bg-elevated-hover);
   }
 
   .secondary:active:not(:disabled) {
-    background-color: var(--ds-color-surface-pressed);
+    background-color: var(--ds-color-bg-surface-pressed);
   }
 
   .ghost {
@@ -73,11 +73,11 @@
   }
 
   .ghost:hover:not(:disabled) {
-    background-color: var(--ds-color-surface-hover);
+    background-color: var(--ds-color-bg-surface-hover);
   }
 
   .ghost:active:not(:disabled) {
-    background-color: var(--ds-color-surface-pressed);
+    background-color: var(--ds-color-bg-surface-pressed);
   }
 
   .sm {

@@ -62,7 +62,12 @@ export const Anchored: Story = {
         <Popover.Anchor asChild>
           <span
             aria-label="anchor target"
-            style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--ds-color-accent)' }}
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: 999,
+              background: 'var(--ds-color-bg-accent)',
+            }}
           />
         </Popover.Anchor>
         <Popover.Trigger asChild>

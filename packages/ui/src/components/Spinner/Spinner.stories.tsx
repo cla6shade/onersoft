@@ -53,10 +53,10 @@ export const InheritsColor: Story = {
       <span style={{ color: 'var(--ds-color-fg-default)' }}>
         <Spinner />
       </span>
-      <span style={{ color: 'var(--ds-color-accent)' }}>
+      <span style={{ color: 'var(--ds-color-fg-accent)' }}>
         <Spinner />
       </span>
-      <span style={{ color: 'var(--ds-color-danger)' }}>
+      <span style={{ color: 'var(--ds-color-fg-danger)' }}>
         <Spinner />
       </span>
     </div>
